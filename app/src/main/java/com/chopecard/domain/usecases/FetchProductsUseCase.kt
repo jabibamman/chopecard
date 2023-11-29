@@ -1,0 +1,1 @@
+class FetchProductsUseCase(get: Any) { }

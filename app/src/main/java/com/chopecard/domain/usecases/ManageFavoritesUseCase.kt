@@ -1,0 +1,1 @@
+class ManageFavoritesUseCase(get: Any) { }
