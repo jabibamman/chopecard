@@ -1,12 +1,25 @@
+package com.chopecard.di.modules
+
+import ApiService
+import CollectorViewModel
+import FetchProductsUseCase
+import ManageFavoritesUseCase
+import ProductRepositoryImpl
+import SellerViewModel
+import StoreRepositoryImpl
+import UpdateStockUseCase
 import com.chopecard.data.repository.ProductRepository
 import com.chopecard.data.repository.StoreRepository
+
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.scope.get
 
-val appModule = module {
+/**
+ * Module where all the core classes to inject must be declared
+ */
+internal val coreModule = module {
     // Repositories
     single<ProductRepository> { ProductRepositoryImpl(get()) }
     single<StoreRepository> { StoreRepositoryImpl(get()) }
@@ -33,3 +46,5 @@ fun provideRetrofit(): Retrofit {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 }
+
+

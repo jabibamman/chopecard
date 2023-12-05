@@ -7,4 +7,28 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="splashColorPrimary">#ff1b49</color>
+    <color name="splashColorPrimaryDark">#FF000000</color>
+    <color name="splashColorAccent">#e67d20</color>
+
+    <color name="text_view_adaptive_color">@color/black</color>
+
+
+    <color name="my_message_bg">#2196F3</color>
+    <color name="not_my_message_bg">#252424</color>
+
+    <color name="edit_text_bg">#252424</color>
+    <color name="header_background">#FFFFFF</color>
+    <color name="body_background">#FFFFFF</color>
+    <color name="footer_background">#FFFFFF</color>
+
+    <color name="primaryColor">#334455</color>
+    <color name="secondaryColor">#667788</color>
+    <color name="accentColor">#AABBCC</color>
+    <color name="backgroundColor">#DDEEFF</color>
+    <color name="headerBackgroundColor">#112233</color>
+    <color name="footerBackgroundColor">#445566</color>
+    <color name="cardBackgroundColor">#778899</color>
 </resources>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">chopecard</string>
+    <string name="username_placeholder">Username</string>
+    <string name="balance_placeholder">$0.00</string>
 </resources>
