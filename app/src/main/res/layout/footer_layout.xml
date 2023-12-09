@@ -13,7 +13,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/ic_search"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="?android:attr/selectableItemBackgroundBorderless" />
 
     <ImageButton
             android:id="@+id/btnFavorites"
@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/ic_favorites"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="?android:attr/selectableItemBackgroundBorderless" />
 
     <ImageButton
             android:id="@+id/btnNearby"
@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/ic_nearby"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="?android:attr/selectableItemBackgroundBorderless" />
 
     <ImageButton
             android:id="@+id/btnAccount"
@@ -37,6 +37,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/ic_account"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="?android:attr/selectableItemBackgroundBorderless" />
 
 </LinearLayout>
