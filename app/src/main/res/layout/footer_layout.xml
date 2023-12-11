@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/footer_background"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="@dimen/footer_padding">
+
+    <ImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            android:background="?android:attr/selectableItemBackgroundBorderless" />
+
+    <ImageButton
+            android:id="@+id/btnFavorites"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_favorites"
+            android:background="?android:attr/selectableItemBackgroundBorderless" />
+
+
+    <ImageButton
+            android:id="@+id/btnNearby"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_nearby"
+            android:background="?android:attr/selectableItemBackgroundBorderless" />
+
+    <ImageButton
+            android:id="@+id/btnAccount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_account"
+            android:background="?android:attr/selectableItemBackgroundBorderless" />
+
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="my_message_bg">#0A7E8C</color> 
+    <color name="not_my_message_bg">#DADADA</color>
+    <color name="edit_text_bg">#DADADA</color>
+    <color name="header_background">#121212</color> 
+    <color name="body_background">#121212</color>
+    <color name="footer_background">#121212</color>
+    <color name="primaryColor">#2A3B4C</color> 
+    <color name="secondaryColor">#4A5B6C</color> 
+    <color name="accentColor">#6A7B8C</color> 
+    <color name="backgroundColor">#121212</color>
+    <color name="headerBackgroundColor">#232323</color>
+    <color name="footerBackgroundColor">#232323</color>
+    <color name="cardBackgroundColor">#333333</color> 
+</resources>

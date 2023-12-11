@@ -21,12 +21,25 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+            isDebuggable = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            buildConfigField("String","BASE_URL", "\"https://fakerapi.it/api/v1/\"")
+        }
+
+        release {
+            isMinifyEnabled = false
+            isDebuggable = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+
         }
     }
     compileOptions {
@@ -38,6 +51,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -59,6 +73,11 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+
+    implementation("androidx.recyclerview:recyclerview:1.2.0")
+
 
     // Koin pour Kotlin
     implementation("io.insert-koin:koin-android:3.5.0")
