@@ -8,11 +8,11 @@
         android:padding="@dimen/footer_padding">
 
     <ImageButton
-            android:id="@+id/btnSearch"
+            android:id="@+id/btnHome"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/ic_search"
+            android:src="@drawable/ic_home"
             android:background="?android:attr/selectableItemBackgroundBorderless" />
 
     <ImageButton
@@ -22,6 +22,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_favorites"
             android:background="?android:attr/selectableItemBackgroundBorderless" />
+
 
     <ImageButton
             android:id="@+id/btnNearby"
