@@ -1,5 +1,6 @@
 package com.chopecard
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -8,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.chopecard.data.model.Card
 import com.chopecard.data.repository.CardRepository
 import com.chopecard.databinding.ActivityMainBinding
+import com.chopecard.presentation.viewModel.ImageActivity
 import injectModuleDependencies
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -45,6 +47,13 @@ class MainActivity : ComponentActivity() {
                 .placeholder(R.drawable.placeholder_image)
                 .error(R.drawable.error_image)
                 .into(imageViewCard)
+
+            imageViewCard.setOnClickListener {
+                val imageUrl = cardInfo[0].card_images[0].image_url
+                val intent = Intent(this@MainActivity, ImageActivity::class.java)
+                intent.putExtra("image_url", imageUrl)
+                startActivity(intent)
+            }
         }
     }
 }
