@@ -29,7 +29,7 @@ android {
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String","BASE_URL", "\"https://fakerapi.it/api/v1/\"")
+            buildConfigField("String","BASE_URL", "\"https://db.ygoprodeck.com/api/v7/\"")
         }
 
         release {
@@ -52,6 +52,7 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+        viewBinding =  true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -82,9 +83,20 @@ dependencies {
     // Koin pour Kotlin
     implementation("io.insert-koin:koin-android:3.5.0")
 
-    // Retrofit pour les appels API
+    // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
+    // Hhttp logging
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("androidx.databinding:databinding-runtime:8.2.0")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

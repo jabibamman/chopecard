@@ -9,6 +9,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="errorColor">#FF0000</color>
     <color name="drawable_color">#FF000000</color>
 
     <color name="splashColorPrimary">#ff1b49</color>

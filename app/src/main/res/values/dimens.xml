@@ -5,4 +5,11 @@
     <dimen name="header_padding">16dp</dimen>
     <dimen name="body_padding">16dp</dimen>
     <dimen name="footer_padding">16dp</dimen>
+    <dimen name="card_info_padding">16dp</dimen>
+
+    <dimen name="header_text_size">24sp</dimen>
+    <dimen name="image_width">170dp</dimen>
+    <dimen name="image_height">170dp</dimen>
+    <dimen name="image_margin_top">8dp</dimen>
+
 </resources>
