@@ -1,4 +1,4 @@
-package com.chopecard.presentation.viewModel
+package com.chopecard.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

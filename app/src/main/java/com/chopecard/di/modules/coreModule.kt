@@ -33,7 +33,7 @@ internal val coreModule = module {
     viewModel { SellerViewModel(get()) }
     // ... autres déclarations de ViewModel
 
-    // Fournir les services API (si vous utilisez Retrofit, par exemple)
+    // Fournir les services API
     single { provideRetrofit() }
     single { get<Retrofit>().create(ApiService::class.java) }
 }
