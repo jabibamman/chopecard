@@ -38,7 +38,6 @@ class MainActivity : ComponentActivity() {
     fun loadCardInfo(cardName: String) {
         lifecycleScope.launch {
             val cardInfo : List<Card> = cardRepository.getCardByName(cardName)
-            println("cardInfo = $cardInfo")
             val imageViewCard = binding.bodyLayout.imageViewCard
 
             binding.bodyLayout.textViewCardName.text = cardInfo[0].name
@@ -53,7 +52,7 @@ class MainActivity : ComponentActivity() {
             binding.bodyLayout.textViewCardDesc.text = cardInfo[0].desc
 
             // on charge l'image depuis l'URL avec glide
-            Glide.with(this@MainActivity)
+            Glide.with(applicationContext)
                 .load(cardInfo[0].card_images[0].image_url)
                 .placeholder(R.drawable.placeholder_image)
                 .error(R.drawable.error_image)
