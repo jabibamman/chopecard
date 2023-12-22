@@ -1,6 +1,7 @@
 import android.content.Context
 import com.chopecard.BuildConfig
 import com.chopecard.di.modules.coreModule
+import com.chopecard.di.modules.remoteModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
@@ -33,6 +34,6 @@ fun parseAndInjectConfiguration() {
 }
 
 
-private val modules = mutableListOf(coreModule)
+private val modules = mutableListOf(coreModule, remoteModule)
 
 data class FakeJsonConf(val baseUrl: String)

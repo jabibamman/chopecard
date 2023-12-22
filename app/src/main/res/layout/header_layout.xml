@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:padding="@dimen/header_padding"
         android:background="@color/header_background">
 
-    <!-- Add your header content here, e.g., user info, app title -->
+   <ImageView
+           android:id="@+id/imageViewLogo"
+           android:layout_width="@dimen/logo_width"
+           android:layout_height="@dimen/logo_height"
+           android:src="@drawable/logo"
+           android:layout_centerInParent="true" />
 
-</LinearLayout>
+
+</RelativeLayout>

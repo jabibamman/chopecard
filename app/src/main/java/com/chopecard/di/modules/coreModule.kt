@@ -4,13 +4,13 @@ import ApiService
 import CollectorViewModel
 import FetchProductsUseCase
 import ManageFavoritesUseCase
-import ProductRepositoryImpl
 import SellerViewModel
 import StoreRepositoryImpl
 import UpdateStockUseCase
-import com.chopecard.data.repository.ProductRepository
+import com.chopecard.data.repository.CardRepository
+import com.chopecard.data.repository.CardRepositoryImpl
 import com.chopecard.data.repository.StoreRepository
-
+import com.chopecard.presentation.viewModel.CardViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 internal val coreModule = module {
     // Repositories
-    single<ProductRepository> { ProductRepositoryImpl(get()) }
+    single<CardRepository> { CardRepositoryImpl(get()) }
     single<StoreRepository> { StoreRepositoryImpl(get()) }
 
     // Use Cases
@@ -32,9 +32,10 @@ internal val coreModule = module {
     // ViewModels
     viewModel { CollectorViewModel(get()) }
     viewModel { SellerViewModel(get()) }
+    viewModel { CardViewModel(get()) }
     // ... autres déclarations de ViewModel
 
-    // Fournir les services API (si vous utilisez Retrofit, par exemple)
+    // Fournir les services API
     single { provideRetrofit() }
     single { get<Retrofit>().create(ApiService::class.java) }
 }
@@ -46,5 +47,3 @@ fun provideRetrofit(): Retrofit {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 }
-
-
