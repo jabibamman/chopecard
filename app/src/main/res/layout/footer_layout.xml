@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor"
+        android:gravity="center"
+        android:orientation="vertical">
+
     
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/footer_background"
             android:orientation="horizontal"
             android:gravity="center"
             android:padding="@dimen/footer_padding"
@@ -19,7 +22,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_home"
-                android:background="?android:attr/selectableItemBackgroundBorderless" />
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/home" />
 
         <ImageButton
                 android:id="@+id/btnFavorites"
@@ -27,7 +31,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_favorites"
-                android:background="?android:attr/selectableItemBackgroundBorderless" />
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/favorites" />
 
 
         <ImageButton
@@ -36,7 +41,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_nearby"
-                android:background="?android:attr/selectableItemBackgroundBorderless" />
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/nearby" />
 
         <ImageButton
                 android:id="@+id/btnAccount"
@@ -44,6 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_account"
-                android:background="?android:attr/selectableItemBackgroundBorderless" />
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/account" />
     </LinearLayout>
 </RelativeLayout>

@@ -2,4 +2,10 @@
     <string name="app_name">chopecard</string>
     <string name="username_placeholder">Username</string>
     <string name="balance_placeholder">$0.00</string>
+
+    <!-- footer -->
+    <string name="home">Home\n</string>
+    <string name="favorites">Favorites</string>
+    <string name="nearby">Nearby</string>
+    <string name="account">Account</string>
 </resources>

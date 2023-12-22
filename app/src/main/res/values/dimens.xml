@@ -16,4 +16,7 @@
     <dimen name="logo_width">100dp</dimen>
     <dimen name="logo_height">100dp</dimen>
 
+    <!-- body -->
+    <dimen name="body_height">530dp</dimen>
+
 </resources>
