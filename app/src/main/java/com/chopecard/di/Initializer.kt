@@ -24,7 +24,7 @@ fun injectModuleDependencies(context: Context) {
  * and inject the structure representing it in the dependency tree
  */
 fun parseAndInjectConfiguration() {
-    val apiConf = FakeJsonConf(baseUrl = BuildConfig.BASE_URL)
+    val apiConf = FakeJsonConf(baseUrl = BuildConfig.BASE_URL, externalUrl = BuildConfig.EXTERNAL_URL)
 
     modules.add(
         module {
@@ -36,4 +36,4 @@ fun parseAndInjectConfiguration() {
 
 private val modules = mutableListOf(coreModule, remoteModule)
 
-data class FakeJsonConf(val baseUrl: String)
+data class FakeJsonConf(val baseUrl: String, val externalUrl: String)

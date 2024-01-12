@@ -2,7 +2,6 @@ package com.chopecard.di.modules
 
 import ApiService
 import CollectorViewModel
-import FetchProductsUseCase
 import ManageFavoritesUseCase
 import SellerViewModel
 import StoreRepositoryImpl
@@ -10,6 +9,7 @@ import UpdateStockUseCase
 import com.chopecard.data.repository.CardRepository
 import com.chopecard.data.repository.CardRepositoryImpl
 import com.chopecard.data.repository.StoreRepository
+import com.chopecard.domain.usecases.GetStoresUseCase
 import com.chopecard.presentation.viewModel.CardViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -25,7 +25,7 @@ internal val coreModule = module {
     single<StoreRepository> { StoreRepositoryImpl(get()) }
 
     // Use Cases
-    factory { FetchProductsUseCase(get()) }
+    factory { GetStoresUseCase(get()) }
     factory { ManageFavoritesUseCase(get()) }
     factory { UpdateStockUseCase(get()) }
 

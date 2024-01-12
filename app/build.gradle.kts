@@ -30,6 +30,8 @@ android {
             )
 
             buildConfigField("String","BASE_URL", "\"https://db.ygoprodeck.com/api/v7/\"")
+            buildConfigField("String","EXTERNAL_URL", "\"http://localhost/8080/v1/\"")
+
         }
 
         release {
