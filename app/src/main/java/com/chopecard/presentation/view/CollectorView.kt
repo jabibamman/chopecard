@@ -16,6 +16,8 @@ class CollectorView : Activity() {
 
         // get base url from build config
         val baseUrl = BuildConfig.BASE_URL
+        val externalUrl = BuildConfig.EXTERNAL_URL
         println("BASE_URL: $baseUrl")
+        println("EXTERNAL_URL: $externalUrl")
     }
 }
