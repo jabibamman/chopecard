@@ -1,19 +1,12 @@
 package com.chopecard.data.network
 
-import com.chopecard.data.model.PatchProductDTO
 import com.chopecard.data.model.ProductStoreDTO
 import com.chopecard.data.model.ReserveDTO
 import com.chopecard.data.model.StoreDTO
-import com.chopecard.data.model.UserDTO
-import com.chopecard.domain.models.Booster
-import com.chopecard.domain.models.Card
 import com.chopecard.domain.models.Display
-import com.chopecard.domain.models.Product
 import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
-import com.chopecard.domain.models.Ticket
 import com.chopecard.domain.models.UserReservation
-import com.chopecard.domain.models.Users
 import retrofit2.Call
 import retrofit2.http.*
 
