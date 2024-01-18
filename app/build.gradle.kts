@@ -29,7 +29,7 @@ android {
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String","BASE_URL", "\"https://db.ygoprodeck.com/api/v7/\"")
+            buildConfigField("String","BASE_URL", "\"http://176.134.7.134:3000/v1/\"")
             buildConfigField("String","EXTERNAL_URL", "\"http://localhost/8080/v1/\"")
 
         }
