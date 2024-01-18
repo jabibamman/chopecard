@@ -31,12 +31,14 @@ class MainActivity : ComponentActivity() {
         parseAndInjectConfiguration()
         injectModuleDependencies(this)
 
-        cardViewModel.cardInfoLiveData.observe(this) { cardUIModel ->
+        /*cardViewModel.cardInfoLiveData.observe(this) { cardUIModel ->
             displayCardInfo(cardUIModel)
         }
 
-        cardViewModel.loadCardInfo("Dark Magician Girl")
-        //         cardViewModel.loadCardInfo("United We Stand")
+         */
+
+        //cardViewModel.loadCardInfo("Dark Magician Girl")
+        cardViewModel.loadCardInfo("United We Stand")
     }
 
     private fun displayCardInfo(cardUIModel: CardUIModel) {
@@ -61,5 +63,4 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
         }
     }
-
 }
