@@ -2,6 +2,7 @@ package com.chopecard
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.bumptech.glide.Glide
@@ -9,6 +10,7 @@ import com.chopecard.data.model.CardUIModel
 import com.chopecard.data.repository.CardRepository
 import com.chopecard.databinding.ActivityMainBinding
 import com.chopecard.presentation.viewModel.CardViewModel
+import com.chopecard.ui.activity.AdminActivity
 import com.chopecard.ui.activity.ImageActivity
 import injectModuleDependencies
 import org.koin.android.ext.android.inject
@@ -39,6 +41,12 @@ class MainActivity : ComponentActivity() {
 
         //cardViewModel.loadCardInfo("Dark Magician Girl")
         cardViewModel.loadCardInfo("United We Stand")
+
+        val button: ImageButton = findViewById(R.id.btnAccount)
+        button.setOnClickListener {
+            val intent = Intent(this@MainActivity, AdminActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun displayCardInfo(cardUIModel: CardUIModel) {
