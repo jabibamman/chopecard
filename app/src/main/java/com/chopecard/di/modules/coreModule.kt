@@ -6,6 +6,8 @@ import ManageFavoritesUseCase
 import SellerViewModel
 import StoreRepositoryImpl
 import UpdateStockUseCase
+import com.chopecard.data.repository.AdminRepository
+import com.chopecard.data.repository.AdminRepositoryImpl
 import com.chopecard.data.repository.CardRepository
 import com.chopecard.data.repository.CardRepositoryImpl
 import com.chopecard.data.repository.StoreRepository
@@ -23,6 +25,7 @@ internal val coreModule = module {
     // Repositories
     single<CardRepository> { CardRepositoryImpl(get()) }
     single<StoreRepository> { StoreRepositoryImpl(get()) }
+    single<AdminRepository> { AdminRepositoryImpl(get()) }
 
     // Use Cases
     factory { GetStoresUseCase(get()) }
@@ -33,7 +36,6 @@ internal val coreModule = module {
     viewModel { CollectorViewModel(get()) }
     viewModel { SellerViewModel(get()) }
     viewModel { CardViewModel(get()) }
-    // ... autres déclarations de ViewModel
 
     // Fournir les services API
     single { provideRetrofit() }

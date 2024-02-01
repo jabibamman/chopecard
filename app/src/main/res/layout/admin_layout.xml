@@ -8,8 +8,6 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/footer_padding"
-        android:textColor="@color/primaryColor"
         android:text="Tickets" />
 
     <ListView

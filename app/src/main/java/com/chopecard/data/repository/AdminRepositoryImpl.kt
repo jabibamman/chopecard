@@ -1,11 +1,7 @@
 package com.chopecard.data.repository
 
-import com.chopecard.data.model.ProductStoreDTO
 import com.chopecard.data.network.AdminApiService
-import com.chopecard.data.network.StoreApiService
 import com.chopecard.domain.models.Product
-import com.chopecard.domain.models.ProductStore
-import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.Ticket
 import com.chopecard.domain.models.TicketMessage
 import retrofit2.Call
@@ -45,9 +41,9 @@ class AdminRepositoryImpl(private val adminApiService: AdminApiService) : AdminR
         val ticketDTO = adminApiService.getTicketById(ticketId)
         return try {
             val response = ticketDTO.execute()
-            response.body() ?: Ticket(0, "", List<TicketMessage>(0) { TicketMessage("") })
+            response.body() ?: Ticket(0, "", List(0) { TicketMessage("") })
         } catch (e: Exception) {
-            Ticket(0, "", List<TicketMessage>(0) {TicketMessage("")})
+            Ticket(0, "", List(0) {TicketMessage("")})
         }
     }
 
