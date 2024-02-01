@@ -1,8 +1,6 @@
 package com.chopecard.data.network
 
-import com.chopecard.data.model.ProductStoreDTO
 import com.chopecard.domain.models.Product
-import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.Ticket
 import retrofit2.Call
 import retrofit2.http.Body

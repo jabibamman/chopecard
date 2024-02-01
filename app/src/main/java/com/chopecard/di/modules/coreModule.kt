@@ -6,6 +6,7 @@ import ManageFavoritesUseCase
 import SellerViewModel
 import StoreRepositoryImpl
 import UpdateStockUseCase
+import com.chopecard.data.network.AdminApiService
 import com.chopecard.data.repository.AdminRepository
 import com.chopecard.data.repository.AdminRepositoryImpl
 import com.chopecard.data.repository.CardRepository
@@ -40,12 +41,13 @@ internal val coreModule = module {
     // Fournir les services API
     single { provideRetrofit() }
     single { get<Retrofit>().create(ApiService::class.java) }
+    single { get<Retrofit>().create(AdminApiService::class.java) }
 }
 
 // Fonction pour configurer Retrofit
 fun provideRetrofit(): Retrofit {
     return Retrofit.Builder()
-        .baseUrl("https://exemple-api.com")
+        .baseUrl("http://176.134.7.134:3000")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 }
