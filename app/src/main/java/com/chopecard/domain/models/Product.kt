@@ -11,4 +11,3 @@ data class Product(
     val priceMin: Float,
     val priceMax: Float
 ) : Parcelable
-
