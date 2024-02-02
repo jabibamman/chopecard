@@ -3,6 +3,7 @@ package com.chopecard.data.repository.impl
 import com.chopecard.data.model.UserDTO
 import com.chopecard.data.network.UserApiService
 import com.chopecard.data.repository.UserRepository
+import com.chopecard.domain.models.Product
 import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.User
@@ -44,9 +45,9 @@ class UserRepositoryImpl(private val userApiService: UserApiService) : UserRepos
         val reserveDTO = userApiService.getReservesByUserId(userId)
         return try {
             val response = reserveDTO.execute()
-            response.body() ?: Store(0,"","",List<ProductStore>(0) {ProductStore(0, "", 0, 0f)} )
+            response.body() ?: Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f), 0, 0f)})
         } catch (e: Exception) {
-            Store(0,"","",List<ProductStore>(0) {ProductStore(0, "", 0, 0f)} )
+            Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f), 0, 0f)})
         }
     }
 
@@ -54,9 +55,9 @@ class UserRepositoryImpl(private val userApiService: UserApiService) : UserRepos
         val reserveDTO = userApiService.getReservesByIdAndByUserId(userId, reserveId)
         return try {
             val response = reserveDTO.execute()
-            response.body() ?: Store(0,"","",List<ProductStore>(0) {ProductStore(0, "", 0, 0f)} )
+            response.body() ?: Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f), 0, 0f)})
         } catch (e: Exception) {
-            Store(0,"","",List<ProductStore>(0) {ProductStore(0, "", 0, 0f)} )
+            Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f), 0, 0f)})
         }
     }
 

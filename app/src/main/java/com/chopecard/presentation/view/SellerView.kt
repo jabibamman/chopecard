@@ -1,4 +1,4 @@
-package com.chopecard.ui.seller
+package com.chopecard.presentation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

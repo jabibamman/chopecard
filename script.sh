@@ -21,7 +21,7 @@ declare -a FILES=(
     "presentation/view/CollectorView.kt"
     "presentation/view/SellerView.kt"
     "presentation/view/ProductDetailView.kt"
-    "presentation/view/StoreView.kt"
+    "presentation/view/StoreViewModel.kt"
     "presentation/viewModel/CollectorViewModel.kt"
     "presentation/viewModel/SellerViewModel.kt"
     "di/AppModule.kt"

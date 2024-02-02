@@ -30,5 +30,17 @@ class SellerViewModel(
         }
     }
 
+    fun getStores() {
+        viewModelScope.launch {
+            try {
+                getStoresUseCase.execute()
+                // Update UI accordingly based on success
+
+            } catch (e: Exception) {
+                // Handle error
+            }
+        }
+    }
+
     // Implement other actions (e.g., updateProduct, deleteProduct) similarly
 }

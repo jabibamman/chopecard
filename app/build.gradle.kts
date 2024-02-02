@@ -29,7 +29,7 @@ android {
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String","BASE_URL", "\"http://176.134.7.134:3000/v1/\"")
+            buildConfigField("String","BASE_URL", "\"http://176.134.7.134:3000\"")
             buildConfigField("String","EXTERNAL_URL", "\"http://localhost/8080/v1/\"")
 
         }
@@ -97,6 +97,8 @@ dependencies {
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.14.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.cardview:cardview:1.0.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
 
 

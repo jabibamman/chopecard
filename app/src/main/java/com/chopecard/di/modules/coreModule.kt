@@ -1,8 +1,8 @@
 package com.chopecard.di.modules
 
-import ApiService
 import CollectorViewModel
 import ManageFavoritesUseCase
+import com.chopecard.data.network.StoreApiService
 import com.chopecard.data.repository.CardRepository
 import com.chopecard.data.repository.StoreRepository
 import com.chopecard.data.repository.impl.CardRepositoryImpl
@@ -18,6 +18,7 @@ import com.chopecard.domain.usecases.UnreserveProductUseCase
 import com.chopecard.domain.usecases.UpdateProductUseCase
 import com.chopecard.presentation.viewModel.CardViewModel
 import com.chopecard.presentation.viewModel.SellerViewModel
+import com.chopecard.presentation.viewModel.StoreViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -47,11 +48,17 @@ internal val coreModule = module {
     viewModel { CollectorViewModel(get()) }
     viewModel { SellerViewModel(get(), get(), get(), get()) }
     viewModel { CardViewModel(get()) }
+    viewModel { StoreViewModel(get()) }
+
+
+
+
     // ... autres déclarations de ViewModel
 
     // Fournir les services API
     single { provideRetrofit() }
-    single { get<Retrofit>().create(ApiService::class.java) }
+    single { get<Retrofit>().create(StoreApiService::class.java) }
+
 }
 
 // Fonction pour configurer Retrofit

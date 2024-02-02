@@ -21,5 +21,9 @@
 
     <!-- footer -->
     <dimen name="footer_height">85dp</dimen>
+    <dimen name="recycler_shop_list_height">540</dimen>
+
+    <!-- text size -->
+    <dimen name="text_size_16">16</dimen>
 
 </resources>

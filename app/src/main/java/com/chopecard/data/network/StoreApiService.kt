@@ -8,12 +8,13 @@ import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.UserReservation
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface StoreApiService {
 
     @GET("/v1/stores")
-    fun getStores(): Call<List<Store>>
+    suspend fun getStores(): Response<List<Store>>
 
     @POST("/v1/stores")
     fun createStore(@Body storeDTO: StoreDTO): Call<String>

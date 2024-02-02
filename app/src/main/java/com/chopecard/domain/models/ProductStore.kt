@@ -1,3 +1,8 @@
 package com.chopecard.domain.models
 
-data class ProductStore(val id: Int, val product: String, val quantity: Int, val price: Float)
+data class ProductStore(
+    val id: Int,
+    val product: Product,
+    val quantity: Int,
+    val price: Float
+)
