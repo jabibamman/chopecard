@@ -1,1 +1,0 @@
-class UpdateStockUseCase(get: Any) { }

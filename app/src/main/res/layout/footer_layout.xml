@@ -45,7 +45,7 @@
                 android:contentDescription="@string/nearby" />
 
         <ImageButton
-                android:id="@+id/btnAccount"
+                android:id="@+id/btnShops"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

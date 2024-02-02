@@ -1,6 +1,8 @@
-package com.chopecard.data.repository
+package com.chopecard.data.repository.impl
 
+import android.util.Log
 import com.chopecard.data.network.AdminApiService
+import com.chopecard.data.repository.AdminRepository
 import com.chopecard.domain.models.Product
 import com.chopecard.domain.models.Ticket
 import com.chopecard.domain.models.TicketMessage
@@ -17,14 +19,13 @@ class AdminRepositoryImpl(private val adminApiService: AdminApiService) : AdminR
         }
     }
 
-    override suspend fun createProduct(product: Product): String{
+    override suspend fun createProduct(product: Product){
         val productDTO = adminApiService.createProduct(product)
         return try {
             val response = productDTO.execute()
-            response.body() ?: String()
         } catch (e: Exception) {
-            String()
-        }
+            Log.e("AdminRepositoryImpl", "Exception when calling API", e)
+        } as Unit
     }
 
     override suspend fun getTickets(): List<Ticket>{

@@ -6,7 +6,7 @@ import com.chopecard.domain.models.Ticket
 interface AdminRepository {
     suspend fun createTicket(ticket: Ticket): String
 
-    suspend fun createProduct(product: Product): String
+    suspend fun createProduct(product: Product)
 
     suspend fun getTickets(): List<Ticket>
 
