@@ -37,7 +37,7 @@ interface StoreRepository {
     // Creates a new product record within a specific store
     suspend fun createProduct(
         createProductDTO: CreateProductDTO
-    ): String
+    )
 
     // Gets a list of all reservations for a specific store
     suspend fun getReserves(storeId: Int): List<UserReservation>

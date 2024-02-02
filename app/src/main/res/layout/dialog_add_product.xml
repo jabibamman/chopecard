@@ -6,13 +6,6 @@
         android:padding="16dp">
 
     <EditText
-            android:id="@+id/etStoreId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Store ID"
-            android:inputType="number"/>
-
-    <EditText
             android:id="@+id/etProductId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

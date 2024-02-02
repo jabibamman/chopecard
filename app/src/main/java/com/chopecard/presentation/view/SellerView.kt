@@ -1,34 +1,48 @@
 package com.chopecard.presentation.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import com.chopecard.R
 import com.chopecard.data.model.ProductStoreDTO
+import com.chopecard.domain.models.Store
 import com.chopecard.presentation.viewModel.SellerViewModel
+import com.chopecard.ui.activity.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SellerView : AppCompatActivity() {
+class SellerView : BaseActivity() {
 
     private val viewModel: SellerViewModel by viewModel()
+    private var store : Store? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller)
 
-        // Example of button click listener that calls ViewModel to add product
-        findViewById<Button>(R.id.btnAddProduct).setOnClickListener {
-            // Example data, replace with actual input from user interface
-            // open input dialog to get storeId, productId, and productStoreDTO
-            onAddProduct()
+        store = intent.getParcelableExtra<Store>("store")
+        val tvShopName = findViewById<TextView>(R.id.tvShopName)
 
-            viewModel.addProduct(1, 1, ProductStoreDTO(1, 1f))
+        tvShopName.text = store?.name ?: "Unknown"
+        Log.d("SellerView", "Successfully received store")
+
+        findViewById<Button>(R.id.btnGoBack).setOnClickListener {
+            finish()
         }
 
-        // Setup observers and other UI components here
+        findViewById<Button>(R.id.btnAddProduct).setOnClickListener {
+            onAddProduct()
+        }
+
+        viewModel.alertMessage.observe(this) { message ->
+            message?.let {
+                showAlert(it)
+                viewModel.alertMessage.value = null
+            }
+        }
     }
 
 
@@ -38,8 +52,6 @@ class SellerView : AppCompatActivity() {
             setView(dialogView)
             setTitle("Add New Product")
             setPositiveButton("Add") { dialog, _ ->
-                val storeId =
-                    dialogView.findViewById<EditText>(R.id.etStoreId).text.toString().toInt()
                 val productId =
                     dialogView.findViewById<EditText>(R.id.etProductId).text.toString().toInt()
                 val quantity =
@@ -50,11 +62,22 @@ class SellerView : AppCompatActivity() {
                 val productStoreDTO = ProductStoreDTO(
                     quantity,
                     price
-                ) // Assurez-vous que cela correspond à la structure de votre ProductStoreDTO
-                viewModel.addProduct(storeId, productId, productStoreDTO)
+                )
+                viewModel.addProduct(getStoreNotNul().id, productId, productStoreDTO)
                 dialog.dismiss()
             }
             setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
         }.create().show()
+    }
+
+    private fun getStoreNotNul(): Store {
+        return store ?: throw IllegalStateException("Store is null")
+    }
+
+    private fun showAlert(message: String) {
+        AlertDialog.Builder(this).apply {
+            setMessage(message)
+            setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+        }.show()
     }
 }

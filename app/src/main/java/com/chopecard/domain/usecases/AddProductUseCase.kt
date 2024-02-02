@@ -4,8 +4,8 @@ import com.chopecard.data.model.CreateProductDTO
 import com.chopecard.data.repository.StoreRepository
 
 class AddProductUseCase(private val repository: StoreRepository) {
-    suspend fun execute(createProductDTO: CreateProductDTO): String {
-        return repository.createProduct(createProductDTO)
+    suspend fun execute(createProductDTO: CreateProductDTO) {
+        repository.createProduct(createProductDTO)
     }
 
 }

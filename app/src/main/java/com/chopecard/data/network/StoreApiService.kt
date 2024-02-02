@@ -26,7 +26,11 @@ interface StoreApiService {
     fun getProduct(@Path("storeId") storeId: Int, @Path("productId") productId: Int): Call<ProductStore>
 
     @POST("/v1/stores/{storeId}/products/{productId}")
-    fun createProduct(@Path("storeId") storeId: Int, @Path("productId") productId: Int, @Body productStoreDTO: ProductStoreDTO): Call<String>
+    suspend fun createProduct(
+        @Path("storeId") storeId: Int,
+        @Path("productId") productId: Int,
+        @Body productStoreDTO: ProductStoreDTO
+    ): Response<Void>
 
     @GET("/v1/stores/{storeId}")
     fun getStoresById(@Path("storeId") storeId: Int): Call<Store>

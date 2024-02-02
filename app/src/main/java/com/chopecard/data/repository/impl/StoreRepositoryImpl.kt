@@ -104,13 +104,16 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
 
     override suspend fun createProduct(
        createProductDTO: CreateProductDTO
-    ): String {
-        val productStoreDTO = storeApiService.createProduct(createProductDTO.storeId, createProductDTO.productId, createProductDTO.productStoreDTO)
-        return try {
-            val response = productStoreDTO.execute()
-            response.body() ?: String()
+    ) {
+        try {
+            val response = storeApiService.createProduct(createProductDTO.storeId, createProductDTO.productId, createProductDTO.productStoreDTO)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Successfully created product")
+            } else {
+                Log.e("StoreRepositoryImpl", "Error creating product: HTTP ${response.code()} ${response.message()}")
+            }
         } catch (e: Exception) {
-            String()
+            Log.e("StoreRepositoryImpl", "Exception when calling API", e)
         }
 
     }
