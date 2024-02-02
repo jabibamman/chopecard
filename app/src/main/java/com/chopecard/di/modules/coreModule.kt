@@ -3,14 +3,21 @@ package com.chopecard.di.modules
 import ApiService
 import CollectorViewModel
 import ManageFavoritesUseCase
-import SellerViewModel
-import StoreRepositoryImpl
-import UpdateStockUseCase
 import com.chopecard.data.repository.CardRepository
-import com.chopecard.data.repository.CardRepositoryImpl
 import com.chopecard.data.repository.StoreRepository
+import com.chopecard.data.repository.impl.CardRepositoryImpl
+import com.chopecard.data.repository.impl.StoreRepositoryImpl
+import com.chopecard.domain.usecases.AddProductUseCase
+import com.chopecard.domain.usecases.CreateStoreUseCase
+import com.chopecard.domain.usecases.DeleteProductUseCase
+import com.chopecard.domain.usecases.GetReservationsUseCase
+import com.chopecard.domain.usecases.GetStoreProductsUseCase
 import com.chopecard.domain.usecases.GetStoresUseCase
+import com.chopecard.domain.usecases.ReserveProductUseCase
+import com.chopecard.domain.usecases.UnreserveProductUseCase
+import com.chopecard.domain.usecases.UpdateProductUseCase
 import com.chopecard.presentation.viewModel.CardViewModel
+import com.chopecard.presentation.viewModel.SellerViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -25,13 +32,20 @@ internal val coreModule = module {
     single<StoreRepository> { StoreRepositoryImpl(get()) }
 
     // Use Cases
+    factory { AddProductUseCase(get()) }
+    factory { CreateStoreUseCase(get()) }
+    factory { DeleteProductUseCase(get()) }
+    factory { GetReservationsUseCase(get()) }
+    factory { GetStoreProductsUseCase(get()) }
     factory { GetStoresUseCase(get()) }
     factory { ManageFavoritesUseCase(get()) }
-    factory { UpdateStockUseCase(get()) }
+    factory { ReserveProductUseCase(get()) }
+    factory { UnreserveProductUseCase(get()) }
+    factory { UpdateProductUseCase(get()) }
 
     // ViewModels
     viewModel { CollectorViewModel(get()) }
-    viewModel { SellerViewModel(get()) }
+    viewModel { SellerViewModel(get(), get(), get(), get()) }
     viewModel { CardViewModel(get()) }
     // ... autres déclarations de ViewModel
 

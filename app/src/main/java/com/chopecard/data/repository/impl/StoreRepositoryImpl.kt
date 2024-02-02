@@ -1,4 +1,6 @@
-import com.chopecard.data.model.ProductStoreDTO
+package com.chopecard.data.repository.impl
+
+import com.chopecard.data.model.CreateProductDTO
 import com.chopecard.data.model.ReserveDTO
 import com.chopecard.data.model.StoreDTO
 import com.chopecard.data.network.StoreApiService
@@ -90,11 +92,9 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
     }
 
     override suspend fun createProduct(
-        storeId: Int,
-        productId: Int,
-        productStoreDTO: ProductStoreDTO
+       createProductDTO: CreateProductDTO
     ): String {
-        val productStoreDTO = storeApiService.createProduct(storeId, productId, productStoreDTO)
+        val productStoreDTO = storeApiService.createProduct(createProductDTO.storeId, createProductDTO.productId, createProductDTO.productStoreDTO)
         return try {
             val response = productStoreDTO.execute()
             response.body() ?: String()
