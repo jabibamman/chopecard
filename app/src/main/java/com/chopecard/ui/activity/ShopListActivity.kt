@@ -31,6 +31,7 @@ class ShopListActivity : BaseActivity() {
         val adapter = ShopListAdapter(mutableListOf()) { store ->
             val intent = Intent(this, SellerView::class.java).apply {
                 putExtra("store", store)
+
             }
             startActivity(intent)
         }

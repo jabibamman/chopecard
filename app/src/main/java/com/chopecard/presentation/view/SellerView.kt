@@ -10,6 +10,8 @@ import androidx.appcompat.app.AlertDialog
 import com.chopecard.R
 import com.chopecard.data.model.DeleteProductDTO
 import com.chopecard.data.model.ProductStoreDTO
+import com.chopecard.data.model.UpdateProductDTO
+import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
 import com.chopecard.presentation.viewModel.SellerViewModel
 import com.chopecard.ui.activity.BaseActivity
@@ -43,6 +45,10 @@ class SellerView : BaseActivity() {
             onDeleteProduct()
         }
 
+        findViewById<Button>(R.id.btnUpdateProduct).setOnClickListener {
+            onEditProduct(store?.products?: throw IllegalStateException("No products in store"))
+        }
+
         viewModel.alertMessage.observe(this) { message ->
             message?.let {
                 showAlert(it)
@@ -54,49 +60,115 @@ class SellerView : BaseActivity() {
 
     private fun onAddProduct() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_product, null)
-        AlertDialog.Builder(this).apply {
-            setView(dialogView)
-            setTitle("Add New Product")
-            setPositiveButton("Add") { dialog, _ ->
-                val productId =
-                    dialogView.findViewById<EditText>(R.id.etProductId).text.toString().toInt()
-                val quantity =
-                    dialogView.findViewById<EditText>(R.id.etQuantity).text.toString().toInt()
-                val price =
-                    dialogView.findViewById<EditText>(R.id.etPrice).text.toString().toFloat()
+        val productIdEditText = dialogView.findViewById<EditText>(R.id.etProductId)
+        val quantityEditText = dialogView.findViewById<EditText>(R.id.etQuantity)
+        val priceEditText = dialogView.findViewById<EditText>(R.id.etPrice)
 
-                val productStoreDTO = ProductStoreDTO(
-                    quantity,
-                    price
-                )
-                viewModel.addProduct(getStoreNotNul().id, productId, productStoreDTO)
-                dialog.dismiss()
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setTitle("Add New Product")
+            .setPositiveButton("Add", null) // Set to null. We override the onClick listener later.
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+            .create()
+
+        dialog.setOnShowListener {
+            val button = (dialog as AlertDialog).getButton(AlertDialog.BUTTON_POSITIVE)
+            button.setOnClickListener {
+                val productIdText = productIdEditText.text.toString()
+                val quantityText = quantityEditText.text.toString()
+                val priceText = priceEditText.text.toString()
+
+                if (productIdText.isEmpty() || quantityText.isEmpty() || priceText.isEmpty()) {
+                    showAlert("Please fill in all fields")
+                } else {
+                    val productId = productIdText.toInt()
+                    val quantity = quantityText.toInt()
+                    val price = priceText.toFloat()
+
+                    val productStoreDTO = ProductStoreDTO(quantity, price)
+                    viewModel.addProduct(getStoreNotNul().id, productId, productStoreDTO)
+                    dialog.dismiss()
+                }
             }
-            setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
-        }.create().show()
+        }
+
+        dialog.show()
     }
 
     private fun onDeleteProduct() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_delete_product, null)
-        AlertDialog.Builder(this).apply {
-            setView(dialogView)
-            setTitle("Add New Product")
-            setPositiveButton("Add") { dialog, _ ->
-                val productId =
-                    dialogView.findViewById<EditText>(R.id.etProductId).text.toString().toInt()
+        val productIdEditText = dialogView.findViewById<EditText>(R.id.etProductId)
 
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setTitle("Delete Product")
+            .setPositiveButton("Delete", null) // Set to null. We override the onClick listener later.
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+            .create()
 
-                viewModel.deleteProduct(
-                    DeleteProductDTO(
-                        getStoreNotNul().id,
-                        productId
-                    )
-                )
+            dialog.setOnShowListener {
+                val button = (dialog as AlertDialog).getButton(AlertDialog.BUTTON_POSITIVE)
+                button.setOnClickListener {
+                    val productIdText = productIdEditText.text.toString()
+                    if (productIdText.isEmpty()) {
+                        showAlert("Please enter a product ID")
+                    } else {
+                        val productId = productIdText.toInt()
 
-                dialog.dismiss()
+                        viewModel.deleteProduct(
+                            DeleteProductDTO(
+                                getStoreNotNul().id,
+                                productId
+                            )
+                        )
+                        dialog.dismiss()
+                    }
+                }
             }
-            setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
-        }.create().show()
+
+            dialog.show()
+    }
+
+    private fun onEditProduct(productStore: List<ProductStore>) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_product, null)
+        val quantityEditText = dialogView.findViewById<EditText>(R.id.etQuantity)
+        val priceEditText = dialogView.findViewById<EditText>(R.id.etPrice)
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setTitle("Edit Product")
+            .setPositiveButton("Edit", null) // Set to null. We override the onClick listener later.
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+            .create()
+
+
+        dialog.setOnShowListener {
+            val button = (dialog as AlertDialog).getButton(AlertDialog.BUTTON_POSITIVE)
+            button.setOnClickListener {
+                val quantityText = quantityEditText.text.toString()
+                val priceText = priceEditText.text.toString()
+
+                if (quantityText.isEmpty() || priceText.isEmpty()) {
+                    showAlert("Please fill in all fields")
+                } else {
+                    val quantity = quantityText.toInt()
+                    val price = priceText.toFloat()
+
+                    val productStoreDTO = ProductStoreDTO(quantity, price)
+                    viewModel.updateProduct(
+                       UpdateProductDTO(
+                           getStoreNotNul().id,
+                           productStore[0].id,
+                           productStoreDTO
+                       )
+                    )
+                    dialog.dismiss()
+                }
+            }
+        }
+
+        dialog.show()
+
     }
 
     private fun getStoreNotNul(): Store {

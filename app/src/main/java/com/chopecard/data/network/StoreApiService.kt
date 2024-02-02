@@ -38,6 +38,13 @@ interface StoreApiService {
         @Path("productId") productId: Int,
     ): Response<Void>
 
+    @PATCH("/v1/stores/{storeId}/products/{productId}")
+    suspend fun updateProduct(
+        @Path("storeId") storeId: Int,
+        @Path("productId") productId: Int,
+        @Body productStoreDTO: ProductStoreDTO
+    ): Response<Void>
+
     @GET("/v1/stores/{storeId}")
     fun getStoresById(@Path("storeId") storeId: Int): Call<Store>
 

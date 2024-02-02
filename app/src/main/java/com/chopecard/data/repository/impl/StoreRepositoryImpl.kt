@@ -5,6 +5,7 @@ import com.chopecard.data.model.CreateProductDTO
 import com.chopecard.data.model.DeleteProductDTO
 import com.chopecard.data.model.ReserveDTO
 import com.chopecard.data.model.StoreDTO
+import com.chopecard.data.model.UpdateProductDTO
 import com.chopecard.data.network.StoreApiService
 import com.chopecard.data.repository.StoreRepository
 import com.chopecard.domain.models.Display
@@ -126,6 +127,21 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
                 Log.d("StoreRepositoryImpl", "Successfully deleted product")
             } else {
                 Log.e("StoreRepositoryImpl", "Error deleting product: HTTP ${response.code()} ${response.message()}")
+            }
+        } catch (e: Exception) {
+            Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+        }
+    }
+
+override suspend fun updateProductStore(
+        updateProductDTO: UpdateProductDTO
+    ) {
+        try {
+            val response = storeApiService.updateProduct(updateProductDTO.storeId, updateProductDTO.productId, updateProductDTO.productStoreDTO)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Successfully updated product")
+            } else {
+                Log.e("StoreRepositoryImpl", "Error updating product: HTTP ${response.code()} ${response.message()}")
             }
         } catch (e: Exception) {
             Log.e("StoreRepositoryImpl", "Exception when calling API", e)

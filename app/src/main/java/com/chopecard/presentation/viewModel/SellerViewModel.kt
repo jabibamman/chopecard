@@ -7,16 +7,18 @@ import androidx.lifecycle.viewModelScope
 import com.chopecard.data.model.CreateProductDTO
 import com.chopecard.data.model.DeleteProductDTO
 import com.chopecard.data.model.ProductStoreDTO
+import com.chopecard.data.model.UpdateProductDTO
 import com.chopecard.domain.usecases.AddProductUseCase
 import com.chopecard.domain.usecases.DeleteProductUseCase
 import com.chopecard.domain.usecases.GetStoresUseCase
+import com.chopecard.domain.usecases.UpdateProductUseCase
 import kotlinx.coroutines.launch
 
 class SellerViewModel(
     private val getStoresUseCase: GetStoresUseCase,
     private val addProductUseCase: AddProductUseCase,
-    private val deleteProductUseCase: DeleteProductUseCase
-
+    private val deleteProductUseCase: DeleteProductUseCase,
+    private val updateProductUseCase: UpdateProductUseCase
     // Add other use cases as needed
 ) : ViewModel() {
     val alertMessage = MutableLiveData<String>()
@@ -58,6 +60,19 @@ class SellerViewModel(
             } catch (e: Exception) {
                 Log.e("SellerViewModel", "Error deleting product", e)
                 alertMessage.postValue("Erreur lors de la suppression du produit.")
+            }
+        }
+    }
+
+    fun updateProduct(updateProductDTO: UpdateProductDTO) {
+        viewModelScope.launch {
+            try {
+                val result = updateProductUseCase.execute(updateProductDTO)
+                Log.d("SellerViewModel", "Successfully updated product: $result")
+                alertMessage.postValue("Produit mis à jour avec succès.")
+            } catch (e: Exception) {
+                Log.e("SellerViewModel", "Error updating product", e)
+                alertMessage.postValue("Erreur lors de la mise à jour du produit.")
             }
         }
     }
