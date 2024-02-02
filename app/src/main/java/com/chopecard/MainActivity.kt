@@ -20,24 +20,12 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
-        // view binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupFooter()
 
         parseAndInjectConfiguration()
         injectModuleDependencies(this)
-
-
-        /*cardViewModel.cardInfoLiveData.observe(this) { cardUIModel ->
-            displayCardInfo(cardUIModel)
-        }
-
-         */
-
-        //cardViewModel.loadCardInfo("Dark Magician Girl")
-    //    cardViewModel.loadCardInfo("United We Stand")
-
     }
 
 }
