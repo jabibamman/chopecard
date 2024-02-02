@@ -20,7 +20,7 @@ class ShopListActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_list)
-
+        setupFooter()
         setupRecyclerView()
         observeStores()
         storeViewModel.getStores()

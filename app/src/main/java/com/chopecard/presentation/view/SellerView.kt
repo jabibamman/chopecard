@@ -22,6 +22,7 @@ class SellerView : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller)
+        setupFooter()
 
         store = intent.getParcelableExtra<Store>("store")
         val tvShopName = findViewById<TextView>(R.id.tvShopName)
