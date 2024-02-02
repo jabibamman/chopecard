@@ -1,3 +1,12 @@
 package com.chopecard.domain.models
 
-data class Store(val id: Int, val name: String, val address: String, val products: List<ProductStore>)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Store(
+    val id: Int,
+    val name: String,
+    val address: String,
+    val products: List<ProductStore>
+) : Parcelable

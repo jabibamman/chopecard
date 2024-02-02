@@ -1,12 +1,11 @@
-package com.chopecard.data.repository
+package com.chopecard.data.repository.impl
 
 import com.chopecard.data.model.Card
 import com.chopecard.data.model.CardImage
 import com.chopecard.data.model.CardPrice
 import com.chopecard.data.model.CardSet
 import com.chopecard.data.network.CardApiService
-import com.chopecard.domain.models.Display
-import com.chopecard.domain.models.TicketMessage
+import com.chopecard.data.repository.CardRepository
 import retrofit2.Call
 
 class CardRepositoryImpl(private val cardApiService: CardApiService) : CardRepository {

@@ -1,13 +1,14 @@
 package com.chopecard.data.repository
 
-import com.chopecard.data.model.ProductStoreDTO
+import com.chopecard.data.model.CreateProductDTO
+import com.chopecard.data.model.DeleteProductDTO
 import com.chopecard.data.model.ReserveDTO
 import com.chopecard.data.model.StoreDTO
+import com.chopecard.data.model.UpdateProductDTO
 import com.chopecard.domain.models.Display
 import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.UserReservation
-import retrofit2.Call
 
 interface StoreRepository {
 
@@ -35,12 +36,18 @@ interface StoreRepository {
     // Retrieves product details by product ID within a specific store
     suspend fun getProduct(storeId: Int, productId: Int): ProductStore
 
+    // Deletes a product from a store
+    suspend fun deleteProductStore(deleteProductDTO: DeleteProductDTO)
+
+    // Updates a product record within a specific store
+    suspend fun updateProductStore(
+        updateProductDTO: UpdateProductDTO
+    )
+
     // Creates a new product record within a specific store
     suspend fun createProduct(
-        storeId: Int,
-        productId: Int,
-        productStoreDTO: ProductStoreDTO
-    ): String
+        createProductDTO: CreateProductDTO
+    )
 
     // Gets a list of all reservations for a specific store
     suspend fun getReserves(storeId: Int): List<UserReservation>

@@ -1,24 +1,39 @@
-import com.chopecard.data.model.ProductStoreDTO
+package com.chopecard.data.repository.impl
+
+import android.util.Log
+import com.chopecard.data.model.CreateProductDTO
+import com.chopecard.data.model.DeleteProductDTO
 import com.chopecard.data.model.ReserveDTO
 import com.chopecard.data.model.StoreDTO
+import com.chopecard.data.model.UpdateProductDTO
 import com.chopecard.data.network.StoreApiService
 import com.chopecard.data.repository.StoreRepository
 import com.chopecard.domain.models.Display
+import com.chopecard.domain.models.Product
 import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.UserReservation
-import retrofit2.Call
 
 class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreRepository {
     override suspend fun getStores(): List<Store> {
-        val storeDTOs: Call<List<Store>> = storeApiService.getStores()
         return try {
-            val response = storeDTOs.execute()
-            response.body() ?: emptyList()
+            val response = storeApiService.getStores()
+            if (response.isSuccessful) {
+                // Log succès
+                Log.d("StoreRepositoryImpl", "Stores: ${response.body().toString()}")
+                response.body() ?: emptyList()
+            } else {
+                Log.e("StoreRepositoryImpl", "Error getting stores: HTTP ${response.code()} ${response.errorBody()?.string()}")
+                emptyList()
+            }
         } catch (e: Exception) {
+            // Dans le bloc catch, vous n'avez pas accès à la variable response
+            // Vous devez donc enregistrer l'exception sans essayer d'accéder à response
+            Log.e("StoreRepositoryImpl", "Exception when calling API", e)
             emptyList()
         }
     }
+
     override suspend fun createStore(storeDTO: StoreDTO): String {
         val storeDTO = storeApiService.createStore(storeDTO)
         return try {
@@ -33,9 +48,9 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
         val storeDTO = storeApiService.getStoresById(storeId)
         return try {
             val response = storeDTO.execute()
-            response.body() ?: Store(0, "", "", List<ProductStore>(0) { ProductStore(0, "", 0, 0.0f) })
+            response.body() ?: Store(0, "", "", List<ProductStore>(0) { ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f) })
         } catch (e: Exception) {
-            Store(0, "", "", List<ProductStore>(0) { ProductStore(0, "", 0, 0.0f) })
+            Store(0, "", "", List<ProductStore>(0) { ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f) })
         }
     }
 
@@ -83,25 +98,54 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
         val productStoreDTO = storeApiService.getProduct(storeId, productId)
         return try {
             val response = productStoreDTO.execute()
-            response.body() ?: ProductStore(0, "", 0, 0.0f)
+            response.body() ?: ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f)
         } catch (e: Exception) {
-            ProductStore(0, "", 0, 0.0f)
+            ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f)
         }
     }
 
     override suspend fun createProduct(
-        storeId: Int,
-        productId: Int,
-        productStoreDTO: ProductStoreDTO
-    ): String {
-        val productStoreDTO = storeApiService.createProduct(storeId, productId, productStoreDTO)
-        return try {
-            val response = productStoreDTO.execute()
-            response.body() ?: String()
+       createProductDTO: CreateProductDTO
+    ) {
+        try {
+            val response = storeApiService.createProduct(createProductDTO.storeId, createProductDTO.productId, createProductDTO.productStoreDTO)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Successfully created product")
+            } else {
+                Log.e("StoreRepositoryImpl", "Error creating product: HTTP ${response.code()} ${response.message()}")
+            }
         } catch (e: Exception) {
-            String()
+            Log.e("StoreRepositoryImpl", "Exception when calling API", e)
         }
 
+    }
+
+    override suspend fun deleteProductStore(deleteProductDTO: DeleteProductDTO) {
+        try {
+            val response = storeApiService.deleteProduct(deleteProductDTO.storeId, deleteProductDTO.productId)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Successfully deleted product")
+            } else {
+                Log.e("StoreRepositoryImpl", "Error deleting product: HTTP ${response.code()} ${response.message()}")
+            }
+        } catch (e: Exception) {
+            Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+        }
+    }
+
+override suspend fun updateProductStore(
+        updateProductDTO: UpdateProductDTO
+    ) {
+        try {
+            val response = storeApiService.updateProduct(updateProductDTO.storeId, updateProductDTO.productId, updateProductDTO.productStoreDTO)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Successfully updated product")
+            } else {
+                Log.e("StoreRepositoryImpl", "Error updating product: HTTP ${response.code()} ${response.message()}")
+            }
+        } catch (e: Exception) {
+            Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+        }
     }
 
     override suspend fun getReserves(storeId: Int): List<UserReservation> {

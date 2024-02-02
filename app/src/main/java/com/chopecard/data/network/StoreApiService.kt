@@ -8,12 +8,13 @@ import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.UserReservation
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface StoreApiService {
 
     @GET("/v1/stores")
-    fun getStores(): Call<List<Store>>
+    suspend fun getStores(): Response<List<Store>>
 
     @POST("/v1/stores")
     fun createStore(@Body storeDTO: StoreDTO): Call<String>
@@ -25,7 +26,24 @@ interface StoreApiService {
     fun getProduct(@Path("storeId") storeId: Int, @Path("productId") productId: Int): Call<ProductStore>
 
     @POST("/v1/stores/{storeId}/products/{productId}")
-    fun createProduct(@Path("storeId") storeId: Int, @Path("productId") productId: Int, @Body productStoreDTO: ProductStoreDTO): Call<String>
+    suspend fun createProduct(
+        @Path("storeId") storeId: Int,
+        @Path("productId") productId: Int,
+        @Body productStoreDTO: ProductStoreDTO
+    ): Response<Void>
+
+    @DELETE("/v1/stores/{storeId}/products/{productId}")
+    suspend fun deleteProduct(
+        @Path("storeId") storeId: Int,
+        @Path("productId") productId: Int,
+    ): Response<Void>
+
+    @PATCH("/v1/stores/{storeId}/products/{productId}")
+    suspend fun updateProduct(
+        @Path("storeId") storeId: Int,
+        @Path("productId") productId: Int,
+        @Body productStoreDTO: ProductStoreDTO
+    ): Response<Void>
 
     @GET("/v1/stores/{storeId}")
     fun getStoresById(@Path("storeId") storeId: Int): Call<Store>
