@@ -5,14 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chopecard.data.model.CreateProductDTO
+import com.chopecard.data.model.DeleteProductDTO
 import com.chopecard.data.model.ProductStoreDTO
 import com.chopecard.domain.usecases.AddProductUseCase
+import com.chopecard.domain.usecases.DeleteProductUseCase
 import com.chopecard.domain.usecases.GetStoresUseCase
 import kotlinx.coroutines.launch
 
 class SellerViewModel(
     private val getStoresUseCase: GetStoresUseCase,
-    private val addProductUseCase: AddProductUseCase
+    private val addProductUseCase: AddProductUseCase,
+    private val deleteProductUseCase: DeleteProductUseCase
 
     // Add other use cases as needed
 ) : ViewModel() {
@@ -42,6 +45,19 @@ class SellerViewModel(
 
             } catch (e: Exception) {
                 // Handle error
+            }
+        }
+    }
+
+    fun deleteProduct(deleteProductDTO: DeleteProductDTO) {
+        viewModelScope.launch {
+            try {
+                val result = deleteProductUseCase.execute(deleteProductDTO)
+                Log.d("SellerViewModel", "Successfully deleted product: $result")
+                alertMessage.postValue("Produit supprimé avec succès du magasin.")
+            } catch (e: Exception) {
+                Log.e("SellerViewModel", "Error deleting product", e)
+                alertMessage.postValue("Erreur lors de la suppression du produit.")
             }
         }
     }

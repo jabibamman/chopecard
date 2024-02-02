@@ -2,6 +2,7 @@ package com.chopecard.data.repository.impl
 
 import android.util.Log
 import com.chopecard.data.model.CreateProductDTO
+import com.chopecard.data.model.DeleteProductDTO
 import com.chopecard.data.model.ReserveDTO
 import com.chopecard.data.model.StoreDTO
 import com.chopecard.data.network.StoreApiService
@@ -116,6 +117,19 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
             Log.e("StoreRepositoryImpl", "Exception when calling API", e)
         }
 
+    }
+
+    override suspend fun deleteProductStore(deleteProductDTO: DeleteProductDTO) {
+        try {
+            val response = storeApiService.deleteProduct(deleteProductDTO.storeId, deleteProductDTO.productId)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Successfully deleted product")
+            } else {
+                Log.e("StoreRepositoryImpl", "Error deleting product: HTTP ${response.code()} ${response.message()}")
+            }
+        } catch (e: Exception) {
+            Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+        }
     }
 
     override suspend fun getReserves(storeId: Int): List<UserReservation> {

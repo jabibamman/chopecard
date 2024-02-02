@@ -1,6 +1,7 @@
 package com.chopecard.data.repository
 
 import com.chopecard.data.model.CreateProductDTO
+import com.chopecard.data.model.DeleteProductDTO
 import com.chopecard.data.model.ReserveDTO
 import com.chopecard.data.model.StoreDTO
 import com.chopecard.domain.models.Display
@@ -33,6 +34,9 @@ interface StoreRepository {
 
     // Retrieves product details by product ID within a specific store
     suspend fun getProduct(storeId: Int, productId: Int): ProductStore
+
+    // Deletes a product from a store
+    suspend fun deleteProductStore(deleteProductDTO: DeleteProductDTO)
 
     // Creates a new product record within a specific store
     suspend fun createProduct(

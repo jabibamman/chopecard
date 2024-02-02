@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.chopecard.R
+import com.chopecard.data.model.DeleteProductDTO
 import com.chopecard.data.model.ProductStoreDTO
 import com.chopecard.domain.models.Store
 import com.chopecard.presentation.viewModel.SellerViewModel
@@ -38,6 +39,10 @@ class SellerView : BaseActivity() {
             onAddProduct()
         }
 
+        findViewById<Button>(R.id.btnDeleteProduct).setOnClickListener {
+            onDeleteProduct()
+        }
+
         viewModel.alertMessage.observe(this) { message ->
             message?.let {
                 showAlert(it)
@@ -65,6 +70,29 @@ class SellerView : BaseActivity() {
                     price
                 )
                 viewModel.addProduct(getStoreNotNul().id, productId, productStoreDTO)
+                dialog.dismiss()
+            }
+            setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+        }.create().show()
+    }
+
+    private fun onDeleteProduct() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_delete_product, null)
+        AlertDialog.Builder(this).apply {
+            setView(dialogView)
+            setTitle("Add New Product")
+            setPositiveButton("Add") { dialog, _ ->
+                val productId =
+                    dialogView.findViewById<EditText>(R.id.etProductId).text.toString().toInt()
+
+
+                viewModel.deleteProduct(
+                    DeleteProductDTO(
+                        getStoreNotNul().id,
+                        productId
+                    )
+                )
+
                 dialog.dismiss()
             }
             setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }

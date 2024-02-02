@@ -32,6 +32,12 @@ interface StoreApiService {
         @Body productStoreDTO: ProductStoreDTO
     ): Response<Void>
 
+    @DELETE("/v1/stores/{storeId}/products/{productId}")
+    suspend fun deleteProduct(
+        @Path("storeId") storeId: Int,
+        @Path("productId") productId: Int,
+    ): Response<Void>
+
     @GET("/v1/stores/{storeId}")
     fun getStoresById(@Path("storeId") storeId: Int): Call<Store>
 
