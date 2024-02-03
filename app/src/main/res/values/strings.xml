@@ -19,4 +19,10 @@
     <string name="view_reservations">View Reservations</string>
     <string name="view_reservers">View Reservers</string>
     <string name="go_back">Retour</string>
+
+    <!-- login -->
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="login">Login\n</string>
+    <string name="register">Register</string>
 </resources>
