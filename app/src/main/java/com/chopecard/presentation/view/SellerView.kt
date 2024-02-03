@@ -15,6 +15,7 @@ import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
 import com.chopecard.presentation.viewModel.SellerViewModel
 import com.chopecard.ui.activity.BaseActivity
+import com.chopecard.ui.utils.showAlert
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SellerView : BaseActivity() {
@@ -51,7 +52,7 @@ class SellerView : BaseActivity() {
 
         viewModel.alertMessage.observe(this) { message ->
             message?.let {
-                showAlert(it)
+                showAlert(it, this)
                 viewModel.alertMessage.value = null
             }
         }
@@ -67,19 +68,19 @@ class SellerView : BaseActivity() {
         val dialog = AlertDialog.Builder(this)
             .setView(dialogView)
             .setTitle("Add New Product")
-            .setPositiveButton("Add", null) // Set to null. We override the onClick listener later.
+            .setPositiveButton("Add", null)
             .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
             .create()
 
         dialog.setOnShowListener {
-            val button = (dialog as AlertDialog).getButton(AlertDialog.BUTTON_POSITIVE)
+            val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
             button.setOnClickListener {
                 val productIdText = productIdEditText.text.toString()
                 val quantityText = quantityEditText.text.toString()
                 val priceText = priceEditText.text.toString()
 
                 if (productIdText.isEmpty() || quantityText.isEmpty() || priceText.isEmpty()) {
-                    showAlert("Please fill in all fields")
+                    showAlert("Please fill in all fields", this)
                 } else {
                     val productId = productIdText.toInt()
                     val quantity = quantityText.toInt()
@@ -102,7 +103,7 @@ class SellerView : BaseActivity() {
         val dialog = AlertDialog.Builder(this)
             .setView(dialogView)
             .setTitle("Delete Product")
-            .setPositiveButton("Delete", null) // Set to null. We override the onClick listener later.
+            .setPositiveButton("Delete", null)
             .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
             .create()
 
@@ -111,7 +112,7 @@ class SellerView : BaseActivity() {
                 button.setOnClickListener {
                     val productIdText = productIdEditText.text.toString()
                     if (productIdText.isEmpty()) {
-                        showAlert("Please enter a product ID")
+                        showAlert("Please enter a product ID", this)
                     } else {
                         val productId = productIdText.toInt()
 
@@ -137,7 +138,7 @@ class SellerView : BaseActivity() {
         val dialog = AlertDialog.Builder(this)
             .setView(dialogView)
             .setTitle("Edit Product")
-            .setPositiveButton("Edit", null) // Set to null. We override the onClick listener later.
+            .setPositiveButton("Edit", null)
             .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
             .create()
 
@@ -149,7 +150,7 @@ class SellerView : BaseActivity() {
                 val priceText = priceEditText.text.toString()
 
                 if (quantityText.isEmpty() || priceText.isEmpty()) {
-                    showAlert("Please fill in all fields")
+                    showAlert("Please fill in all fields", this)
                 } else {
                     val quantity = quantityText.toInt()
                     val price = priceText.toFloat()
@@ -175,10 +176,4 @@ class SellerView : BaseActivity() {
         return store ?: throw IllegalStateException("Store is null")
     }
 
-    private fun showAlert(message: String) {
-        AlertDialog.Builder(this).apply {
-            setMessage(message)
-            setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
-        }.show()
-    }
 }

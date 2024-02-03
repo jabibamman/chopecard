@@ -7,7 +7,7 @@ import com.chopecard.domain.models.User
 interface UserRepository {
 
     // Creates a new user record
-    suspend fun createUser(userDTO: UserDTO): String
+    suspend fun createUser(userDTO: UserDTO): User
 
     // Retrieves details of a specific User by user ID
     suspend fun getUser(userId: Int): User
