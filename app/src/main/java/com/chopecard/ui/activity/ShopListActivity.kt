@@ -14,7 +14,6 @@ import com.chopecard.presentation.viewModel.StoreViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ShopListActivity : BaseActivity() {
-
     private val storeViewModel: StoreViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,5 +57,4 @@ class ShopListActivity : BaseActivity() {
             }
         }
     }
-
 }

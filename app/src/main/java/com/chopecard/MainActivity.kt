@@ -27,5 +27,4 @@ class MainActivity : BaseActivity() {
         parseAndInjectConfiguration()
         injectModuleDependencies(this)
     }
-
 }

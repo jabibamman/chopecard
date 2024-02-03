@@ -29,5 +29,11 @@ open class BaseActivity : ComponentActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
         }
+
+        findViewById<ImageButton>(R.id.btnNearby)?.setOnClickListener {
+            Log.d("FooterActivity", "Profile button clicked")
+            val intent = Intent(this, AdminActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
