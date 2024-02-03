@@ -27,7 +27,6 @@ import com.chopecard.presentation.viewModel.TicketViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Module where all the core classes to inject must be declared
@@ -59,15 +58,6 @@ internal val coreModule = module {
     viewModel { TicketViewModel(get()) }
 
     // Fournir les services API
-    single { provideRetrofit() }
     single { get<Retrofit>().create(StoreApiService::class.java) }
     single { get<Retrofit>().create(AdminApiService::class.java) }
-}
-
-// Fonction pour configurer Retrofit
-fun provideRetrofit(): Retrofit {
-    return Retrofit.Builder()
-        .baseUrl("http://176.134.7.134:3000")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
 }
