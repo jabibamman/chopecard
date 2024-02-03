@@ -42,6 +42,28 @@ class UserRepositoryImpl(private val userApiService: UserApiService) : UserRepos
             throw e
         }
     }
+
+    override suspend fun getUser(email: String): User {
+        try {
+            val response = userApiService.getUserByEmail(email)
+            if (response.isSuccessful) {
+                val user = response.body()
+                Log.d("UserRepositoryImpl", "User: $user")
+                return user ?: User(0, "", "", emptyList())
+            } else {
+                Log.e("UserRepositoryImpl", "Error getting user: HTTP ${response.code()} ${response.errorBody()?.string()}")
+                throw Exception("Error getting user: HTTP ${response.code()} ${response.errorBody()?.string()}")
+            }
+        } catch (e: HttpException) {
+            Log.e("UserRepositoryImpl", "HttpException when calling API", e)
+            throw e
+        } catch (e: Exception) {
+            Log.e("UserRepositoryImpl", "Exception when calling API", e)
+            throw e
+        }
+    }
+
+
     override suspend fun deleteUser(userId: Int): String {
         val userDTO = userApiService.deleteUserById(userId)
         return try {

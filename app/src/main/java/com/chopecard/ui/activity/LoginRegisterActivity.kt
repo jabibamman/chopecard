@@ -1,8 +1,11 @@
 package com.chopecard.ui.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +21,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginRegisterActivity : AppCompatActivity() {
     private val loginViewModel : LoginViewModel by viewModel()
+    private lateinit var etName: EditText
+    private lateinit var etMail: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("LoginRegisterActivity", "onCreate")
@@ -25,22 +30,42 @@ class LoginRegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_register)
 
+        etName = findViewById(R.id.etName)
+        etMail = findViewById(R.id.etMail)
 
-        loginViewModel.userData.observe(this, Observer { user ->
+        loginViewModel.userData.observe(this) { user ->
             if (user.userId > 0) {
                 UserPreferences.saveUserLogin(this, user.userId)
                 UserPreferences.setWelcomeShown(this)
                 navigateTo(MainActivity::class.java)
             }
-        })
+        }
 
         findViewById<Button>(R.id.btnLogin).setOnClickListener {
-            performLogin()
+            if (etName.visibility == View.VISIBLE) {
+                etName.visibility = View.GONE
+                etMail.text.clear()
+                etMail.requestFocus()
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(etMail, InputMethodManager.SHOW_IMPLICIT)
+            } else {
+                Log.d("LoginRegisterActivity", "Logging in user")
+                performLogin()
+            }
         }
 
         findViewById<Button>(R.id.btnRegister).setOnClickListener {
-            Log.d("LoginRegisterActivity", "Registering user")
-            performRegistration()
+            val etName = findViewById<EditText>(R.id.etName)
+            if (etName.visibility == View.GONE) {
+                etName.visibility = View.VISIBLE
+                etName.text.clear()
+                etName.requestFocus()
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(etName, InputMethodManager.SHOW_IMPLICIT)
+            } else {
+                Log.d("LoginRegisterActivity", "Registering user")
+                performRegistration()
+            }
         }
 
         loginViewModel.userCreationResult.observe(this) { result ->
@@ -69,19 +94,21 @@ class LoginRegisterActivity : AppCompatActivity() {
 
     private fun performLogin() {
         val username = findViewById<EditText>(R.id.etName).text.toString()
-        val password = findViewById<EditText>(R.id.etMail).text.toString()
+        val email = findViewById<EditText>(R.id.etMail).text.toString()
 
-        // Ici, vous vérifierez les identifiants avec vos données stockées ou via une API
-        // Pour cet exemple, nous supposons que la connexion est réussie
-        val loginSuccess = true
+        loginViewModel.loginUser(email)
+        Log.d("LoginRegisterActivity", "Attempting login with email: $email")
 
-        if (loginSuccess) {
-            UserPreferences.saveUserLogin(this, 42)
-            UserPreferences.setWelcomeShown(this)
-            navigateTo(MainActivity::class.java)
-        } else {
-            showAlert("Invalid credentials", this)
-        }
+        loginViewModel.userData.observe(this, Observer { user ->
+            if (user.userId > 0) {
+                UserPreferences.saveUserLogin(this, user.userId)
+                UserPreferences.setWelcomeShown(this)
+                navigateTo(MainActivity::class.java)
+            } else {
+                showAlert("Invalid credentials", this)
+            }
+        })
+
     }
 
     private fun performRegistration() {

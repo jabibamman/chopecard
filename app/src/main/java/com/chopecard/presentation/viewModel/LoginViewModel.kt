@@ -40,6 +40,19 @@ class LoginViewModel(
             }
         }
     }
+
+    fun loginUser(email: String) {
+        viewModelScope.launch {
+            try {
+                val user = getUserUseCase.execute(email)
+                userCreationResult.value = UserCreationResult.Success(user)
+                Log.d("LoginViewModel", "User created: $user")
+            } catch (e: Exception) {
+                Log.e("LoginViewModel", "Error creating user", e)
+                userCreationResult.value = UserCreationResult.Failure(e)
+            }
+        }
+    }
 }
 
 sealed class UserCreationResult {

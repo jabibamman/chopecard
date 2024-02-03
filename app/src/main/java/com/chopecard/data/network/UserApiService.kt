@@ -19,6 +19,9 @@ interface UserApiService {
     @GET("/v1/user/{userId}")
     suspend fun getUserById(@Path("userId") userId: Int): Response<User>
 
+    @GET("/v1/user/email/{email}")
+    suspend fun getUserByEmail(@Path("email") email: String): Response<User>
+
     @DELETE("/v1/user/{userId}")
     fun deleteUserById(@Path("userId") userId: Int): Call<String>
 

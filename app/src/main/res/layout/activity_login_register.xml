@@ -13,6 +13,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/primaryFontColor"
             android:textColorHint="@color/primaryFontColor"
+            android:visibility="gone"
             android:hint="@string/name"/>
 
     <EditText
