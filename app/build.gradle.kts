@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -21,12 +22,27 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+            isDebuggable = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            buildConfigField("String","BASE_URL", "\"http://176.134.7.134:3000\"")
+            buildConfigField("String","EXTERNAL_URL", "\"http://localhost/8080/v1/\"")
+
+        }
+
+        release {
+            isMinifyEnabled = false
+            isDebuggable = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+
         }
     }
     compileOptions {
@@ -38,6 +54,8 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+        viewBinding =  true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -60,12 +78,34 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
 
+
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+
+    implementation("androidx.recyclerview:recyclerview:1.2.0")
+
+
     // Koin pour Kotlin
     implementation("io.insert-koin:koin-android:3.5.0")
 
-    // Retrofit pour les appels API
+    // Koin pour Android
+    implementation("io.insert-koin:koin-android:3.5.0")
+
+    // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
+    // Hhttp logging
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("androidx.databinding:databinding-runtime:8.2.0")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.cardview:cardview:1.0.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

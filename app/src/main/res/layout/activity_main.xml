@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:background="@color/body_background"
+        tools:context=".MainActivity">
+
+    <include layout="@layout/header_layout"
+            android:id="@+id/headerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            tools:visibility="visible"/>
+
+
+    <include layout="@layout/body_layout"
+            android:id="@+id/bodyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/body_height"
+            android:layout_below="@id/headerLayout"
+            android:visibility="visible"
+            tools:visibility="visible"/>
+
+    <include layout="@layout/footer_layout"
+            android:id="@+id/footerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

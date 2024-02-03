@@ -1,43 +1,27 @@
 package com.chopecard
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.chopecard.ui.theme.ChopecardTheme
+import androidx.appcompat.app.AppCompatDelegate
+import com.chopecard.data.repository.CardRepository
+import com.chopecard.databinding.ActivityMainBinding
+import com.chopecard.presentation.viewModel.CardViewModel
+import com.chopecard.ui.activity.BaseActivity
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : ComponentActivity() {
+class MainActivity : BaseActivity() {
+    val cardRepository: CardRepository by inject()
+    private lateinit var binding: ActivityMainBinding
+    private val cardViewModel: CardViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            ChopecardTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
-                }
-            }
-        }
-    }
-}
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setupFooter()
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ChopecardTheme {
-        Greeting("Android")
     }
+
 }

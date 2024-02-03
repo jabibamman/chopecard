@@ -1,1 +1,2 @@
-class ApiService() { }
+interface ApiService {
+}

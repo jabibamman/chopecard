@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">chopecard</string>
+    <string name="username_placeholder">Username</string>
+    <string name="balance_placeholder">$0.00</string>
+
+    <!-- footer -->
+    <string name="home">Home\n</string>
+    <string name="favorites">Favorites</string>
+    <string name="nearby">Nearby</string>
+    <string name="account">Account</string>
+    <string name="listed_shops">Listed Shops</string>
+
+    <!-- seller -->
+    <string name="add_new_product">Add New Product</string>
+    <string name="update_product">Update Product</string>
+    <string name="delete_product">Delete Product</string>
+    <string name="reserve_product">Reserve Product</string>
+    <string name="unreserve_product">Unreserve Product</string>
+    <string name="view_reservations">View Reservations</string>
+    <string name="view_reservers">View Reservers</string>
+    <string name="go_back">Retour</string>
+
+    <!-- login -->
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="login">Login\n</string>
+    <string name="register">Register</string>
 </resources>

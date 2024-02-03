@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_padding">16dp</dimen>
+    <dimen name="cards_list_padding">8dp</dimen>
+    <dimen name="header_padding">16dp</dimen>
+    <dimen name="body_padding">16dp</dimen>
+    <dimen name="footer_padding">16dp</dimen>
+    <dimen name="card_info_padding">16dp</dimen>
+
+    <dimen name="header_text_size">24sp</dimen>
+    <dimen name="image_width">108dp</dimen>
+    <dimen name="image_height">170dp</dimen>
+    <dimen name="image_margin_top">8dp</dimen>
+
+    <!-- logo -->
+    <dimen name="logo_width">100dp</dimen>
+    <dimen name="logo_height">100dp</dimen>
+
+    <!-- body -->
+    <dimen name="body_height">530dp</dimen>
+
+    <!-- footer -->
+    <dimen name="footer_height">85dp</dimen>
+    <dimen name="recycler_shop_list_height">540</dimen>
+
+    <!-- text size -->
+    <dimen name="text_size_16">16</dimen>
+
+</resources>
