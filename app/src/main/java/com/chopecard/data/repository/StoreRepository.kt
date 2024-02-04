@@ -37,17 +37,17 @@ interface StoreRepository {
     suspend fun getProduct(storeId: Int, productId: Int): ProductStore
 
     // Deletes a product from a store
-    suspend fun deleteProductStore(deleteProductDTO: DeleteProductDTO)
+    suspend fun deleteProductStore(deleteProductDTO: DeleteProductDTO): Boolean
 
     // Updates a product record within a specific store
     suspend fun updateProductStore(
         updateProductDTO: UpdateProductDTO
-    )
+    ): Boolean
 
     // Creates a new product record within a specific store
     suspend fun createProduct(
         createProductDTO: CreateProductDTO
-    )
+    ): Boolean
 
     // Gets a list of all reservations for a specific store
     suspend fun getReserves(storeId: Int): List<UserReservation>

@@ -31,6 +31,10 @@ class SellerViewModel(
         viewModelScope.launch {
             try {
                 val result = addProductUseCase.execute(CreateProductDTO(storeId, productId, productStoreDTO))
+                if(!result) {
+                    alertMessage.postValue("Erreur lors de l'ajout du produit.")
+                    return@launch
+                }
                 Log.d("SellerViewModel", "Successfully added product: $result")
                 alertMessage.postValue("Produit ajouté avec succès au magasin.")
 
@@ -58,6 +62,10 @@ class SellerViewModel(
         viewModelScope.launch {
             try {
                 val result = deleteProductUseCase.execute(deleteProductDTO)
+                if (!result) {
+                    alertMessage.postValue("Erreur lors de la suppression du produit.")
+                    return@launch
+                }
                 Log.d("SellerViewModel", "Successfully deleted product: $result")
                 alertMessage.postValue("Produit supprimé avec succès du magasin.")
             } catch (e: Exception) {
@@ -71,6 +79,10 @@ class SellerViewModel(
         viewModelScope.launch {
             try {
                 val result = updateProductUseCase.execute(updateProductDTO)
+                if (!result) {
+                    alertMessage.postValue("Erreur lors de la mise à jour du produit.")
+                    return@launch
+                }
                 Log.d("SellerViewModel", "Successfully updated product: $result")
                 alertMessage.postValue("Produit mis à jour avec succès.")
             } catch (e: Exception) {

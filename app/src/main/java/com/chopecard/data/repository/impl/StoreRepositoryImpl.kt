@@ -132,45 +132,54 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
 
     override suspend fun createProduct(
        createProductDTO: CreateProductDTO
-    ) {
-        try {
+    ) : Boolean {
+        return try {
             val response = storeApiService.createProduct(createProductDTO.storeId, createProductDTO.productId, createProductDTO.productStoreDTO)
             if (response.isSuccessful) {
                 Log.d("StoreRepositoryImpl", "Successfully created product")
+                true
             } else {
                 Log.e("StoreRepositoryImpl", "Error creating product: HTTP ${response.code()} ${response.message()}")
+                false
             }
         } catch (e: Exception) {
             Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+            false
         }
 
     }
 
-    override suspend fun deleteProductStore(deleteProductDTO: DeleteProductDTO) {
-        try {
+    override suspend fun deleteProductStore(deleteProductDTO: DeleteProductDTO) : Boolean {
+        return try {
             val response = storeApiService.deleteProduct(deleteProductDTO.storeId, deleteProductDTO.productId)
             if (response.isSuccessful) {
                 Log.d("StoreRepositoryImpl", "Successfully deleted product")
+                true
             } else {
                 Log.e("StoreRepositoryImpl", "Error deleting product: HTTP ${response.code()} ${response.message()}")
+                false
             }
         } catch (e: Exception) {
             Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+            false
         }
     }
 
 override suspend fun updateProductStore(
         updateProductDTO: UpdateProductDTO
-    ) {
-        try {
+    ) : Boolean {
+        return try {
             val response = storeApiService.updateProduct(updateProductDTO.storeId, updateProductDTO.productId, updateProductDTO.productStoreDTO)
             if (response.isSuccessful) {
                 Log.d("StoreRepositoryImpl", "Successfully updated product")
+                true
             } else {
                 Log.e("StoreRepositoryImpl", "Error updating product: HTTP ${response.code()} ${response.message()}")
+                false
             }
         } catch (e: Exception) {
             Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+            false
         }
     }
 
