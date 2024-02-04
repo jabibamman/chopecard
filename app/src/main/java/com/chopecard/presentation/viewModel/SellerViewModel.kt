@@ -7,10 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.chopecard.data.model.CreateProductDTO
 import com.chopecard.data.model.DeleteProductDTO
 import com.chopecard.data.model.ProductStoreDTO
+import com.chopecard.data.model.ReserveDTO
 import com.chopecard.data.model.UpdateProductDTO
 import com.chopecard.domain.usecases.AddProductUseCase
 import com.chopecard.domain.usecases.DeleteProductUseCase
 import com.chopecard.domain.usecases.GetStoresUseCase
+import com.chopecard.domain.usecases.ReserveProductUseCase
 import com.chopecard.domain.usecases.UpdateProductUseCase
 import kotlinx.coroutines.launch
 
@@ -18,7 +20,8 @@ class SellerViewModel(
     private val getStoresUseCase: GetStoresUseCase,
     private val addProductUseCase: AddProductUseCase,
     private val deleteProductUseCase: DeleteProductUseCase,
-    private val updateProductUseCase: UpdateProductUseCase
+    private val updateProductUseCase: UpdateProductUseCase,
+    private val reserveProductUseCase: ReserveProductUseCase
     // Add other use cases as needed
 ) : ViewModel() {
     val alertMessage = MutableLiveData<String>()
@@ -75,6 +78,23 @@ class SellerViewModel(
                 alertMessage.postValue("Erreur lors de la mise à jour du produit.")
             }
         }
+    }
+
+    fun reserveProduct(storeId: Int, userId: Int, reserveDTO: ReserveDTO) {
+        viewModelScope.launch {
+            try {
+                val result  = reserveProductUseCase.execute(storeId, userId, reserveDTO)
+                if(!result) {
+                    alertMessage.postValue("Erreur lors de la réservation du produit.")
+                    return@launch
+                }
+                alertMessage.postValue("Produit réservé avec succès.")
+            } catch (e: Exception) {
+                Log.e("SellerViewModel", "Error reserving product", e)
+                alertMessage.postValue("Erreur lors de la réservation du produit.")
+            }
+        }
+
     }
 
     // Implement other actions (e.g., updateProduct, deleteProduct) similarly

@@ -19,7 +19,7 @@ interface StoreApiService {
     suspend fun  createStore(@Body storeDTO: StoreDTO): Response<String>
 
     @POST("/v1/stores/{storeId}/user/{userId}/reserve")
-    suspend fun  reserveProduct(@Path("storeId") storeId: Int, @Path("userId") userId: Int, @Body reserveDTO: ReserveDTO): Response<String>
+    suspend fun  reserveProduct(@Path("storeId") storeId: Int, @Path("userId") userId: Int, @Body reserveDTO: ReserveDTO): Response<Void>
 
     @GET("/v1/stores/{storeId}/products/{productId}")
     suspend fun  getProduct(@Path("storeId") storeId: Int, @Path("productId") productId: Int): Response<ProductStore>
