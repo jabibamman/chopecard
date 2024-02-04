@@ -106,17 +106,19 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
         }
     }
 
-    override suspend fun unreserveProduct(storeId: Int, userId: Int, reserveId: Int): String {
+    override suspend fun unreserveProduct(storeId: Int, userId: Int, reserveId: Int): Boolean {
         return try {
             val response = storeApiService.unreserveProduct(storeId, userId, reserveId)
             if (response.isSuccessful) {
                 Log.d("StoreRepositoryImpl", "Successfully unreserved product")
+                true
             } else {
                 Log.e("StoreRepositoryImpl", "Error unreserving product: HTTP ${response.code()} ${response.message()}")
+                false
             }
-            response.body() ?: String()
         } catch (e: Exception) {
-            String()
+            Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+            false
         }
     }
 

@@ -51,7 +51,7 @@ internal val coreModule = module {
 
     // ViewModels
     viewModel { CollectorViewModel(get()) }
-    viewModel { SellerViewModel(get(), get(), get(), get(), get()) }
+    viewModel { SellerViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { CardViewModel(get()) }
     viewModel { StoreViewModel(get()) }
     viewModel { LoginViewModel(get(), get()) }

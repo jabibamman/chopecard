@@ -13,6 +13,7 @@ import com.chopecard.domain.usecases.AddProductUseCase
 import com.chopecard.domain.usecases.DeleteProductUseCase
 import com.chopecard.domain.usecases.GetStoresUseCase
 import com.chopecard.domain.usecases.ReserveProductUseCase
+import com.chopecard.domain.usecases.UnreserveProductUseCase
 import com.chopecard.domain.usecases.UpdateProductUseCase
 import kotlinx.coroutines.launch
 
@@ -21,7 +22,8 @@ class SellerViewModel(
     private val addProductUseCase: AddProductUseCase,
     private val deleteProductUseCase: DeleteProductUseCase,
     private val updateProductUseCase: UpdateProductUseCase,
-    private val reserveProductUseCase: ReserveProductUseCase
+    private val reserveProductUseCase: ReserveProductUseCase,
+    private val unreserveProductUseCase: UnreserveProductUseCase
     // Add other use cases as needed
 ) : ViewModel() {
     val alertMessage = MutableLiveData<String>()
@@ -106,7 +108,22 @@ class SellerViewModel(
                 alertMessage.postValue("Erreur lors de la réservation du produit.")
             }
         }
+    }
 
+    fun unreserveProduct(storeId: Int, userId: Int, reserveId: Int) {
+        viewModelScope.launch {
+            try {
+                val result = unreserveProductUseCase.execute(storeId, userId, reserveId)
+                if(!result) {
+                    alertMessage.postValue("Erreur lors de l'annulation de la réservation du produit.")
+                    return@launch
+                }
+                alertMessage.postValue("Réservation annulée avec succès.")
+            } catch (e: Exception) {
+                Log.e("SellerViewModel", "Error unreserving product", e)
+                alertMessage.postValue("Erreur lors de l'annulation de la réservation du produit.")
+            }
+        }
     }
 
     // Implement other actions (e.g., updateProduct, deleteProduct) similarly

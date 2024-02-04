@@ -31,7 +31,7 @@ interface StoreRepository {
     suspend fun reserveProduct(storeId: Int, userId: Int, reserveDTO: ReserveDTO): Boolean
 
     // Cancels a product reservation in a store
-    suspend fun unreserveProduct(storeId: Int, userId: Int, reserveId: Int): String
+    suspend fun unreserveProduct(storeId: Int, userId: Int, reserveId: Int): Boolean
 
     // Retrieves product details by product ID within a specific store
     suspend fun getProduct(storeId: Int, productId: Int): ProductStore

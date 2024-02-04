@@ -28,4 +28,5 @@
 
     <!-- ActivityMain -->
     <string name="welcome">Welcome, %1$s</string>
+    <string name="reserve_id">Reserve ID</string>
 </resources>

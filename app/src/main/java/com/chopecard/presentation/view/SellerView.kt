@@ -1,7 +1,6 @@
 package com.chopecard.presentation.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
@@ -29,13 +28,20 @@ class SellerView : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller)
         setupFooter()
-
-        store = intent.getParcelableExtra<Store>("store")
+        store = intent.getParcelableExtra("store")
         val tvShopName = findViewById<TextView>(R.id.tvShopName)
 
         tvShopName.text = store?.name ?: "Unknown"
-        Log.d("SellerView", "Successfully received store")
+        setupListeners()
+        viewModel.alertMessage.observe(this) { message ->
+            message?.let {
+                showAlert(it, this)
+                viewModel.alertMessage.value = null
+            }
+        }
+    }
 
+    private fun setupListeners() {
         findViewById<Button>(R.id.btnGoBack).setOnClickListener {
             finish()
         }
@@ -60,12 +66,10 @@ class SellerView : BaseActivity() {
             onDeleteProduct()
         }
 
-        viewModel.alertMessage.observe(this) { message ->
-            message?.let {
-                showAlert(it, this)
-                viewModel.alertMessage.value = null
-            }
+        findViewById<Button>(R.id.btnUnreserveProduct).setOnClickListener {
+            onUnreserveProduct()
         }
+
     }
 
     private fun onAddProduct() {
@@ -211,6 +215,40 @@ class SellerView : BaseActivity() {
                         getStoreNotNul().id,
                         UserPreferences.getUserLogin(this).second,
                         reserveDTO
+                    )
+                    dialog.dismiss()
+                }
+            }
+        }
+
+        dialog.show()
+    }
+
+    private fun onUnreserveProduct() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_unreserve_product, null)
+        val reserveIdEditText = dialogView.findViewById<EditText>(R.id.etReserveId)
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setTitle("Unreserve Product")
+            .setPositiveButton("Unreserve", null)
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+            .create()
+
+        dialog.setOnShowListener {
+            val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            button.setOnClickListener {
+                val reserveIdText = reserveIdEditText.text.toString()
+
+                if (reserveIdText.isEmpty()) {
+                    showAlert("Please fill in all fields", this)
+                } else {
+                    val reserveId = reserveIdText.toInt()
+
+                    viewModel.unreserveProduct(
+                        getStoreNotNul().id,
+                        UserPreferences.getUserLogin(this).second,
+                        reserveId
                     )
                     dialog.dismiss()
                 }

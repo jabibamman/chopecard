@@ -60,5 +60,5 @@ interface StoreApiService {
     suspend fun  getDisplay(@Path("storeId") storeId: Int): Response<Display>
 
     @DELETE("/v1/stores/{storeId}/user/{userId}/reservation/{reserveId}/unreserve")
-    suspend fun  unreserveProduct(@Path("storeId") storeId: Int, @Path("userId") userId: Int, @Path("reserveId") reserveId: Int): Response<String>
+    suspend fun  unreserveProduct(@Path("storeId") storeId: Int, @Path("userId") userId: Int, @Path("reserveId") reserveId: Int): Response<Void>
 }
