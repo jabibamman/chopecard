@@ -7,7 +7,6 @@ import com.chopecard.domain.models.Display
 import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.UserReservation
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -17,13 +16,13 @@ interface StoreApiService {
     suspend fun getStores(): Response<List<Store>>
 
     @POST("/v1/stores")
-    fun createStore(@Body storeDTO: StoreDTO): Call<String>
+    suspend fun  createStore(@Body storeDTO: StoreDTO): Response<String>
 
     @POST("/v1/stores/{storeId}/user/{userId}/reserve")
-    fun reserveProduct(@Path("storeId") storeId: Int, @Path("userId") userId: Int, @Body reserveDTO: ReserveDTO): Call<String>
+    suspend fun  reserveProduct(@Path("storeId") storeId: Int, @Path("userId") userId: Int, @Body reserveDTO: ReserveDTO): Response<String>
 
     @GET("/v1/stores/{storeId}/products/{productId}")
-    fun getProduct(@Path("storeId") storeId: Int, @Path("productId") productId: Int): Call<ProductStore>
+    suspend fun  getProduct(@Path("storeId") storeId: Int, @Path("productId") productId: Int): Response<ProductStore>
 
     @POST("/v1/stores/{storeId}/products/{productId}")
     suspend fun createProduct(
@@ -46,20 +45,20 @@ interface StoreApiService {
     ): Response<Void>
 
     @GET("/v1/stores/{storeId}")
-    fun getStoresById(@Path("storeId") storeId: Int): Call<Store>
+    suspend fun getStoresById(@Path("storeId") storeId: Int): Response<Store>
 
     @DELETE("/v1/stores/{storeId}")
-    fun deleteStore(@Path("storeId") storeId: Int): Call<String>
+    suspend fun  deleteStore(@Path("storeId") storeId: Int): Response<String>
 
     @GET("/v1/stores/{storeId}/reserves")
-    fun getReserves(@Path("storeId") storeId: Int): Call<List<UserReservation>>
+    suspend fun  getReserves(@Path("storeId") storeId: Int): Response<List<UserReservation>>
 
     @GET("/v1/stores/{storeId}/products")
-    fun getStoreProducts(@Path("storeId") storeId: Int): Call<List<ProductStore>>
+    suspend fun  getStoreProducts(@Path("storeId") storeId: Int): Response<List<ProductStore>>
 
     @GET("/v1/displays/{storeId}")
-    fun getDisplay(@Path("storeId") storeId: Int): Call<Display>
+    suspend fun  getDisplay(@Path("storeId") storeId: Int): Response<Display>
 
     @DELETE("/v1/stores/{storeId}/user/{userId}/reservation/{reserveId}/unreserve")
-    fun unreserveProduct(@Path("storeId") storeId: Int, @Path("userId") userId: Int, @Path("reserveId") reserveId: Int): Call<String>
+    suspend fun  unreserveProduct(@Path("storeId") storeId: Int, @Path("userId") userId: Int, @Path("reserveId") reserveId: Int): Response<String>
 }
