@@ -22,4 +22,14 @@
 
     <!-- admin -->
     <string name="tickets">Tickets</string>
+
+    <!-- login -->
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="login">Login\n</string>
+    <string name="register">Register</string>
+
+    <!-- ActivityMain -->
+    <string name="welcome">Welcome, %1$s</string>
+    <string name="reserve_id">Reserve ID</string>
 </resources>

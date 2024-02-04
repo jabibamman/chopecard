@@ -1,4 +1,3 @@
-
 # ChopeCard - Collectible Card Finder App (Yu-Gi-Oh!)
 
 ## Overview
@@ -16,10 +15,12 @@ ChopeCard is an Android (Kotlin) application designed for collectors and vendors
 - **Search History**: Review past search queries.
 
 ### For Vendors
+
 - **Account Management**: Create and manage vendor accounts.
 - **Stock Management**: Update stock levels and restocking dates.
 
 ### General Services
+
 - **Store Locator**: Find nearby stores with filtering options.
 - **Product and Store Information**: Get details about products and stores.
 - **Individual Card Catalog**: Browse through a catalog of individual cards.
@@ -31,8 +32,8 @@ ChopeCard is an Android (Kotlin) application designed for collectors and vendors
 - **Minimum SDK Version**: 33 (Android Oreo)
 - **Language**: Kotlin
 - **APIs Used**:
-    - Google Maps API for store location and user positioning.
-    - Open Source API for accessing comprehensive card information.
+  - Google Maps API for store location and user positioning.
+  - Open Source API for accessing comprehensive card information.
 
 ## Setup and Installation
 

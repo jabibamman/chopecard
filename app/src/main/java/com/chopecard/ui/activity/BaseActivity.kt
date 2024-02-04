@@ -12,7 +12,6 @@ open class BaseActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Ne pas définir le setContentView ici, car cela sera spécifique à chaque activité enfant
     }
 
     protected fun setupFooter() {

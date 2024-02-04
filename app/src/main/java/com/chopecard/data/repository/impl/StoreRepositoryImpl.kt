@@ -19,7 +19,6 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
         return try {
             val response = storeApiService.getStores()
             if (response.isSuccessful) {
-                // Log succès
                 Log.d("StoreRepositoryImpl", "Stores: ${response.body().toString()}")
                 response.body() ?: emptyList()
             } else {
@@ -27,17 +26,21 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
                 emptyList()
             }
         } catch (e: Exception) {
-            // Dans le bloc catch, vous n'avez pas accès à la variable response
-            // Vous devez donc enregistrer l'exception sans essayer d'accéder à response
             Log.e("StoreRepositoryImpl", "Exception when calling API", e)
             emptyList()
         }
     }
 
     override suspend fun createStore(storeDTO: StoreDTO): String {
-        val storeDTO = storeApiService.createStore(storeDTO)
         return try {
-            val response = storeDTO.execute()
+            val response = storeApiService.createStore(storeDTO)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Store created: ${response.body()}")
+                response.body() ?: String()
+            } else {
+                Log.e("StoreRepositoryImpl", "Error creating store: HTTP ${response.code()} ${response.message()}")
+                String()
+            }
             response.body() ?: String()
         } catch (e: Exception) {
             String()
@@ -45,19 +48,28 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
     }
 
     override suspend fun getStore(storeId: Int): Store {
-        val storeDTO = storeApiService.getStoresById(storeId)
+        val basicStore = Store(0, "", "", List<ProductStore>(0) { ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f) })
         return try {
-            val response = storeDTO.execute()
-            response.body() ?: Store(0, "", "", List<ProductStore>(0) { ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f) })
+            val response = storeApiService.getStoresById(storeId)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Store: ${response.body()}")
+            } else {
+                Log.e("StoreRepositoryImpl", "Error getting store: HTTP ${response.code()} ${response.message()}")
+            }
+            response.body() ?: basicStore
         } catch (e: Exception) {
-            Store(0, "", "", List<ProductStore>(0) { ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f) })
+            basicStore
         }
     }
 
     override suspend fun deleteStore(storeId: Int): String {
-        val storeDTO = storeApiService.deleteStore(storeId)
         return try {
-            val response = storeDTO.execute()
+            val response = storeApiService.deleteStore(storeId)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Store deleted: ${response.body()}")
+            } else {
+                Log.e("StoreRepositoryImpl", "Error deleting store: HTTP ${response.code()} ${response.message()}")
+            }
             response.body() ?: String()
         } catch (e: Exception) {
             String()
@@ -65,93 +77,122 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
     }
 
     override suspend fun getStoreProducts(storeId: Int): List<ProductStore> {
-        val productStoreDTOs = storeApiService.getStoreProducts(storeId)
         return try {
-            val response = productStoreDTOs.execute()
+            val response = storeApiService.getStoreProducts(storeId)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Products: ${response.body()}")
+            } else {
+                Log.e("StoreRepositoryImpl", "Error getting products: HTTP ${response.code()} ${response.message()}")
+            }
             response.body() ?: emptyList()
         } catch (e: Exception) {
             emptyList()
         }
     }
 
-    override suspend fun reserveProduct(storeId: Int, userId: Int, reserveDTO: ReserveDTO): String {
-        val reserveDTO = storeApiService.reserveProduct(storeId, userId, reserveDTO)
+    override suspend fun reserveProduct(storeId: Int, userId: Int, reserveDTO: ReserveDTO) : Boolean {
         return try {
-            val response = reserveDTO.execute()
-            response.body() ?: String()
+            val response = storeApiService.reserveProduct(storeId, userId, reserveDTO)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Successfully reserved product")
+                true
+            } else {
+                Log.e("StoreRepositoryImpl", "Error reserving product: HTTP ${response.code()} ${response.message()}")
+                false
+            }
         } catch (e: Exception) {
-            String()
+            Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+            false
         }
     }
 
-    override suspend fun unreserveProduct(storeId: Int, userId: Int, reserveId: Int): String {
-        val reserveDTO = storeApiService.unreserveProduct(storeId, userId, reserveId)
+    override suspend fun unreserveProduct(storeId: Int, userId: Int, reserveId: Int): Boolean {
         return try {
-            val response = reserveDTO.execute()
-            response.body() ?: String()
+            val response = storeApiService.unreserveProduct(storeId, userId, reserveId)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Successfully unreserved product")
+                true
+            } else {
+                Log.e("StoreRepositoryImpl", "Error unreserving product: HTTP ${response.code()} ${response.message()}")
+                false
+            }
         } catch (e: Exception) {
-            String()
+            Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+            false
         }
     }
 
     override suspend fun getProduct(storeId: Int, productId: Int): ProductStore {
-        val productStoreDTO = storeApiService.getProduct(storeId, productId)
+        val basicProductStore = ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f)
         return try {
-            val response = productStoreDTO.execute()
-            response.body() ?: ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f)
+            val response = storeApiService.getProduct(storeId, productId)
+            response.body() ?: basicProductStore
         } catch (e: Exception) {
-            ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f)
+            basicProductStore
         }
     }
 
     override suspend fun createProduct(
        createProductDTO: CreateProductDTO
-    ) {
-        try {
+    ) : Boolean {
+        return try {
             val response = storeApiService.createProduct(createProductDTO.storeId, createProductDTO.productId, createProductDTO.productStoreDTO)
             if (response.isSuccessful) {
                 Log.d("StoreRepositoryImpl", "Successfully created product")
+                true
             } else {
                 Log.e("StoreRepositoryImpl", "Error creating product: HTTP ${response.code()} ${response.message()}")
+                false
             }
         } catch (e: Exception) {
             Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+            false
         }
 
     }
 
-    override suspend fun deleteProductStore(deleteProductDTO: DeleteProductDTO) {
-        try {
+    override suspend fun deleteProductStore(deleteProductDTO: DeleteProductDTO) : Boolean {
+        return try {
             val response = storeApiService.deleteProduct(deleteProductDTO.storeId, deleteProductDTO.productId)
             if (response.isSuccessful) {
                 Log.d("StoreRepositoryImpl", "Successfully deleted product")
+                true
             } else {
                 Log.e("StoreRepositoryImpl", "Error deleting product: HTTP ${response.code()} ${response.message()}")
+                false
             }
         } catch (e: Exception) {
             Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+            false
         }
     }
 
 override suspend fun updateProductStore(
         updateProductDTO: UpdateProductDTO
-    ) {
-        try {
+    ) : Boolean {
+        return try {
             val response = storeApiService.updateProduct(updateProductDTO.storeId, updateProductDTO.productId, updateProductDTO.productStoreDTO)
             if (response.isSuccessful) {
                 Log.d("StoreRepositoryImpl", "Successfully updated product")
+                true
             } else {
                 Log.e("StoreRepositoryImpl", "Error updating product: HTTP ${response.code()} ${response.message()}")
+                false
             }
         } catch (e: Exception) {
             Log.e("StoreRepositoryImpl", "Exception when calling API", e)
+            false
         }
     }
 
     override suspend fun getReserves(storeId: Int): List<UserReservation> {
-        val userReservationDTOs = storeApiService.getReserves(storeId)
         return try {
-            val response = userReservationDTOs.execute()
+            val response = storeApiService.getReserves(storeId)
+            if (response.isSuccessful) {
+                Log.d("StoreRepositoryImpl", "Reserves: ${response.body()}")
+            } else {
+                Log.e("StoreRepositoryImpl", "Error getting reserves: HTTP ${response.code()} ${response.message()}")
+            }
             response.body() ?: emptyList()
         } catch (e: Exception) {
             emptyList()
@@ -159,12 +200,12 @@ override suspend fun updateProductStore(
     }
 
     override suspend fun getDisplay(storeId: Int): Display {
-        val displayDTO = storeApiService.getDisplay(storeId)
+        val basicDisplay = Display(0, "", "", 0.0f, 0.0f)
         return try {
-            val response = displayDTO.execute()
-            response.body() ?: Display(0, "", "", 0.0f, 0.0f)
+            val response = storeApiService.getDisplay(storeId)
+            response.body() ?: basicDisplay
         } catch (e: Exception) {
-            Display(0, "", "", 0.0f, 0.0f)
+            basicDisplay
         }
     }
 
