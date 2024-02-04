@@ -25,4 +25,7 @@
     <string name="email">Email</string>
     <string name="login">Login\n</string>
     <string name="register">Register</string>
+
+    <!-- ActivityMain -->
+    <string name="welcome">Welcome, %1$s</string>
 </resources>
