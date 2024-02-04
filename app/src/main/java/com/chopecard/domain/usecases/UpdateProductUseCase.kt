@@ -4,7 +4,7 @@ import com.chopecard.data.model.UpdateProductDTO
 import com.chopecard.data.repository.StoreRepository
 
 class UpdateProductUseCase(private val repository: StoreRepository) {
-    suspend fun execute(updateProductDTO: UpdateProductDTO) {
-        repository.updateProductStore(updateProductDTO)
+    suspend fun execute(updateProductDTO: UpdateProductDTO) : Boolean {
+        return repository.updateProductStore(updateProductDTO)
     }
 }
