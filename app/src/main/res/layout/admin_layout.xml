@@ -31,21 +31,29 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"/>
 
-    <ListView
-        android:id="@+id/listViewTickets"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp"
-        android:clipToPadding="false"
-        android:scrollbars="vertical" />
+        android:layout_height="wrap_content"
+        android:background="@color/body_background"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <include layout="@layout/footer_layout"
-        android:id="@+id/footerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/footer_height"
-        android:layout_alignParentBottom="true"
-        android:visibility="visible"
-        tools:visibility="visible" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTickets"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintHorizontal_weight="1"
+            android:layout_margin="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <include layout="@layout/footer_layout"
+            android:id="@+id/footerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/footer_height"
+            android:layout_alignParentBottom="true"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

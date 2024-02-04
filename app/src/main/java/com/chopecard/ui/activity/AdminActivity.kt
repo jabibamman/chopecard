@@ -1,8 +1,7 @@
 package com.chopecard.ui.activity
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ListView
+import androidx.recyclerview.widget.RecyclerView
 import com.chopecard.R
 import com.chopecard.presentation.viewModel.TicketViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,9 +19,8 @@ class AdminActivity : BaseActivity() {
 
     private fun observeTickets() {
         ticketViewModel.ticketsLiveData.observe(this) { tickets ->
-            val listView = findViewById<ListView>(R.id.listViewTickets)
-            val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, tickets)
-            listView.adapter = adapter
+            val adapter = (findViewById<RecyclerView>(R.id.rvTickets).adapter as? TicketListAdapter)
+            adapter?.updateList(tickets)
         }
     }
 }
