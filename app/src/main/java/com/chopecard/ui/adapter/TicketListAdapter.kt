@@ -1,4 +1,4 @@
-package com.chopecard.ui.activity
+package com.chopecard.ui.adapter
 
 import android.util.Log
 import android.view.LayoutInflater

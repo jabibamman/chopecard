@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chopecard.R
 import com.chopecard.presentation.viewModel.TicketViewModel
+import com.chopecard.ui.adapter.TicketListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AdminActivity : BaseActivity() {

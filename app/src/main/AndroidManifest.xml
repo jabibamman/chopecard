@@ -65,7 +65,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.view.SellerView"
+        <activity android:name=".ui.activity.SellerActivity"
                 android:exported="true"
                 android:theme="@style/Theme.AppCompat" >
             <intent-filter>

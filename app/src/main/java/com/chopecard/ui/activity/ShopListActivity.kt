@@ -8,9 +8,9 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chopecard.R
-import com.chopecard.presentation.view.SellerView
 import com.chopecard.presentation.viewModel.StoreDataState
 import com.chopecard.presentation.viewModel.StoreViewModel
+import com.chopecard.ui.adapter.ShopListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ShopListActivity : BaseActivity() {
@@ -28,7 +28,7 @@ class ShopListActivity : BaseActivity() {
     private fun setupRecyclerView() {
         val recyclerView = findViewById<RecyclerView>(R.id.rvShopList)
         val adapter = ShopListAdapter(mutableListOf()) { store ->
-            val intent = Intent(this, SellerView::class.java).apply {
+            val intent = Intent(this, SellerActivity::class.java).apply {
                 putExtra("store", store)
 
             }
