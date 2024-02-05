@@ -1,5 +1,6 @@
 package com.chopecard.ui.activity
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +25,7 @@ class TicketListAdapter(private val ticketList: MutableList<Ticket>, private val
             fun bind(ticket: Ticket) {
                 currentTicket = ticket
                 subject.text = ticket.subject
-                messages.text = ticket.messages.toString()
+                messages.text = ticket.messages[0].content
             }
         }
 
@@ -41,6 +42,7 @@ class TicketListAdapter(private val ticketList: MutableList<Ticket>, private val
         override fun getItemCount() = ticketList.size
 
         fun updateList(newList: List<Ticket>) {
+            Log.d("TicketListAdapter", "Tickets: $newList")
             ticketList.clear()
             ticketList.addAll(newList)
             notifyDataSetChanged()

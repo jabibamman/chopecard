@@ -16,8 +16,8 @@ class TicketViewModel(private val getTicketsUseCase: GetTicketsUseCase): ViewMod
             try {
                 val tickets = getTicketsUseCase.execute()
                 ticketsLiveData.postValue(tickets)
-                Log.d("TicketViewModel", "Tickets: $tickets")
             } catch (e: Exception) {
+                Log.e("TicketViewModel", "Exception when calling use case: ", e)
                 ticketsLiveData.postValue(emptyList())
             }
         }

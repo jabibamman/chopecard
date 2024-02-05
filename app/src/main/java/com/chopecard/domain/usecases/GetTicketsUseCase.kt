@@ -11,5 +11,4 @@ class GetTicketsUseCase(private val repository: AdminRepository) {
             throw e
         }
     }
-
 }

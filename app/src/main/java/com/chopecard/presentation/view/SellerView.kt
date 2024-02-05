@@ -20,7 +20,6 @@ import com.chopecard.ui.utils.showAlert
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SellerView : BaseActivity() {
-
     private val viewModel: SellerViewModel by viewModel()
     private var store : Store? = null
 
