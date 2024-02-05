@@ -25,7 +25,7 @@ class AdminRepositoryImpl(private val adminApiService: AdminApiService) : AdminR
     }
 
     override suspend fun createProduct(product: Product) {
-        return try {
+        try {
             val response = adminApiService.createProduct(product)
             if(response.isSuccessful) {
                 Log.d("AdminRepositoryImpl", "Product created: ${response.body()}")
@@ -37,7 +37,7 @@ class AdminRepositoryImpl(private val adminApiService: AdminApiService) : AdminR
             response.body() ?: String()
         } catch (e: Exception) {
             Log.e("AdminRepositoryImpl", "Exception when calling API", e)
-        } as Unit
+        }
     }
 
     override suspend fun getTickets(): List<Ticket> {
