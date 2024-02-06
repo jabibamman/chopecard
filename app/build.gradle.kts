@@ -100,6 +100,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.14.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.fragment:fragment:1.6.2")
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
 
 
