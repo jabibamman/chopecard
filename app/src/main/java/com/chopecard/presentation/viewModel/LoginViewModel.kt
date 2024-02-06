@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.chopecard.data.model.LoginUserDTO
 import com.chopecard.data.model.UserDTO
 import com.chopecard.domain.models.User
 import com.chopecard.domain.usecases.CreateUserUseCase
@@ -41,14 +42,14 @@ class LoginViewModel(
         }
     }
 
-    fun loginUser(email: String) {
+    fun loginUser(loginUserDTO: LoginUserDTO) {
         viewModelScope.launch {
             try {
-                val user = getUserUseCase.execute(email)
+                val user = getUserUseCase.execute(loginUserDTO)
                 userCreationResult.value = UserCreationResult.Success(user)
-                Log.d("LoginViewModel", "User created: $user")
+                Log.d("LoginViewModel", "User logged: $user")
             } catch (e: Exception) {
-                Log.e("LoginViewModel", "Error creating user", e)
+                Log.e("LoginViewModel", "Error logging user", e)
                 userCreationResult.value = UserCreationResult.Failure(e)
             }
         }
