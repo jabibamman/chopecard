@@ -8,7 +8,7 @@ import com.chopecard.domain.models.Store
 import com.chopecard.domain.usecases.GetStoresUseCase
 import kotlinx.coroutines.launch
 
-// Represents the UI state.
+/** Represents the UI state. */
 sealed class StoreDataState {
     object Loading : StoreDataState()
     data class Success(val stores: List<Store>): StoreDataState()
