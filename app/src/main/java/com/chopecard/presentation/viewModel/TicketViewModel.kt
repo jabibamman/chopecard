@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chopecard.data.model.CreateTicketDTO
 import com.chopecard.domain.models.Ticket
+import com.chopecard.domain.models.TicketMessage
+import com.chopecard.domain.usecases.AddTicketUseCase
 import com.chopecard.domain.usecases.GetTicketsUseCase
 import kotlinx.coroutines.launch
 
@@ -17,10 +19,12 @@ sealed class TicketDataState {
 }
 
 class TicketViewModel(
-    private val getTicketsUseCase: GetTicketsUseCase
+    private val getTicketsUseCase: GetTicketsUseCase,
+    private val addTicketUseCase: AddTicketUseCase
 ): ViewModel() {
 
     val ticketsLiveData = MutableLiveData<TicketDataState>()
+    val alertMessage = MutableLiveData<String>()
 
     fun getTickets() {
         ticketsLiveData.postValue(TicketDataState.Loading)
@@ -36,7 +40,25 @@ class TicketViewModel(
         }
     }
 
-    fun addTicket(ticket: CreateTicketDTO) {
-        Log.d("TicketViewModel", "Add ticket button clicked : $ticket")
+    fun addTicket(createTicketDTO: CreateTicketDTO) {
+        Log.d("TicketViewModel", "Add ticket button clicked : $createTicketDTO")
+        val ticketMessages = TicketMessage(createTicketDTO.message)
+        val ticket = Ticket((0..9999999).random(), createTicketDTO.subject, listOf(ticketMessages))
+
+        viewModelScope.launch {
+            try {
+                val result = addTicketUseCase.execute(ticket)
+                if(!result) {
+                    alertMessage.postValue("An error occured when adding ticket.")
+                    return@launch
+                }
+                Log.d("TicketViewModel", "Successfully added ticket: $result")
+                alertMessage.postValue("Ticket successfully addded.")
+            }
+            catch (e: Exception) {
+                Log.e("SellerViewModel", "Error adding product", e)
+                alertMessage.postValue("An error occured when adding ticket.")
+            }
+        }
     }
 }

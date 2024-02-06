@@ -8,19 +8,18 @@ import com.chopecard.domain.models.Ticket
 import com.chopecard.domain.models.TicketMessage
 
 class AdminRepositoryImpl(private val adminApiService: AdminApiService) : AdminRepository {
-    override suspend fun createTicket(ticket: Ticket): String {
+    override suspend fun createTicket(ticket: Ticket): Boolean {
         return try {
             val response = adminApiService.createTicket(ticket)
             if(response.isSuccessful) {
                 Log.d("AdminRepositoryImpl", "Ticket created: ${response.body()}")
-                response.body() ?: String()
+                true
             } else {
                 Log.e("AdminRepositoryImpl", "Error creating ticket: HTTP ${response.code()} ${response.message()}")
-                String()
+                false
             }
-            response.body() ?: String()
         } catch (e: Exception) {
-            String()
+            false
         }
     }
 

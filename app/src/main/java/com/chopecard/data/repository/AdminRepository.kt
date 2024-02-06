@@ -5,7 +5,7 @@ import com.chopecard.domain.models.Ticket
 
 interface AdminRepository {
     /** Creates a new ticket */
-    suspend fun createTicket(ticket: Ticket): String
+    suspend fun createTicket(ticket: Ticket): Boolean
 
     /** Creates a new product */
     suspend fun createProduct(product: Product)

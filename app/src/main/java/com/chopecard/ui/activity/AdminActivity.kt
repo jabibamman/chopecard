@@ -84,6 +84,7 @@ class AdminActivity : BaseActivity() {
                     showAlert("Please fill the subject of the ticket", this)
                 } else {
                     ticketViewModel.addTicket(CreateTicketDTO(subjectText, descriptionText))
+                    ticketViewModel.getTickets()
                     dialog.dismiss()
                 }
             }
