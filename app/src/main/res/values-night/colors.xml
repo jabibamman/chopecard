@@ -18,4 +18,5 @@
 
     <!-- Font Colors -->
     <color name="primaryFontColor">@color/white</color>
+    <color name="dark_gray">#E0E0E0</color>
 </resources>

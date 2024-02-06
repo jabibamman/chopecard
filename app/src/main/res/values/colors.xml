@@ -20,4 +20,5 @@
 
     <!-- Font Colors -->
     <color name="primaryFontColor">@color/black</color>
+    <color name="dark_gray">#616161</color>
 </resources>
