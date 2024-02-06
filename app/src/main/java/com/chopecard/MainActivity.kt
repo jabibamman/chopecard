@@ -25,6 +25,4 @@ class MainActivity : BaseActivity() {
 
         binding.tvWelcome.text = getString(R.string.welcome, UserPreferences.getUserName(this))
     }
-
-
 }

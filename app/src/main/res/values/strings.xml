@@ -18,7 +18,14 @@
     <string name="unreserve_product">Unreserve Product</string>
     <string name="view_reservations">View Reservations</string>
     <string name="view_reservers">View Reservers</string>
-    <string name="go_back">Retour</string>
+    <string name="go_back">Back</string>
+
+    <!-- admin -->
+    <string name="tickets">Tickets</string>
+    <string name="add_ticket">Add a new ticket</string>
+    <string name="delete_ticket">Delete the ticket</string>
+    <string name="subject">Subject</string>
+    <string name="description">Description</string>
 
     <!-- login -->
     <string name="name">Name</string>

@@ -1,4 +1,4 @@
-package com.chopecard.presentation.view
+package com.chopecard.ui.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,12 +15,10 @@ import com.chopecard.data.storage.UserPreferences
 import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
 import com.chopecard.presentation.viewModel.SellerViewModel
-import com.chopecard.ui.activity.BaseActivity
 import com.chopecard.ui.utils.showAlert
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SellerView : BaseActivity() {
-
+class SellerActivity : BaseActivity() {
     private val viewModel: SellerViewModel by viewModel()
     private var store : Store? = null
 
