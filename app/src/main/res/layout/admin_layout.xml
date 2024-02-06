@@ -55,13 +55,30 @@
             android:layout_margin="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-        <include layout="@layout/footer_layout"
-            android:id="@+id/footerLayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/footer_height"
-            android:layout_alignParentBottom="true"
-            android:visibility="visible"
-            tools:visibility="visible" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom">
+
+            <Button
+                android:id="@+id/addTicket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryColor"
+                android:textColor="@color/primaryFontColor"
+                android:layout_margin="8dp"
+                android:text="@string/add_ticket">
+            </Button>
+
+            <include layout="@layout/footer_layout"
+                android:id="@+id/footerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/footer_height"
+                android:layout_alignParentBottom="true"
+                android:visibility="visible"
+                tools:visibility="visible" />
+        </LinearLayout>
 
     </RelativeLayout>
 

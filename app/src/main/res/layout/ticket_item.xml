@@ -30,5 +30,19 @@
             android:textSize="16sp"
             android:padding="8dp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <ImageButton
+                android:id="@+id/ticketDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="@string/delete_ticket" />
+    
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

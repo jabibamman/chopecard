@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.chopecard.data.model.CreateTicketDTO
 import com.chopecard.domain.models.Ticket
 import com.chopecard.domain.usecases.GetTicketsUseCase
 import kotlinx.coroutines.launch
@@ -33,5 +34,9 @@ class TicketViewModel(
                 ticketsLiveData.postValue(TicketDataState.Error(e))
             }
         }
+    }
+
+    fun addTicket(ticket: CreateTicketDTO) {
+        Log.d("TicketViewModel", "Add ticket button clicked : $ticket")
     }
 }
