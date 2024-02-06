@@ -11,16 +11,39 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="418dp"
+        android:layout_gravity="center|center_horizontal|center_vertical"
         app:srcCompat="@drawable/svp_fr_1" />
 
     <TextView
         android:id="@+id/product_name"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Samiboss92"
-        android:textColor="#3F51B5"
+        android:textColor="#2962FF"
         android:textSize="20sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/descriptionproduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="descriptionproduct"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/priceMinproduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="priceMinproduct"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/priceMaxproduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="priceMaxproduct"
+        android:textSize="20sp" />
+
 </LinearLayout>

@@ -2,7 +2,6 @@ package com.chopecard.presentation.view
 
 import android.app.Activity
 import android.os.Bundle
-import com.chopecard.BuildConfig
 import com.chopecard.R
 import injectModuleDependencies
 import parseAndInjectConfiguration
@@ -19,7 +18,7 @@ class ProductDetailView : Activity() {
         val bodyLayout: ViewGroup = findViewById(R.id.body_layout)
 
         // Étape 2: Utiliser LayoutInflater pour gonfler product_detail_layout.xml
-        val productView = LayoutInflater.from(this).inflate(R.layout.`product_detail_layout.xml`, bodyLayout, false)
+        val productView = LayoutInflater.from(this).inflate(R.layout.product_detail_layout, bodyLayout, false)
 
         // Étape 3: Ajouter le layout gonflé à body_layout
         bodyLayout.addView(productView)
