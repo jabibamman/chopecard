@@ -1,5 +1,6 @@
 package com.chopecard.data.network
 
+import com.chopecard.data.model.LoginUserDTO
 import com.chopecard.data.model.UserDTO
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.User
@@ -15,6 +16,9 @@ interface UserApiService {
 
     @POST("/v1/user")
     suspend fun createUser(@Body userDTO: UserDTO): Response<User>
+
+    @POST("v1/user/login")
+    suspend fun login(@Body loginUserDTO: LoginUserDTO): Response<User>
 
     @GET("/v1/user/{userId}")
     suspend fun getUserById(@Path("userId") userId: Int): Response<User>
