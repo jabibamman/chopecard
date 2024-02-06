@@ -2,6 +2,7 @@ package com.chopecard.di.modules
 
 
 import FakeJsonConf
+import com.chopecard.data.network.AdminApiService
 import com.chopecard.data.network.StoreApiService
 import com.chopecard.data.network.UserApiService
 import com.google.gson.GsonBuilder
@@ -30,6 +31,12 @@ internal val remoteModule = module {
 
     single {
         createWebService<UserApiService>(
+            get(named(fakeApiRetrofitClient))
+        )
+    }
+
+    single {
+        createWebService<AdminApiService>(
             get(named(fakeApiRetrofitClient))
         )
     }
