@@ -2,7 +2,8 @@ package com.chopecard.di.modules
 
 
 import FakeJsonConf
-import com.chopecard.data.network.CardApiService
+import com.chopecard.data.network.StoreApiService
+import com.chopecard.data.network.UserApiService
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,7 +23,13 @@ internal val remoteModule = module {
     single { createOkHttpClient() }
 
     single {
-        createWebService<CardApiService>(
+        createWebService<StoreApiService>(
+            get(named(fakeApiRetrofitClient))
+        )
+    }
+
+    single {
+        createWebService<UserApiService>(
             get(named(fakeApiRetrofitClient))
         )
     }

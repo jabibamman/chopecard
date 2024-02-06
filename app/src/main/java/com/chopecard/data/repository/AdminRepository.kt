@@ -13,7 +13,7 @@ import retrofit2.http.Path
 interface AdminRepository {
     suspend fun createTicket(ticket: Ticket): String
 
-    suspend fun createProduct(product: Product): String
+    suspend fun createProduct(product: Product)
 
     suspend fun getTickets(): List<Ticket>
 
