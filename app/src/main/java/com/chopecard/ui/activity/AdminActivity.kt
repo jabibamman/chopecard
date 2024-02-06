@@ -33,7 +33,7 @@ class AdminActivity : BaseActivity() {
 
     private fun setupRecyclerView() {
         val recyclerView = findViewById<RecyclerView>(R.id.rvTickets)
-        val adapter = TicketListAdapter(mutableListOf()) { }
+        val adapter = TicketListAdapter(mutableListOf())
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }

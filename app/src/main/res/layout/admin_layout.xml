@@ -20,66 +20,42 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tickets"
-        android:textColor="@color/primaryFontColor"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.0"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:text="@string/tickets"
+        android:textColor="@color/primaryFontColor" />
 
     <ProgressBar
         android:id="@+id/adminProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/body_background"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:layout_marginTop="8dp"
+        android:visibility="gone" />
 
-    <RelativeLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTickets"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <Button
+        android:id="@+id/addTicket"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/body_background"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_margin="8dp"
+        android:background="@color/secondaryColor"
+        android:text="@string/add_ticket"
+        android:textColor="@color/primaryFontColor" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTickets"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintHorizontal_weight="1"
-            android:layout_margin="8dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="bottom">
-
-            <Button
-                android:id="@+id/addTicket"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/secondaryColor"
-                android:textColor="@color/primaryFontColor"
-                android:layout_margin="8dp"
-                android:text="@string/add_ticket">
-            </Button>
-
-            <include layout="@layout/footer_layout"
-                android:id="@+id/footerLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/footer_height"
-                android:layout_alignParentBottom="true"
-                android:visibility="visible"
-                tools:visibility="visible" />
-        </LinearLayout>
-
-    </RelativeLayout>
+    <include
+        android:id="@+id/footerLayout"
+        layout="@layout/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/footer_height"
+        android:visibility="visible" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

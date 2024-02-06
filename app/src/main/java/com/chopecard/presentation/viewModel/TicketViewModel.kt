@@ -24,7 +24,7 @@ class TicketViewModel(
 ): ViewModel() {
 
     val ticketsLiveData = MutableLiveData<TicketDataState>()
-    val alertMessage = MutableLiveData<String>()
+    private val alertMessage = MutableLiveData<String>()
 
     fun getTickets() {
         ticketsLiveData.postValue(TicketDataState.Loading)
