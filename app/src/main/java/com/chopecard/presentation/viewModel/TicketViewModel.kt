@@ -42,6 +42,7 @@ class TicketViewModel(
 
     fun addTicket(createTicketDTO: CreateTicketDTO) {
         Log.d("TicketViewModel", "Add ticket button clicked : $createTicketDTO")
+        ticketsLiveData.postValue(TicketDataState.Loading)
         val ticketMessages = TicketMessage(createTicketDTO.message)
         val ticket = Ticket((0..9999999).random(), createTicketDTO.subject, listOf(ticketMessages))
 
@@ -52,8 +53,9 @@ class TicketViewModel(
                     alertMessage.postValue("An error occured when adding ticket.")
                     return@launch
                 }
-                Log.d("TicketViewModel", "Successfully added ticket: $result")
+                Log.d("TicketViewModel", "Successfully added ticket")
                 alertMessage.postValue("Ticket successfully addded.")
+                getTickets()
             }
             catch (e: Exception) {
                 Log.e("SellerViewModel", "Error adding product", e)

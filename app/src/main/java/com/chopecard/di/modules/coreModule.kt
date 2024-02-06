@@ -11,6 +11,7 @@ import com.chopecard.data.repository.impl.CardRepositoryImpl
 import com.chopecard.data.repository.impl.StoreRepositoryImpl
 import com.chopecard.data.repository.impl.UserRepositoryImpl
 import com.chopecard.domain.usecases.AddProductUseCase
+import com.chopecard.domain.usecases.AddTicketUseCase
 import com.chopecard.domain.usecases.CreateStoreUseCase
 import com.chopecard.domain.usecases.CreateUserUseCase
 import com.chopecard.domain.usecases.DeleteProductUseCase
@@ -42,6 +43,7 @@ internal val coreModule = module {
 
     // Use Cases
     factory { AddProductUseCase(get()) }
+    factory { AddTicketUseCase(get()) }
     factory { CreateStoreUseCase(get()) }
     factory { DeleteProductUseCase(get()) }
     factory { GetReservationsUseCase(get()) }
