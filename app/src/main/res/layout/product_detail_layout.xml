@@ -7,6 +7,13 @@
     android:background="#FFFFFF"
     android:clickable="false"
     android:orientation="vertical">
+    <include
+        layout="@layout/header_layout"
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -45,5 +52,12 @@
         android:layout_height="wrap_content"
         android:text="priceMaxproduct"
         android:textSize="20sp" />
-
+    <include
+        layout="@layout/footer_layout"
+        android:id="@+id/footerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/footer_height"
+        android:visibility="visible"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </LinearLayout>
