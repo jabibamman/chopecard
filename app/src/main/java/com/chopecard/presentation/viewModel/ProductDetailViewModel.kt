@@ -3,8 +3,10 @@ package com.chopecard.presentation.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.chopecard.domain.models.Product
 import com.chopecard.domain.usecases.GetProductDetailUseCase
+import kotlinx.coroutines.launch
 
 class ProductDetailViewModel(private val getProductDetailUseCase: GetProductDetailUseCase) : ViewModel() {
 
@@ -12,7 +14,9 @@ class ProductDetailViewModel(private val getProductDetailUseCase: GetProductDeta
     val productDetail: LiveData<Product> = _productDetail
 
     fun loadProductDetail(productId: String) {
-        val productDetail = getProductDetailUseCase.execute(productId)
-        _productDetail.value = productDetail
+        viewModelScope.launch {
+            val productDetail = getProductDetailUseCase.execute(productId)
+            _productDetail.value = productDetail
+        }
     }
 }
