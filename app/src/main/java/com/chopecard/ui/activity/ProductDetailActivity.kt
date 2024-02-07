@@ -1,22 +1,24 @@
-package com.chopecard.ui.activity
-
 import android.os.Bundle
-import androidx.fragment.app.FragmentContainerView
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.chopecard.R
-import com.chopecard.domain.usecases.GetProductDetailUseCase
-import com.chopecard.presentation.fragment.ShopListFragment
+import com.chopecard.presentation.viewModel.LoginViewModel
 import com.chopecard.presentation.viewModel.ProductDetailViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProductDetailActivity : BaseActivity() {
+class ProductDetailActivityActivity : AppCompatActivity() {
+
+    private val productDetailViewModel : ProductDetailViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.product_detail_layout)
-        setupFooter()
 
-        val listProducts = ProductDetailViewModel.loadProductDetail(R.id.etProductId)
+        val productId = intent.getIntExtra("PRODUCT_ID", -1)
+        if (productId != -1) {
+            productDetailViewModel.loadProductDetail(productId)
+        }
 
 
     }
-
 }

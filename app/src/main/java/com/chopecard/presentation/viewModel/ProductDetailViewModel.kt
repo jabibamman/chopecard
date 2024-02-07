@@ -13,7 +13,7 @@ class ProductDetailViewModel(private val getProductDetailUseCase: GetProductDeta
 */
 
 
-    fun loadProductDetail(productId: String) {
+    fun loadProductDetail(productId: Int) {
         viewModelScope.launch {
             try {
                 getProductDetailUseCase.execute(productId);
