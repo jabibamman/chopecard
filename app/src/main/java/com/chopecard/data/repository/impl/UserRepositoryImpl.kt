@@ -91,9 +91,9 @@ class UserRepositoryImpl(private val userApiService: UserApiService) : UserRepos
         val reserveDTO = userApiService.getReservesByUserId(userId)
         return try {
             val response = reserveDTO.execute()
-            response.body() ?: Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f), 0, 0f)})
+            response.body() ?: Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f, ""), 0, 0f)})
         } catch (e: Exception) {
-            Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f), 0, 0f)})
+            Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f, ""), 0, 0f)})
         }
     }
 
@@ -101,9 +101,9 @@ class UserRepositoryImpl(private val userApiService: UserApiService) : UserRepos
         val reserveDTO = userApiService.getReservesByIdAndByUserId(userId, reserveId)
         return try {
             val response = reserveDTO.execute()
-            response.body() ?: Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f), 0, 0f)})
+            response.body() ?: Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f, ""), 0, 0f)})
         } catch (e: Exception) {
-            Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f), 0, 0f)})
+            Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f, ""), 0, 0f)})
         }
     }
 

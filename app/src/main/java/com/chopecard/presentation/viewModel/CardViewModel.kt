@@ -13,8 +13,8 @@ class CardViewModel(private val cardRepository: CardRepository) : ViewModel() {
     fun loadCardInfo(cardName: String) {
         viewModelScope.launch {
             try {
-                val card = cardRepository.getCardByName(cardName).firstOrNull()
-                card?.let {
+                val card = cardRepository.getYugiohCardByName(cardName)
+                card[0].let {
                     cardInfoLiveData.postValue(mapToCardUIModel(it))
                 }
             } catch (e: Exception) {

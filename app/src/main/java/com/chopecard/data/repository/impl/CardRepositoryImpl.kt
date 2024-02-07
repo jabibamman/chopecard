@@ -10,26 +10,26 @@ import retrofit2.Call
 
 class CardRepositoryImpl(private val cardApiService: CardApiService) : CardRepository {
 
-    override suspend fun getCardByName(name: String): List<Card> {
+    override suspend fun getYugiohCardByName(name: String): List<Card> {
         return try {
-            val response = cardApiService.getCardInfo(name)
+            val response = cardApiService.getYugiohCardInfo(name)
             response.data
         } catch (e: Exception) {
             emptyList()
         }
     }
-    override suspend fun getCardsByType(type: String): List<Card> {
+    override suspend fun getYugiohCardsByType(type: String): List<Card> {
         return try {
-            val response = cardApiService.getCardsInfoByType(type)
+            val response = cardApiService.getYugiohCardsInfoByType(type)
             response.data
         } catch (e: Exception) {
             emptyList()
         }
     }
 
-    override suspend fun getCardSetByCode(setCode: String): List<CardSet> {
+    override suspend fun getYugiohCardSetByCode(setCode: String): List<CardSet> {
         return try {
-            val response = cardApiService.getCardSetInfo(setCode)
+            val response = cardApiService.getYugiohCardSetInfo(setCode)
             response.data
         } catch (e: Exception) {
             emptyList()
