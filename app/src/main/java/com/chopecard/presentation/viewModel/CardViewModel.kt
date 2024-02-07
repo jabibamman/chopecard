@@ -13,9 +13,9 @@ class CardViewModel(private val cardRepository: CardRepository) : ViewModel() {
     fun loadCardInfo(cardName: String) {
         viewModelScope.launch {
             try {
-                val card = cardRepository.getYugiohCardByName(cardName)
-                card[0].let {
-                    cardInfoLiveData.postValue(mapToCardUIModel(it))
+                val cards = cardRepository.getYugiohCardByName(cardName)
+                cards[0].let {
+                        cardInfoLiveData.postValue(mapToCardUIModel(it))
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

@@ -30,15 +30,16 @@
             tools:visibility="visible"
             app:layout_constraintTop_toBottomOf="@id/headerLayout" />
 
-    <include
-            layout="@layout/body_layout"
-            android:id="@+id/bodyLayout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            app:layout_constraintTop_toBottomOf="@id/tvWelcome"
-            app:layout_constraintBottom_toTopOf="@id/footerLayout" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        tools:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+        app:layout_constraintBottom_toTopOf="@id/footerLayout" />
+
 
     <include
             layout="@layout/footer_layout"
