@@ -28,7 +28,7 @@ class SplashActivity : BaseActivity() {
 
     private fun decideNextActivity() {
         val userLogin = UserPreferences.getUserLogin(this)
-        if (userLogin.first && userLogin.second > 0) {
+        if (userLogin.second > 0) {
             loginViewModel.getUser(userLogin.second) { user ->
                 if (user != null) {
                     if (user.userId > 0) {

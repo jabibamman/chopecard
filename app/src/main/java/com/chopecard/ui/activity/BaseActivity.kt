@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.chopecard.MainActivity
 import com.chopecard.R
+import com.chopecard.data.storage.UserPreferences
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -23,6 +24,8 @@ open class BaseActivity : AppCompatActivity() {
             val intent = Intent(this, ShopListActivity::class.java)
             startActivity(intent)
         }
+
+        val userId = UserPreferences.getUserLogin(this).second;
 
         findViewById<ImageButton>(R.id.btnHome)?.setOnClickListener {
             Log.d("FooterActivity", "Home button clicked")
