@@ -87,14 +87,10 @@ dependencies {
     // Koin pour Kotlin
     implementation("io.insert-koin:koin-android:3.5.0")
 
-    // Koin pour Android
-    implementation("io.insert-koin:koin-android:3.5.0")
-
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-
 
     // Hhttp logging
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
@@ -104,6 +100,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.14.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.fragment:fragment:1.6.2")
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
 
 

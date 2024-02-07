@@ -48,7 +48,7 @@ class StoreRepositoryImpl(private val storeApiService: StoreApiService) : StoreR
     }
 
     override suspend fun getStore(storeId: Int): Store {
-        val basicStore = Store(0, "", "", List<ProductStore>(0) { ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f) })
+        val basicStore = Store(0, "", "", List(0) { ProductStore(0, Product(0, "", "", 0.0f, 0.0f), 0, 0.0f) })
         return try {
             val response = storeApiService.getStoresById(storeId)
             if (response.isSuccessful) {

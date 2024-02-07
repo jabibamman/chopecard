@@ -1,10 +1,8 @@
 package com.chopecard.data.network
 
-import com.chopecard.data.model.ProductStoreDTO
 import com.chopecard.domain.models.Product
-import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.Ticket
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -13,20 +11,20 @@ import retrofit2.http.Path
 
 interface AdminApiService {
     @POST("/v1/admin/tickets/create")
-    fun createTicket(@Body ticket: Ticket): Call<String>
+    suspend fun createTicket(@Body ticket: Ticket): Response<String>
 
     @POST("/v1/admin/products/create")
-    fun createProduct(@Body product: Product): Call<String>
+    suspend fun createProduct(@Body product: Product): Response<String>
 
-    @POST("/v1/admin/tickets")
-    fun getTickets(): Call<List<Ticket>>
+    @GET("/v1/admin/tickets")
+    suspend fun getTickets(): Response<List<Ticket>>
 
     @GET("/v1/admin/tickets/{ticketId}")
-    fun getTicketById(@Path("ticketId") ticketId: Int): Call<Ticket>
+    suspend fun getTicketById(@Path("ticketId") ticketId: Int): Response<Ticket>
 
     @DELETE("/v1/admin/tickets/{ticketId}")
-    fun deleteTicketById(@Path("ticketId") ticketId: Int): Call<String>
+    suspend fun deleteTicketById(@Path("ticketId") ticketId: Int): Response<String>
 
     @DELETE("/v1/admin/products/{productId}")
-    fun deleteProductById(@Path("productId") productId: Int): Call<String>
+    suspend fun deleteProductById(@Path("productId") productId: Int): Response<String>
 }
