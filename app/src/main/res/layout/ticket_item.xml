@@ -7,42 +7,41 @@
     app:cardElevation="4dp"
     app:cardCornerRadius="8dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/ticketSubject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Subject"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:padding="8dp" />
+            android:textColor="@color/white"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/ticketDelete"
+            android:layout_marginEnd="8dp" />
 
         <TextView
             android:id="@+id/ticketMessages"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Messages"
             android:textSize="16sp"
-            android:padding="8dp" />
+            android:textColor="@color/white"
+            android:layout_below="@id/ticketSubject"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/ticketDelete"
+            android:layout_marginEnd="8dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/ticketDelete"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="end">
+            android:src="@drawable/ic_delete"
+            android:contentDescription="@string/delete_ticket"
+            android:layout_alignParentEnd="true" />
 
-            <ImageButton
-                android:id="@+id/ticketDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_delete"
-                android:contentDescription="@string/delete_ticket" />
-    
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>
