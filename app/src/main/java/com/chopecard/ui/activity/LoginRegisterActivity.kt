@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.chopecard.MainActivity
 import com.chopecard.R
+import com.chopecard.data.model.LoginUserDTO
 import com.chopecard.data.model.UserDTO
 import com.chopecard.data.storage.UserPreferences
 import com.chopecard.presentation.viewModel.LoginViewModel
@@ -35,7 +36,7 @@ class LoginRegisterActivity : AppCompatActivity() {
 
         loginViewModel.userData.observe(this) { user ->
             if (user.userId > 0) {
-                UserPreferences.saveUserLogin(this, user.userId)
+                UserPreferences.saveUserLogin(this, user.userId, user.name)
                 UserPreferences.setWelcomeShown(this)
                 navigateTo(MainActivity::class.java)
             }
@@ -72,7 +73,7 @@ class LoginRegisterActivity : AppCompatActivity() {
             when (result) {
                 is UserCreationResult.Success -> {
                     val user = result.user
-                    UserPreferences.saveUserLogin(this, user.userId)
+                    UserPreferences.saveUserLogin(this, user.userId, user.name)
                     UserPreferences.setWelcomeShown(this)
                     navigateTo(MainActivity::class.java)
                 }
@@ -93,15 +94,16 @@ class LoginRegisterActivity : AppCompatActivity() {
     }
 
     private fun performLogin() {
-        val username = findViewById<EditText>(R.id.etName).text.toString()
+        val password = findViewById<EditText>(R.id.etPassword).text.toString()
         val email = findViewById<EditText>(R.id.etMail).text.toString()
+        val loginUserDTO = LoginUserDTO(email,password)
 
-        loginViewModel.loginUser(email)
+        loginViewModel.loginUser(loginUserDTO)
         Log.d("LoginRegisterActivity", "Attempting login with email: $email")
 
         loginViewModel.userData.observe(this, Observer { user ->
             if (user.userId > 0) {
-                UserPreferences.saveUserLogin(this, user.userId)
+                UserPreferences.saveUserLogin(this, user.userId, user.name)
                 UserPreferences.setWelcomeShown(this)
                 navigateTo(MainActivity::class.java)
             } else {
@@ -114,8 +116,9 @@ class LoginRegisterActivity : AppCompatActivity() {
     private fun performRegistration() {
         val name = findViewById<EditText>(R.id.etName).text.toString()
         val email = findViewById<EditText>(R.id.etMail).text.toString()
+        val password = findViewById<EditText>(R.id.etPassword).text.toString()
 
-        val user = UserDTO(name, email)
+        val user = UserDTO(name, email, password)
         Log.d("LoginRegisterActivity", "Attempting registration with email: $email")
 
         loginViewModel.createUser(user)
@@ -127,7 +130,7 @@ class LoginRegisterActivity : AppCompatActivity() {
                 is UserCreationResult.Success -> {
                     Log.d("LoginRegisterActivity", "Registration success. Updating UserPreferences...")
 
-                    UserPreferences.saveUserLogin(this, result.user.userId)
+                    UserPreferences.saveUserLogin(this, result.user.userId, result.user.name)
                     UserPreferences.setWelcomeShown(this)
 
                     Log.d("LoginRegisterActivity", "Your userPreferences: ${UserPreferences.getUserLogin(this)}")

@@ -1,6 +1,7 @@
 package com.chopecard.data.repository.impl
 
 import android.util.Log
+import com.chopecard.data.model.LoginUserDTO
 import com.chopecard.data.model.UserDTO
 import com.chopecard.data.network.UserApiService
 import com.chopecard.data.repository.UserRepository
@@ -22,6 +23,18 @@ class UserRepositoryImpl(private val userApiService: UserApiService) : UserRepos
             throw Exception("API call failed with error: ${response.errorBody()?.string()}")
         }
     }
+
+    override suspend fun loginUser(loginUserDTO: LoginUserDTO) : User {
+        val response = userApiService.login(loginUserDTO)
+        if (response.isSuccessful) {
+            Log.d("UserRepositoryImpl", "User logged: ${response.body()}")
+            return response.body() ?: throw Exception("User data was null")
+        } else {
+            Log.e("UserRepositoryImpl", "Error logging user: HTTP ${response.code()} ${response.errorBody()?.string()}")
+            throw Exception("API call failed with error: ${response.errorBody()?.string()}")
+        }
+    }
+
 
     override suspend fun getUser(userId: Int): User {
         try {

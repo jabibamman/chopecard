@@ -25,6 +25,16 @@
             android:textColorHint="@color/primaryFontColor"
             android:inputType="textEmailAddress"/>
 
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:textColor="@color/primaryFontColor"
+        android:textColorHint="@color/primaryFontColor"
+        android:inputType="textPassword"/>
+
     <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"

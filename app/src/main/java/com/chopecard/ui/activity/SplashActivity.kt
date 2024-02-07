@@ -2,8 +2,6 @@ package com.chopecard.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import com.chopecard.MainActivity
@@ -19,13 +17,12 @@ class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
         parseAndInjectConfiguration()
         injectModuleDependencies(this)
-        Handler(Looper.getMainLooper()).postDelayed({
-            decideNextActivity()
-        }, 2000)
+        decideNextActivity()
         decideNextActivity()
     }
 

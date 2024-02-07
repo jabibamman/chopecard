@@ -1,4 +1,4 @@
-package com.chopecard.ui.activity
+package com.chopecard.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +13,8 @@ class ShopListAdapter(private val shopList: MutableList<Store>, private val onCl
 
     class ViewHolder(view: View, val onClick: (Store) -> Unit) : RecyclerView.ViewHolder(view) {
         private val shopName: TextView = view.findViewById(R.id.tvShopName)
+        private val shopAdress: TextView = view.findViewById(R.id.tvShopAddress)
+
         private var currentStore: Store? = null
 
         init {
@@ -24,6 +26,7 @@ class ShopListAdapter(private val shopList: MutableList<Store>, private val onCl
         fun bind(store: Store) {
             currentStore = store
             shopName.text = store.name
+            shopAdress.text = store.address
         }
     }
 

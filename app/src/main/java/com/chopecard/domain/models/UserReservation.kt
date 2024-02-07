@@ -1,3 +1,3 @@
 package com.chopecard.domain.models
 
-data class UserReservation(val store: String, val productStore: String, val quantity: Int, val id: Int)
+data class UserReservation(val store: Store, val productStore: ProductStore, val quantity: Int, val id: Int)
