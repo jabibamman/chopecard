@@ -32,9 +32,23 @@
     <string name="email">Email</string>
     <string name="login">Login\n</string>
     <string name="register">Register</string>
+    <string name="logout">Logout</string>
 
     <!-- ActivityMain -->
     <string name="welcome">Welcome, %1$s</string>
     <string name="reserve_id">Reserve ID</string>
     <string name="password">Password</string>
+    <string name="image_opened">Image Opened</string>
+    <string name="close">Fermer</string>
+    <string name="logo_chopecard">logo chopecard</string>
+
+
+    <!-- DialogAddProduct -->
+    <string name="product_id">Product ID</string>
+    <string name="quantity">Quantity</string>
+    <string name="price">Price</string>
+
+    <!-- Shop List -->
+    <string name="shop_name">Shop Name</string>
+    <string name="shop_address">1234 Main Street, Anytown</string>
 </resources>

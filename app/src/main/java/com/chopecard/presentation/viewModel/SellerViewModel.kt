@@ -37,7 +37,7 @@ class SellerViewModel(
                     alertMessage.postValue("Erreur lors de l'ajout du produit.")
                     return@launch
                 }
-                Log.d("SellerViewModel", "Successfully added product: $result")
+                Log.d("SellerViewModel", "Successfully added product")
                 alertMessage.postValue("Produit ajouté avec succès au magasin.")
 
             } catch (e: Exception) {
@@ -68,7 +68,7 @@ class SellerViewModel(
                     alertMessage.postValue("Erreur lors de la suppression du produit.")
                     return@launch
                 }
-                Log.d("SellerViewModel", "Successfully deleted product: $result")
+                Log.d("SellerViewModel", "Successfully deleted product")
                 alertMessage.postValue("Produit supprimé avec succès du magasin.")
             } catch (e: Exception) {
                 Log.e("SellerViewModel", "Error deleting product", e)
@@ -85,7 +85,7 @@ class SellerViewModel(
                     alertMessage.postValue("Erreur lors de la mise à jour du produit.")
                     return@launch
                 }
-                Log.d("SellerViewModel", "Successfully updated product: $result")
+                Log.d("SellerViewModel", "Successfully updated product")
                 alertMessage.postValue("Produit mis à jour avec succès.")
             } catch (e: Exception) {
                 Log.e("SellerViewModel", "Error updating product", e)

@@ -4,8 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import com.chopecard.BuildConfig
 import com.chopecard.R
-import injectModuleDependencies
-import parseAndInjectConfiguration
+import com.chopecard.di.injectModuleDependencies
+import com.chopecard.di.parseAndInjectConfiguration
 
 class CollectorView : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {

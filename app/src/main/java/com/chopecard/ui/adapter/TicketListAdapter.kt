@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.chopecard.R
 import com.chopecard.domain.models.Ticket
@@ -55,10 +56,24 @@ class TicketListAdapter(
 
         override fun getItemCount() = ticketList.size
 
-        fun updateList(newList: List<Ticket>) {
-            Log.d("TicketListAdapter", "Tickets: $newList")
-            ticketList.clear()
-            ticketList.addAll(newList)
-            notifyDataSetChanged()
-        }
+    fun updateList(newList: List<Ticket>) {
+        val diffResult = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+            override fun getOldListSize(): Int = ticketList.size
+
+            override fun getNewListSize(): Int = newList.size
+
+            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return ticketList[oldItemPosition].ticketId == newList[newItemPosition].ticketId
+            }
+
+            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return ticketList[oldItemPosition] == newList[newItemPosition]
+            }
+        })
+
+        Log.d("TicketListAdapter", "Tickets: $newList")
+        ticketList.clear()
+        ticketList.addAll(newList)
+        diffResult.dispatchUpdatesTo(this)
+    }
 }

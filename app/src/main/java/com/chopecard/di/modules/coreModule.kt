@@ -1,7 +1,5 @@
 package com.chopecard.di.modules
 
-import CollectorViewModel
-import ManageFavoritesUseCase
 import com.chopecard.data.repository.AdminRepository
 import com.chopecard.data.repository.CardRepository
 import com.chopecard.data.repository.StoreRepository
@@ -21,10 +19,12 @@ import com.chopecard.domain.usecases.GetStoreProductsUseCase
 import com.chopecard.domain.usecases.GetStoresUseCase
 import com.chopecard.domain.usecases.GetTicketsUseCase
 import com.chopecard.domain.usecases.GetUserUseCase
+import com.chopecard.domain.usecases.ManageFavoritesUseCase
 import com.chopecard.domain.usecases.ReserveProductUseCase
 import com.chopecard.domain.usecases.UnreserveProductUseCase
 import com.chopecard.domain.usecases.UpdateProductUseCase
 import com.chopecard.presentation.viewModel.CardViewModel
+import com.chopecard.presentation.viewModel.CollectorViewModel
 import com.chopecard.presentation.viewModel.LoginViewModel
 import com.chopecard.presentation.viewModel.SellerViewModel
 import com.chopecard.presentation.viewModel.StoreViewModel
@@ -39,7 +39,7 @@ internal val coreModule = module {
     // Repositories
     single<CardRepository> { CardRepositoryImpl(get()) }
     single<StoreRepository> { StoreRepositoryImpl(get()) }
-    single { UserRepositoryImpl(get()) as UserRepository }
+    single<UserRepository> { UserRepositoryImpl(get()) }
     single<AdminRepository> { AdminRepositoryImpl(get()) }
 
     // Use Cases
@@ -60,7 +60,7 @@ internal val coreModule = module {
     factory { GetUserUseCase(get()) }
 
     // ViewModels
-    viewModel { CollectorViewModel(get()) }
+    viewModel { CollectorViewModel() }
     viewModel { SellerViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { CardViewModel(get()) }
     viewModel { StoreViewModel(get()) }

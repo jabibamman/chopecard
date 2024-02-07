@@ -2,7 +2,6 @@ package com.chopecard.data.repository
 
 import com.chopecard.data.model.Card
 import com.chopecard.data.model.CardSet
-import com.chopecard.domain.models.Booster
 
 interface CardRepository {
     suspend fun getCardByName(name: String): List<Card>

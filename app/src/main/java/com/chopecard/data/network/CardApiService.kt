@@ -3,7 +3,6 @@ package com.chopecard.data.network
 import com.chopecard.data.model.Card
 import com.chopecard.data.model.CardInfoResponse
 import com.chopecard.data.model.CardSetInfoResponse
-import com.chopecard.domain.models.Display
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
