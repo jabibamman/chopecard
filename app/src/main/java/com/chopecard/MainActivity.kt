@@ -1,9 +1,7 @@
 package com.chopecard
 
-import CollectorViewModel
 import YourCardListAdapter
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,20 +22,20 @@ class MainActivity : BaseActivity() {
             "Dragon Blanc aux yeux bleu",
             "spell",
             "",
-            "bien craqué", 0,0,0,"", "",
-            List<CardSet>(0) { CardSet("","","","","")},
-            List<CardImage>(0) { CardImage(0,"","","")},
-            List<CardPrice>(0) { CardPrice("","","","","")}
+            "bien craqué", 0, 0, 0, "", "",
+            List<CardSet>(0) { CardSet("", "", "", "", "") },
+            List<CardImage>(0) { CardImage(0, "", "", "") },
+            List<CardPrice>(0) { CardPrice("", "", "", "", "") }
         ),
         Card(
             0,
             "Fusion",
             "spell",
             "",
-            "bien craqué", 0,0,0,"", "",
-            List<CardSet>(0) { CardSet("","","","","")},
-            List<CardImage>(0) { CardImage(0,"","","")},
-            List<CardPrice>(0) { CardPrice("","","","","")}
+            "bien craqué", 0, 0, 0, "", "",
+            List<CardSet>(0) { CardSet("", "", "", "", "") },
+            List<CardImage>(0) { CardImage(0, "", "", "") },
+            List<CardPrice>(0) { CardPrice("", "", "", "", "") }
         ),
     )
 
@@ -60,4 +58,5 @@ class MainActivity : BaseActivity() {
 
         recyclerView.adapter = adapter
     }
+
 }
