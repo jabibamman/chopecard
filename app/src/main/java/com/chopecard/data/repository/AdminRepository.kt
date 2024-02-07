@@ -1,5 +1,6 @@
 package com.chopecard.data.repository
 
+import com.chopecard.data.model.DeleteTicketDTO
 import com.chopecard.domain.models.Product
 import com.chopecard.domain.models.Ticket
 
@@ -17,7 +18,7 @@ interface AdminRepository {
     suspend fun getTicketById(ticketId: Int): Ticket
 
     /** Deletes a ticket from the system */
-    suspend fun deleteTicketById(ticketId: Int): String
+    suspend fun deleteTicketById(deleteTicketDTO: DeleteTicketDTO): Boolean
 
     /** Deletes a product from the system */
     suspend fun deleteProductById(productId: Int): String
