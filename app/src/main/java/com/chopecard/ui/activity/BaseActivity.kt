@@ -19,7 +19,6 @@ open class BaseActivity : AppCompatActivity() {
     protected fun setupFooter() {
         findViewById<ImageButton>(R.id.btnShops)?.setOnClickListener {
             Log.d("FooterActivity", "Shops button clicked")
-
             val intent = Intent(this, ShopListActivity::class.java)
             startActivity(intent)
         }
