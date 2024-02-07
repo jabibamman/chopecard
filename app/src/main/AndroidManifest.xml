@@ -59,13 +59,13 @@
 
         <activity android:name=".ui.activity.ShopListActivity"
                 android:exported="true"
-                android:theme="@style/Theme.Chopecard" >
+                android:theme="@style/Theme.AppCompat" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.view.SellerView"
+        <activity android:name=".ui.activity.SellerActivity"
                 android:exported="true"
                 android:theme="@style/Theme.AppCompat" >
             <intent-filter>
@@ -74,6 +74,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.activity.AdminActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 

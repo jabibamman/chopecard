@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.chopecard.MainActivity
 import com.chopecard.R
+import com.chopecard.data.model.LoginUserDTO
 import com.chopecard.data.model.UserDTO
 import com.chopecard.data.storage.UserPreferences
 import com.chopecard.presentation.viewModel.LoginViewModel
@@ -93,10 +94,11 @@ class LoginRegisterActivity : AppCompatActivity() {
     }
 
     private fun performLogin() {
-        val username = findViewById<EditText>(R.id.etName).text.toString()
+        val password = findViewById<EditText>(R.id.etPassword).text.toString()
         val email = findViewById<EditText>(R.id.etMail).text.toString()
+        val loginUserDTO = LoginUserDTO(email,password)
 
-        loginViewModel.loginUser(email)
+        loginViewModel.loginUser(loginUserDTO)
         Log.d("LoginRegisterActivity", "Attempting login with email: $email")
 
         loginViewModel.userData.observe(this, Observer { user ->
@@ -114,8 +116,9 @@ class LoginRegisterActivity : AppCompatActivity() {
     private fun performRegistration() {
         val name = findViewById<EditText>(R.id.etName).text.toString()
         val email = findViewById<EditText>(R.id.etMail).text.toString()
+        val password = findViewById<EditText>(R.id.etPassword).text.toString()
 
-        val user = UserDTO(name, email)
+        val user = UserDTO(name, email, password)
         Log.d("LoginRegisterActivity", "Attempting registration with email: $email")
 
         loginViewModel.createUser(user)
