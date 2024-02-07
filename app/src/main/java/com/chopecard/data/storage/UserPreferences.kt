@@ -46,11 +46,20 @@ object UserPreferences {
     fun clearUserLogin(context: Context) {
         val sharedPreferences = context.getSharedPreferences(PREFERENCES_FILE_KEY, Context.MODE_PRIVATE)
         with(sharedPreferences.edit()) {
-            putBoolean(IS_LOGGED_IN_KEY, false)
             putInt("userId", -1)
             apply()
         }
+    }
 
+    fun clearAllPreference(context: Context) {
+        val sharedPreferences = context.getSharedPreferences(PREFERENCES_FILE_KEY, Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("userRole", "USER")
+            putInt("userId", -1)
+            putString("userName", "")
+
+            apply()
+        }
     }
 
 }
