@@ -61,7 +61,7 @@ class TicketViewModel(
                 getTickets()
             }
             catch (e: Exception) {
-                Log.e("SellerViewModel", "Error adding product", e)
+                Log.e("TicketViewModel", "Error adding ticket", e)
                 alertMessage.postValue("An error occured when adding ticket.")
             }
         }

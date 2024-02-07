@@ -1,5 +1,6 @@
 package com.chopecard.ui.adapter
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chopecard.R
 import com.chopecard.domain.models.Ticket
 import com.chopecard.presentation.viewModel.TicketViewModel
+import com.chopecard.ui.utils.showConfirmationAlert
 
 class TicketListAdapter(
     private val ticketList: MutableList<Ticket>,
-    private val viewModel: TicketViewModel) :
-    RecyclerView.Adapter<TicketListAdapter.ViewHolder>() {
-        class ViewHolder(view: View, viewModel: TicketViewModel) : RecyclerView.ViewHolder(view) {
+    private val viewModel: TicketViewModel,
+    private val context: Context
+) : RecyclerView.Adapter<TicketListAdapter.ViewHolder>() {
+        class ViewHolder(view: View, viewModel: TicketViewModel, context: Context) : RecyclerView.ViewHolder(view) {
             private val subject: TextView = view.findViewById(R.id.ticketSubject)
             private val messages: TextView = view.findViewById(R.id.ticketMessages)
             private val deleteButton: ImageButton = view.findViewById(R.id.ticketDelete)
@@ -25,7 +28,10 @@ class TicketListAdapter(
                 deleteButton.setOnClickListener {
                     currentTicket?.let { ticket ->
                         Log.d("TicketListAdapter", "Delete button clicked: $ticket")
-                        viewModel.deleteTicket(ticket.ticketId)
+                        showConfirmationAlert(
+                            "Are you sure you want to delete this ticket?", context) {
+                            viewModel.deleteTicket(ticket.ticketId)
+                        }
                     }
                 }
             }
@@ -40,7 +46,7 @@ class TicketListAdapter(
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.ticket_item, parent, false)
-            return ViewHolder(view, viewModel)
+            return ViewHolder(view, viewModel, context)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {

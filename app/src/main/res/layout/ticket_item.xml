@@ -37,8 +37,8 @@
 
         <ImageButton
             android:id="@+id/ticketDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:src="@drawable/ic_delete"
             android:contentDescription="@string/delete_ticket"
             android:layout_alignParentEnd="true" />
