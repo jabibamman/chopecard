@@ -26,14 +26,15 @@ open class BaseActivity : AppCompatActivity() {
                 Log.d("FooterActivity", "Admin button clicked")
                 val intent = Intent(this, AdminActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
 
         findViewById<ImageButton>(R.id.btnShops)?.setOnClickListener {
             Log.d("FooterActivity", "Shops button clicked")
-
             val intent = Intent(this, ShopListActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         findViewById<ImageButton>(R.id.btnHome)?.setOnClickListener {
@@ -41,6 +42,7 @@ open class BaseActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
+            finish()
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.chopecard.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
@@ -28,7 +29,9 @@ class ShopListActivity : BaseActivity() {
         findViewById<ImageButton>(R.id.btnLogout)?.setOnClickListener {
             Log.d("ShopListActivity", "Logout button clicked")
             UserPreferences.clearAllPreference(this)
-            setContentView(R.layout.activity_login_register)
+            val intent = Intent(this, LoginRegisterActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

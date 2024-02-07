@@ -41,7 +41,8 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:src="@drawable/ic_logout"
-        android:contentDescription="@string/nearby"
+        android:layout_margin="8dp"
+        android:contentDescription="@string/logout"
         app:layout_constraintBottom_toTopOf="@id/footerLayout"
         app:layout_constraintEnd_toEndOf="@id/footerLayout" />
 

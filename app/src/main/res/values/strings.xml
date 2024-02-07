@@ -32,6 +32,7 @@
     <string name="email">Email</string>
     <string name="login">Login\n</string>
     <string name="register">Register</string>
+    <string name="logout">Logout</string>
 
     <!-- ActivityMain -->
     <string name="welcome">Welcome, %1$s</string>
