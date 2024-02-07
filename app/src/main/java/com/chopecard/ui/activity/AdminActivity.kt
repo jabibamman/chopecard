@@ -25,7 +25,7 @@ class AdminActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.admin_layout)
         setupFooter()
-        setupListeners()
+        setupListener()
         setupRecyclerView()
         observeTickets()
         ticketViewModel.getTickets()
@@ -33,7 +33,7 @@ class AdminActivity : BaseActivity() {
 
     private fun setupRecyclerView() {
         val recyclerView = findViewById<RecyclerView>(R.id.rvTickets)
-        val adapter = TicketListAdapter(mutableListOf())
+        val adapter = TicketListAdapter(mutableListOf(), ticketViewModel)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }
@@ -57,7 +57,7 @@ class AdminActivity : BaseActivity() {
         }
     }
 
-    private fun setupListeners() {
+    private fun setupListener() {
         findViewById<Button>(R.id.addTicket)?.setOnClickListener {
             Log.d("AdminActivity", "Add ticket button clicked")
             onAddTicket()
