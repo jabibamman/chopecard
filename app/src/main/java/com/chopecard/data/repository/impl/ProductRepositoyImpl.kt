@@ -21,9 +21,9 @@ class ProductRepositoyImpl(private val productApiService: ProductApiService) : P
         val productDTO = productApiService.getProductById(productId)
         return try {
             val response = productDTO.execute()
-            response.body() ?: Product(0, "", "", 0f, 0f)
+            response.body() ?: Product(0, "", "", 0f, 0f, "")
         } catch (e: Exception) {
-            Product(0, "", "", 0f, 0f)
+            Product(0, "", "", 0f, 0f, "")
         }
     }
 }

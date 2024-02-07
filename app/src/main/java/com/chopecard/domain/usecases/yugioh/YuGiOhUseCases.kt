@@ -5,7 +5,7 @@ import com.chopecard.data.model.CardSet
 import com.chopecard.data.repository.CardRepository
 
 class GetYugiohCardInfoByNameUseCase(private val repository: CardRepository) {
-    suspend fun execute(cardName: String): Card {
+    suspend fun execute(cardName: String): List<Card> {
         return repository.getYugiohCardByName(cardName)
     }
 }

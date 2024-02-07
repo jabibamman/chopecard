@@ -4,7 +4,7 @@ import com.chopecard.data.model.Card
 import com.chopecard.data.model.CardSet
 
 interface CardRepository {
-    suspend fun getYugiohCardByName(name: String): Card
+    suspend fun getYugiohCardByName(name: String): List<Card>
     suspend fun getYugiohCardsByType(type: String): List<Card>
     suspend fun getYugiohCardSetByCode(setCode: String): List<CardSet>
 
