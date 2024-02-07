@@ -18,8 +18,8 @@
         tools:targetApi="31" >
 
         <activity android:name=".ui.activity.SplashActivity"
-                android:exported="true"
-                android:theme="@style/Theme.Chopecard">
+            android:exported="true"
+            android:theme="@style/Theme.Chopecard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,8 +27,8 @@
         </activity>
 
         <activity android:name=".ui.activity.LoginRegisterActivity"
-                android:exported="true"
-                android:theme="@style/Theme.AppCompat" >
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -39,7 +39,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-                android:theme="@style/Theme.Chopecard" >
+            android:theme="@style/Theme.Chopecard" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -47,9 +47,9 @@
         </activity>
 
         <activity
-                android:name=".ui.activity.ImageActivity"
-                android:theme="@style/Theme.AppCompat"
-                android:exported="false">
+            android:name=".ui.activity.ImageActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.PICK" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -58,16 +58,16 @@
         </activity>
 
         <activity android:name=".ui.activity.ShopListActivity"
-                android:exported="true"
-                android:theme="@style/Theme.AppCompat" >
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.SellerActivity"
-                android:exported="true"
-                android:theme="@style/Theme.AppCompat" >
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -83,6 +83,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <!-- Ajout de l'activité ProductDetailActivity -->
+        <activity android:name=".ui.activity.ProductDetailActivity" />
 
     </application>
 

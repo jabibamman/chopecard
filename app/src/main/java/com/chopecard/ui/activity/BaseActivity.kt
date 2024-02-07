@@ -1,5 +1,4 @@
 package com.chopecard.ui.activity
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -35,6 +34,13 @@ open class BaseActivity : AppCompatActivity() {
             Log.d("FooterActivity", "Profile button clicked")
             val intent = Intent(this, AdminActivity::class.java)
             startActivity(intent)
+
+        }
+        findViewById<ImageButton>(R.id.btnFavorites)?.setOnClickListener {
+            Log.d("FooterActivity", "Profile button clicked")
+            val intent = Intent(this, ProductDetailActivity::class.java)
+            startActivity(intent)
+
         }
     }
 }
