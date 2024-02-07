@@ -36,7 +36,7 @@ class LoginRegisterActivity : AppCompatActivity() {
 
         loginViewModel.userData.observe(this) { user ->
             if (user.userId > 0) {
-                UserPreferences.saveUserLogin(this, user.userId, user.name)
+                UserPreferences.saveUserLogin(this, user.userId, user.name, user.role)
                 UserPreferences.setWelcomeShown(this)
                 navigateTo(MainActivity::class.java)
             }
@@ -73,7 +73,7 @@ class LoginRegisterActivity : AppCompatActivity() {
             when (result) {
                 is UserCreationResult.Success -> {
                     val user = result.user
-                    UserPreferences.saveUserLogin(this, user.userId, user.name)
+                    UserPreferences.saveUserLogin(this, user.userId, user.name, user.role)
                     UserPreferences.setWelcomeShown(this)
                     navigateTo(MainActivity::class.java)
                 }
@@ -103,7 +103,7 @@ class LoginRegisterActivity : AppCompatActivity() {
 
         loginViewModel.userData.observe(this, Observer { user ->
             if (user.userId > 0) {
-                UserPreferences.saveUserLogin(this, user.userId, user.name)
+                UserPreferences.saveUserLogin(this, user.userId, user.name, user.role)
                 UserPreferences.setWelcomeShown(this)
                 navigateTo(MainActivity::class.java)
             } else {
@@ -130,7 +130,7 @@ class LoginRegisterActivity : AppCompatActivity() {
                 is UserCreationResult.Success -> {
                     Log.d("LoginRegisterActivity", "Registration success. Updating UserPreferences...")
 
-                    UserPreferences.saveUserLogin(this, result.user.userId, result.user.name)
+                    UserPreferences.saveUserLogin(this, result.user.userId, result.user.name, result.user.role)
                     UserPreferences.setWelcomeShown(this)
 
                     Log.d("LoginRegisterActivity", "Your userPreferences: ${UserPreferences.getUserLogin(this)}")
