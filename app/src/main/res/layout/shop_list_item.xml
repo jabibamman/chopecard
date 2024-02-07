@@ -17,7 +17,7 @@
             android:id="@+id/tvShopName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shop Name"
+            android:text="@string/shop_name"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black" />
@@ -26,7 +26,7 @@
             android:id="@+id/tvShopAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1234 Main Street, Anytown"
+            android:text="@string/shop_address"
             android:textSize="14sp"
             android:layout_marginTop="4dp"
             android:textColor="@color/dark_gray" />

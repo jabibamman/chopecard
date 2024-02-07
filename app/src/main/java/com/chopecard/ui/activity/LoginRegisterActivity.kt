@@ -101,7 +101,7 @@ class LoginRegisterActivity : AppCompatActivity() {
         loginViewModel.loginUser(loginUserDTO)
         Log.d("LoginRegisterActivity", "Attempting login with email: $email")
 
-        loginViewModel.userData.observe(this, Observer { user ->
+        loginViewModel.userData.observe(this) { user ->
             if (user.userId > 0) {
                 UserPreferences.saveUserLogin(this, user.userId, user.name, user.role)
                 UserPreferences.setWelcomeShown(this)
@@ -109,7 +109,7 @@ class LoginRegisterActivity : AppCompatActivity() {
             } else {
                 showAlert("Invalid credentials", this)
             }
-        })
+        }
 
     }
 
@@ -125,23 +125,35 @@ class LoginRegisterActivity : AppCompatActivity() {
 
         Log.d("LoginRegisterActivity", "User created")
 
-        loginViewModel.userCreationResult.observe(this, Observer { result ->
+        loginViewModel.userCreationResult.observe(this) { result ->
             when (result) {
                 is UserCreationResult.Success -> {
-                    Log.d("LoginRegisterActivity", "Registration success. Updating UserPreferences...")
+                    Log.d(
+                        "LoginRegisterActivity",
+                        "Registration success. Updating UserPreferences..."
+                    )
 
-                    UserPreferences.saveUserLogin(this, result.user.userId, result.user.name, result.user.role)
+                    UserPreferences.saveUserLogin(
+                        this,
+                        result.user.userId,
+                        result.user.name,
+                        result.user.role
+                    )
                     UserPreferences.setWelcomeShown(this)
 
-                    Log.d("LoginRegisterActivity", "Your userPreferences: ${UserPreferences.getUserLogin(this)}")
+                    Log.d(
+                        "LoginRegisterActivity",
+                        "Your userPreferences: ${UserPreferences.getUserLogin(this)}"
+                    )
                     navigateTo(MainActivity::class.java)
                 }
+
                 is UserCreationResult.Failure -> {
                     Log.d("LoginRegisterActivity", "Registration failed")
                     showAlert("Registration failed", this)
                 }
             }
-        })
+        }
     }
 
 }
