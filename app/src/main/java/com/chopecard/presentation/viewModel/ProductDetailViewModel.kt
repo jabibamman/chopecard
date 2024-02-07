@@ -1,26 +1,21 @@
 package com.chopecard.presentation.viewModel
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chopecard.domain.usecases.GetProductDetailUseCase
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class ProductDetailViewModel(private val getProductDetailUseCase: GetProductDetailUseCase) : ViewModel() {
-
-    /*
-    private val _productDetail = MutableLiveData<Product>()
-    val productDetail: LiveData<Product> = _productDetail
-*/
-
 
     fun loadProductDetail(productId: Int) {
         viewModelScope.launch {
             try {
-                getProductDetailUseCase.execute(productId);
-                // Update UI accordingly based on success
-
+                val product = getProductDetailUseCase.execute(productId)
+                // Mettez à jour l'UI avec les détails du produit récupéré
+            } catch (e: HttpException) {
+                // Gérer les erreurs HTTP
             } catch (e: Exception) {
-                // Handle error
+                // Gérer les autres erreurs
             }
         }
     }

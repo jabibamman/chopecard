@@ -27,6 +27,7 @@ import com.chopecard.presentation.viewModel.LoginViewModel
 import com.chopecard.presentation.viewModel.SellerViewModel
 import com.chopecard.presentation.viewModel.StoreViewModel
 import com.chopecard.presentation.viewModel.TicketViewModel
+import com.chopecard.presentation.viewModel.ProductDetailViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -54,6 +55,7 @@ internal val coreModule = module {
     factory { UpdateProductUseCase(get()) }
     factory { CreateUserUseCase(get()) }
     factory { GetUserUseCase(get()) }
+    factory{GetStoreProductsUseCase(get())}
 
     // ViewModels
     viewModel { CollectorViewModel(get()) }
@@ -62,4 +64,5 @@ internal val coreModule = module {
     viewModel { StoreViewModel(get()) }
     viewModel { LoginViewModel(get(), get()) }
     viewModel { TicketViewModel(get()) }
+    viewModel {ProductDetailViewModel(get())}
 }
