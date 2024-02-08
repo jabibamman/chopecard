@@ -8,14 +8,14 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 interface CardApiService {
-    @GET("cardinfo.php")
-    suspend fun getCardInfo(@Query("name") cardName: String): CardInfoResponse
+    @GET("/v1/yugioh/cardsByName")
+    suspend fun getYugiohCardInfo(@Query("name") cardName: String): CardInfoResponse
 
-    @GET("cardinfo.php")
-    suspend fun getCardsInfoByType(@Query("type") cardType: String): CardInfoResponse
+    @GET("/v1/yugioh/cardsByType")
+    suspend fun getYugiohCardsInfoByType(@Query("type") cardType: String): CardInfoResponse
 
-    @GET("cardsetsinfo.php")
-    suspend fun getCardSetInfo(@Query("setcode") setCode: String): CardSetInfoResponse
+    @GET("/v1/yugioh/cardSetInfo")
+    suspend fun getYugiohCardSetInfo(@Query("setcode") setCode: String): CardSetInfoResponse
 
     @GET("/v1/cards")
     fun getCards(): Call<List<Card>>

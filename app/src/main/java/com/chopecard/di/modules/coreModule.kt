@@ -2,10 +2,12 @@ package com.chopecard.di.modules
 
 import com.chopecard.data.repository.AdminRepository
 import com.chopecard.data.repository.CardRepository
+import com.chopecard.data.repository.ProductRepository
 import com.chopecard.data.repository.StoreRepository
 import com.chopecard.data.repository.UserRepository
 import com.chopecard.data.repository.impl.AdminRepositoryImpl
 import com.chopecard.data.repository.impl.CardRepositoryImpl
+import com.chopecard.data.repository.impl.ProductRepositoryImpl
 import com.chopecard.data.repository.impl.StoreRepositoryImpl
 import com.chopecard.data.repository.impl.UserRepositoryImpl
 import com.chopecard.domain.usecases.AddProductUseCase
@@ -14,6 +16,7 @@ import com.chopecard.domain.usecases.CreateStoreUseCase
 import com.chopecard.domain.usecases.CreateUserUseCase
 import com.chopecard.domain.usecases.DeleteProductUseCase
 import com.chopecard.domain.usecases.DeleteTicketUseCase
+import com.chopecard.domain.usecases.GetProductsUseCase
 import com.chopecard.domain.usecases.GetReservationsUseCase
 import com.chopecard.domain.usecases.GetStoreProductsUseCase
 import com.chopecard.domain.usecases.GetStoresUseCase
@@ -23,6 +26,9 @@ import com.chopecard.domain.usecases.ManageFavoritesUseCase
 import com.chopecard.domain.usecases.ReserveProductUseCase
 import com.chopecard.domain.usecases.UnreserveProductUseCase
 import com.chopecard.domain.usecases.UpdateProductUseCase
+import com.chopecard.domain.usecases.yugioh.GetYugiohCardInfoByNameUseCase
+import com.chopecard.domain.usecases.yugioh.GetYugiohCardSetInfoUseCase
+import com.chopecard.domain.usecases.yugioh.GetYugiohCardsInfoByTypeUseCase
 import com.chopecard.presentation.viewModel.CardViewModel
 import com.chopecard.presentation.viewModel.CollectorViewModel
 import com.chopecard.presentation.viewModel.LoginViewModel
@@ -37,6 +43,7 @@ import org.koin.dsl.module
  */
 internal val coreModule = module {
     // Repositories
+    single<ProductRepository> { ProductRepositoryImpl(get()) }
     single<CardRepository> { CardRepositoryImpl(get()) }
     single<StoreRepository> { StoreRepositoryImpl(get()) }
     single<UserRepository> { UserRepositoryImpl(get()) }
@@ -58,6 +65,11 @@ internal val coreModule = module {
     factory { UpdateProductUseCase(get()) }
     factory { CreateUserUseCase(get()) }
     factory { GetUserUseCase(get()) }
+    factory { GetYugiohCardSetInfoUseCase(get()) }
+    factory { GetYugiohCardInfoByNameUseCase(get()) }
+    factory { GetYugiohCardsInfoByTypeUseCase(get()) }
+    factory { GetStoreProductsUseCase(get()) }
+    factory { GetProductsUseCase(get()) }
 
     // ViewModels
     viewModel { CollectorViewModel() }

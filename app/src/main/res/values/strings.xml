@@ -51,4 +51,5 @@
     <!-- Shop List -->
     <string name="shop_name">Shop Name</string>
     <string name="shop_address">1234 Main Street, Anytown</string>
+    <string name="todo">TODO</string>
 </resources>

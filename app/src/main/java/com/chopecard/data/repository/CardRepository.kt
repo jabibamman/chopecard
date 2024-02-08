@@ -4,9 +4,9 @@ import com.chopecard.data.model.Card
 import com.chopecard.data.model.CardSet
 
 interface CardRepository {
-    suspend fun getCardByName(name: String): List<Card>
-    suspend fun getCardsByType(type: String): List<Card>
-    suspend fun getCardSetByCode(setCode: String): List<CardSet>
+    suspend fun getYugiohCardByName(name: String): List<Card>
+    suspend fun getYugiohCardsByType(type: String): List<Card>
+    suspend fun getYugiohCardSetByCode(setCode: String): List<CardSet>
 
     // Retrieves a list of all boosters
     suspend fun getCards(): List<Card>
