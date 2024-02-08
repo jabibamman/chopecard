@@ -19,8 +19,6 @@ sealed class StoreDataState {
     data class Error(val exception: Throwable): StoreDataState()
 }
 
-
-
 class StoreViewModel(
     private val getStoresUseCase: GetStoresUseCase,
 ) : ViewModel() {

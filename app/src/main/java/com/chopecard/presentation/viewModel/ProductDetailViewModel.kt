@@ -24,6 +24,7 @@ class ProductDetailViewModel(
     val productLiveData = MutableLiveData<ProductDetailState>()
 
     fun loadProductDetail(productName: String) {
+
         productLiveData.postValue(ProductDetailState.Loading)
         viewModelScope.launch {
             try {

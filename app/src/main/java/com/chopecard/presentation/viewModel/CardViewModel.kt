@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.chopecard.data.model.Card
 import com.chopecard.data.model.CardUIModel
 import com.chopecard.data.repository.CardRepository
+import com.chopecard.domain.usecases.GetProductDetailUseCase
 import kotlinx.coroutines.launch
 
 class CardViewModel(private val cardRepository: CardRepository) : ViewModel() {
@@ -13,7 +14,7 @@ class CardViewModel(private val cardRepository: CardRepository) : ViewModel() {
     fun loadCardInfo(cardName: String) {
         viewModelScope.launch {
             try {
-                val cards = cardRepository.getYugiohCardByName(cardName)
+                val cards = GetProductDetailUseCase(cardRepository).execute(cardName)
                 cards[0].let {
                         cardInfoLiveData.postValue(mapToCardUIModel(it))
                 }

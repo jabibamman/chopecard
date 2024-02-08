@@ -35,7 +35,6 @@ class ProductDetailActivity : BaseActivity() {
         setTheme(R.style.Theme_Chopecard)
         binding = ProductDetailLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setupFooter()
         setupListener()
         initView()
 

@@ -25,7 +25,6 @@ class UserReservationListFragment : Fragment() {
         recyclerView = view.findViewById(R.id.rvUserReservationList)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Récupérer et afficher les réservations
         arguments?.getParcelableArrayList<UserReservation>("reservations")?.let { reservations ->
             updateRecyclerView(reservations)
         }
@@ -33,7 +32,7 @@ class UserReservationListFragment : Fragment() {
 
     private fun updateRecyclerView(reservations: List<UserReservation>) {
         recyclerView.adapter = UserReservationListAdapter(reservations) { userReservation ->
-            // Implémentez la logique de clic sur l'élément ici si nécessaire
+            // TODO: il faudre implémenter la logique de clic sur l'élément ici si *nécessaire*
         }
     }
 }

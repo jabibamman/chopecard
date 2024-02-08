@@ -28,7 +28,6 @@ class SellerViewModel(
 ) : ViewModel() {
     val alertMessage = MutableLiveData<String>()
 
-
     fun addProduct(storeId: Int, productId: Int, productStoreDTO: ProductStoreDTO) {
         viewModelScope.launch {
             try {
