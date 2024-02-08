@@ -1,6 +1,7 @@
 package com.chopecard.data.repository.impl
 
 import android.util.Log
+import com.chopecard.data.model.DeleteTicketDTO
 import com.chopecard.data.network.AdminApiService
 import com.chopecard.data.repository.AdminRepository
 import com.chopecard.domain.models.Product
@@ -8,19 +9,19 @@ import com.chopecard.domain.models.Ticket
 import com.chopecard.domain.models.TicketMessage
 
 class AdminRepositoryImpl(private val adminApiService: AdminApiService) : AdminRepository {
-    override suspend fun createTicket(ticket: Ticket): String {
+    override suspend fun createTicket(ticket: Ticket): Boolean {
         return try {
             val response = adminApiService.createTicket(ticket)
             if(response.isSuccessful) {
                 Log.d("AdminRepositoryImpl", "Ticket created: ${response.body()}")
-                response.body() ?: String()
+                true
             } else {
                 Log.e("AdminRepositoryImpl", "Error creating ticket: HTTP ${response.code()} ${response.message()}")
-                String()
+                false
             }
-            response.body() ?: String()
         } catch (e: Exception) {
-            String()
+            Log.e("AdminRepositoryImpl", "Error creating ticket: $e")
+            false
         }
     }
 
@@ -74,21 +75,20 @@ class AdminRepositoryImpl(private val adminApiService: AdminApiService) : AdminR
         }
     }
 
-    override suspend fun deleteTicketById(ticketId: Int): String{
+    override suspend fun deleteTicketById(deleteTicketDTO: DeleteTicketDTO): Boolean {
         return try {
-            val response = adminApiService.deleteTicketById(ticketId)
+            val response = adminApiService.deleteTicketById(deleteTicketDTO.ticketId)
             if(response.isSuccessful) {
-                Log.d("AdminRepositoryImpl", "Ticket deleted: ${response.body()}")
-                response.body() ?: String()
+                Log.d("AdminRepositoryImpl", "Ticket deleted")
+                true
             }
             else {
                 Log.e("AdminRepositoryImpl", "Error deleting ticket: HTTP ${response.code()} ${response.message()}")
-                String()
+                false
             }
-            String()
         } catch (e: Exception) {
             Log.e("AdminRepositoryImpl", "Exception when calling API", e)
-            String()
+            false
         }
     }
 

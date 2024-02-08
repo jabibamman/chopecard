@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.chopecard.R
 import com.chopecard.domain.models.Store
@@ -13,6 +14,8 @@ class ShopListAdapter(private val shopList: MutableList<Store>, private val onCl
 
     class ViewHolder(view: View, val onClick: (Store) -> Unit) : RecyclerView.ViewHolder(view) {
         private val shopName: TextView = view.findViewById(R.id.tvShopName)
+        private val shopAdress: TextView = view.findViewById(R.id.tvShopAddress)
+
         private var currentStore: Store? = null
 
         init {
@@ -24,6 +27,7 @@ class ShopListAdapter(private val shopList: MutableList<Store>, private val onCl
         fun bind(store: Store) {
             currentStore = store
             shopName.text = store.name
+            shopAdress.text = store.address
         }
     }
 
@@ -40,8 +44,22 @@ class ShopListAdapter(private val shopList: MutableList<Store>, private val onCl
     override fun getItemCount() = shopList.size
 
     fun updateList(newList: List<Store>) {
+        val diffResult = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+            override fun getOldListSize(): Int = shopList.size
+
+            override fun getNewListSize(): Int = newList.size
+
+            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return shopList[oldItemPosition].id == newList[newItemPosition].id
+            }
+
+            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return shopList[oldItemPosition] == newList[newItemPosition]
+            }
+        })
+
         shopList.clear()
         shopList.addAll(newList)
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 }

@@ -37,7 +37,7 @@ class ShopListFragment : Fragment() {
     }
 
     private fun setupRecyclerView(view: View) {
-        recyclerView = view.findViewById<RecyclerView>(R.id.rvShopList)
+        recyclerView = view.findViewById(R.id.rvShopList)
         adapter = ShopListAdapter(mutableListOf()) { store ->
             val intent = Intent(activity, SellerActivity::class.java).apply {
                 putExtra("store", store)
@@ -66,6 +66,6 @@ class ShopListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        progressBar = activity?.findViewById<ProgressBar>(R.id.progressBar) ?: throw IllegalStateException("Activity cannot be null")
+        progressBar = activity?.findViewById(R.id.progressBar) ?: throw IllegalStateException("Activity cannot be null")
     }
 }

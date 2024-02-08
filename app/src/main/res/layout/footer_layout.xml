@@ -42,6 +42,7 @@
                 android:layout_weight="1"
                 android:src="@drawable/ic_nearby"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:visibility="gone"
                 android:contentDescription="@string/nearby" />
 
         <ImageButton

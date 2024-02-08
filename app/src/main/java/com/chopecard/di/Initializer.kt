@@ -1,3 +1,5 @@
+package com.chopecard.di
+
 import android.content.Context
 import com.chopecard.BuildConfig
 import com.chopecard.di.modules.coreModule

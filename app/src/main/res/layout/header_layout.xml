@@ -3,6 +3,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/header_padding"
+        android:gravity="top"
         android:background="@color/header_background">
 
    <ImageView
@@ -10,7 +11,8 @@
            android:layout_width="@dimen/logo_width"
            android:layout_height="@dimen/logo_height"
            android:src="@drawable/logo"
-           android:layout_centerInParent="true" />
+           android:layout_centerInParent="true"
+           android:contentDescription="@string/logo_chopecard" />
 
 
 </RelativeLayout>
