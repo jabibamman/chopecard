@@ -12,7 +12,7 @@ import com.chopecard.R
 import com.chopecard.domain.models.Product
 import com.chopecard.ui.activity.ImageActivity
 
-class YourCardListAdapter(private val cardList: List<Product>, private val context: Context) :
+class YourCardListAdapter(private val cardList: MutableList<Product>, private val context: Context) :
     RecyclerView.Adapter<YourCardListAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,17 +33,15 @@ class YourCardListAdapter(private val cardList: List<Product>, private val conte
         holder.tvName.text = currentCard.name
         holder.tvDescription.text = currentCard.description
 
-        val imageUrl = "https://images.ygoprodeck.com/images/cards/78121572.jpg"
-
         Glide.with(context)
-            .load(imageUrl)
+            .load(currentCard.imageUrl)
             .placeholder(R.drawable.placeholder_image)
             .error(R.drawable.error_image)
             .into(holder.imageView)
 
         holder.imageView.setOnClickListener {
             val intent = Intent(context, ImageActivity::class.java)
-            intent.putExtra("image_url", imageUrl)
+            intent.putExtra("image_url", currentCard.imageUrl)
             context.startActivity(intent)
         }
 
@@ -56,8 +54,8 @@ class YourCardListAdapter(private val cardList: List<Product>, private val conte
     }
 
     fun updateList(products: List<Product>) {
-        cardList.toMutableList().clear()
-        cardList.toMutableList().addAll(products)
+        cardList.clear()
+        cardList.addAll(products)
         notifyDataSetChanged()
     }
 }
