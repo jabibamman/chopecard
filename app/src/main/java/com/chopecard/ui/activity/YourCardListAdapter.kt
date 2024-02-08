@@ -39,14 +39,13 @@ class YourCardListAdapter(private val cardList: MutableList<Product>, private va
             .error(R.drawable.error_image)
             .into(holder.imageView)
 
+        /*
         holder.imageView.setOnClickListener {
-            val intent = Intent(context, ImageActivity::class.java)
-            intent.putExtra("image_url", currentCard.imageUrl)
+            val intent = Intent(context, ImageActivity::class.java) //TODO: Changer de page là et décommenter
+            intent.putExtra("image_name", currentCard.name)
             context.startActivity(intent)
         }
-
-        holder.itemView.setOnClickListener {
-        }
+         */
     }
 
     override fun getItemCount(): Int {
