@@ -1,6 +1,6 @@
     package com.chopecard
 
-    import YourCardListAdapter
+    import CollectorCardListAdapter
     import android.os.Bundle
     import android.util.Log
     import android.view.View
@@ -35,7 +35,7 @@
 
         private fun setupRecyclerView() {
             val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-            val adapter = YourCardListAdapter(mutableListOf(), this)
+            val adapter = CollectorCardListAdapter(mutableListOf(), this)
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = adapter
         }
@@ -50,7 +50,7 @@
                     is ProductDataState.Success -> {
                         findViewById<ProgressBar>(R.id.productsprogressBar).visibility = View.GONE
                         val adapter =
-                            findViewById<RecyclerView>(R.id.recyclerView).adapter as? YourCardListAdapter
+                            findViewById<RecyclerView>(R.id.recyclerView).adapter as? CollectorCardListAdapter
                         adapter?.updateList(productDataState.products)
                     }
 

@@ -1,5 +1,6 @@
 package com.chopecard.data.repository.impl
 
+import android.util.Log
 import com.chopecard.data.model.Card
 import com.chopecard.data.model.CardImage
 import com.chopecard.data.model.CardPrice
@@ -13,16 +14,30 @@ class CardRepositoryImpl(private val cardApiService: CardApiService) : CardRepos
     override suspend fun getYugiohCardByName(name: String): List<Card> {
         return try {
             val response = cardApiService.getYugiohCardInfo(name)
-            response.data
+            if (response.isSuccessful) {
+                Log.d("CardRepositoryImpl", "Cards: ${response.body().toString()}")
+                response.body()?.data ?: emptyList()
+            } else {
+                Log.e("CardRepositoryImpl", "Error getting cards: HTTP ${response.code()} ${response.errorBody()?.string()}")
+                emptyList()
+            }
         } catch (e: Exception) {
+            Log.e("CardRepositoryImpl", "Exception when calling API", e)
             emptyList()
         }
     }
     override suspend fun getYugiohCardsByType(type: String): List<Card> {
         return try {
             val response = cardApiService.getYugiohCardsInfoByType(type)
-            response.data
+            if (response.isSuccessful) {
+                Log.d("CardRepositoryImpl", "Cards: ${response.body().toString()}")
+                response.body()?.data ?: emptyList()
+            } else {
+                Log.e("CardRepositoryImpl", "Error getting cards: HTTP ${response.code()} ${response.errorBody()?.string()}")
+                emptyList()
+            }
         } catch (e: Exception) {
+            Log.e("CardRepositoryImpl", "Exception when calling API", e)
             emptyList()
         }
     }
@@ -30,8 +45,15 @@ class CardRepositoryImpl(private val cardApiService: CardApiService) : CardRepos
     override suspend fun getYugiohCardSetByCode(setCode: String): List<CardSet> {
         return try {
             val response = cardApiService.getYugiohCardSetInfo(setCode)
-            response.data
+            if (response.isSuccessful) {
+                Log.d("CardRepositoryImpl", "Card Sets: ${response.body().toString()}")
+                response.body()?.data ?: emptyList()
+            } else {
+                Log.e("CardRepositoryImpl", "Error getting card sets: HTTP ${response.code()} ${response.errorBody()?.string()}")
+                emptyList()
+            }
         } catch (e: Exception) {
+            Log.e("CardRepositoryImpl", "Exception when calling API", e)
             emptyList()
         }
     }

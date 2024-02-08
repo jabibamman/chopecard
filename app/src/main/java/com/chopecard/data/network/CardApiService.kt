@@ -4,18 +4,19 @@ import com.chopecard.data.model.Card
 import com.chopecard.data.model.CardInfoResponse
 import com.chopecard.data.model.CardSetInfoResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 interface CardApiService {
     @GET("/v1/yugioh/cardsByName")
-    suspend fun getYugiohCardInfo(@Query("name") cardName: String): CardInfoResponse
+    suspend fun getYugiohCardInfo(@Query("name") cardName: String): Response<CardInfoResponse>
 
     @GET("/v1/yugioh/cardsByType")
-    suspend fun getYugiohCardsInfoByType(@Query("type") cardType: String): CardInfoResponse
+    suspend fun getYugiohCardsInfoByType(@Query("type") cardType: String): Response<CardInfoResponse>
 
     @GET("/v1/yugioh/cardSetInfo")
-    suspend fun getYugiohCardSetInfo(@Query("setcode") setCode: String): CardSetInfoResponse
+    suspend fun getYugiohCardSetInfo(@Query("setcode") setCode: String): Response<CardSetInfoResponse>
 
     @GET("/v1/cards")
     fun getCards(): Call<List<Card>>

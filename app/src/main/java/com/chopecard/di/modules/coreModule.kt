@@ -29,11 +29,10 @@ import com.chopecard.domain.usecases.ReserveProductUseCase
 import com.chopecard.domain.usecases.UnreserveProductUseCase
 import com.chopecard.domain.usecases.UpdateProductUseCase
 import com.chopecard.domain.usecases.yugioh.GetYugiohCardInfoByNameUseCase
-import com.chopecard.domain.usecases.yugioh.GetYugiohCardSetInfoUseCase
-import com.chopecard.domain.usecases.yugioh.GetYugiohCardsInfoByTypeUseCase
 import com.chopecard.presentation.viewModel.CardViewModel
 import com.chopecard.presentation.viewModel.CollectorViewModel
 import com.chopecard.presentation.viewModel.LoginViewModel
+import com.chopecard.presentation.viewModel.ProductDetailViewModel
 import com.chopecard.presentation.viewModel.SellerViewModel
 import com.chopecard.presentation.viewModel.StoreViewModel
 import com.chopecard.presentation.viewModel.TicketViewModel
@@ -68,9 +67,7 @@ internal val coreModule = module {
     factory { UpdateProductUseCase(get()) }
     factory { CreateUserUseCase(get()) }
     factory { GetUserUseCase(get()) }
-    factory { GetYugiohCardSetInfoUseCase(get()) }
     factory { GetYugiohCardInfoByNameUseCase(get()) }
-    factory { GetYugiohCardsInfoByTypeUseCase(get()) }
     factory { GetStoreProductsUseCase(get()) }
     factory { GetProductsUseCase(get()) }
     factory { GetProductDetailUseCase(get()) }
@@ -82,4 +79,5 @@ internal val coreModule = module {
     viewModel { StoreViewModel(get()) }
     viewModel { LoginViewModel(get(), get()) }
     viewModel { TicketViewModel(get(), get(), get()) }
+    viewModel { ProductDetailViewModel(get()) }
 }
