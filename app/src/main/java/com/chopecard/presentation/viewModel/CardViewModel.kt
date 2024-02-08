@@ -9,13 +9,13 @@ import com.chopecard.data.repository.CardRepository
 import kotlinx.coroutines.launch
 
 class CardViewModel(private val cardRepository: CardRepository) : ViewModel() {
-    val cardInfoLiveData = MutableLiveData<CardUIModel>()
+    private val cardInfoLiveData = MutableLiveData<CardUIModel>()
     fun loadCardInfo(cardName: String) {
         viewModelScope.launch {
             try {
-                val card = cardRepository.getCardByName(cardName).firstOrNull()
-                card?.let {
-                    cardInfoLiveData.postValue(mapToCardUIModel(it))
+                val cards = cardRepository.getYugiohCardByName(cardName)
+                cards[0].let {
+                        cardInfoLiveData.postValue(mapToCardUIModel(it))
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

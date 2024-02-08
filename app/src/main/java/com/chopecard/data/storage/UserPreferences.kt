@@ -7,22 +7,22 @@ object UserPreferences {
     private const val IS_LOGGED_IN_KEY = "isLoggedIn"
     private const val SHOW_WELCOME_KEY = "showWelcome"
 
-    fun saveUserLogin(context: Context, userId: Int, userName: String) {
+    fun saveUserLogin(context: Context, userId: Int, userName: String, userRole:String) {
         val sharedPreferences = context.getSharedPreferences(PREFERENCES_FILE_KEY, Context.MODE_PRIVATE)
         with(sharedPreferences.edit()) {
-            putBoolean(IS_LOGGED_IN_KEY, true)
+            putString("userRole", userRole)
             putInt("userId", userId)
             putString("userName", userName)
             apply()
         }
     }
 
-    fun getUserLogin(context: Context): Triple<Boolean, Int, String> {
+    fun getUserLogin(context: Context): Triple<String?, Int, String> {
         val sharedPreferences = context.getSharedPreferences(PREFERENCES_FILE_KEY, Context.MODE_PRIVATE)
-        val isLoggedIn = sharedPreferences.getBoolean(IS_LOGGED_IN_KEY, false)
+        val userRole = sharedPreferences.getString("userRole", "USER")
         val userId = sharedPreferences.getInt("userId", -1) // -1 (default value if userId not found)
         val userName = sharedPreferences.getString("userName", "") // "" (default value if userName not found)
-        return Triple(isLoggedIn, userId, userName!!)
+        return Triple(userRole, userId, userName!!)
     }
 
     fun getUserName(context: Context): String {
@@ -46,11 +46,20 @@ object UserPreferences {
     fun clearUserLogin(context: Context) {
         val sharedPreferences = context.getSharedPreferences(PREFERENCES_FILE_KEY, Context.MODE_PRIVATE)
         with(sharedPreferences.edit()) {
-            putBoolean(IS_LOGGED_IN_KEY, false)
             putInt("userId", -1)
             apply()
         }
+    }
 
+    fun clearAllPreference(context: Context) {
+        val sharedPreferences = context.getSharedPreferences(PREFERENCES_FILE_KEY, Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("userRole", "USER")
+            putInt("userId", -1)
+            putString("userName", "")
+
+            apply()
+        }
     }
 
 }

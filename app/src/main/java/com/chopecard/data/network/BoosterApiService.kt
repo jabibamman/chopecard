@@ -1,7 +1,6 @@
 package com.chopecard.data.network
 
 import com.chopecard.domain.models.Booster
-import com.chopecard.domain.models.Display
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

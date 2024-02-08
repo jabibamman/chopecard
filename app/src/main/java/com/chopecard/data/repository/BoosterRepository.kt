@@ -1,8 +1,6 @@
 package com.chopecard.data.repository
 
 import com.chopecard.domain.models.Booster
-import com.chopecard.domain.models.Display
-import com.chopecard.domain.models.Product
 
 interface BoosterRepository {
 

@@ -118,27 +118,27 @@ class SellerActivity : BaseActivity() {
             .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
             .create()
 
-            dialog.setOnShowListener {
-                val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                button.setOnClickListener {
-                    val productIdText = productIdEditText.text.toString()
-                    if (productIdText.isEmpty()) {
-                        showAlert("Please enter a product ID", this)
-                    } else {
-                        val productId = productIdText.toInt()
+        dialog.setOnShowListener {
+            val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            button.setOnClickListener {
+                val productIdText = productIdEditText.text.toString()
+                if (productIdText.isEmpty()) {
+                    showAlert("Please enter a product ID", this)
+                } else {
+                    val productId = productIdText.toInt()
 
-                        viewModel.deleteProduct(
-                            DeleteProductDTO(
-                                getStoreNotNul().id,
-                                productId
-                            )
+                    viewModel.deleteProduct(
+                        DeleteProductDTO(
+                            getStoreNotNul().id,
+                            productId
                         )
-                        dialog.dismiss()
-                    }
+                    )
+                    dialog.dismiss()
                 }
             }
+        }
 
-            dialog.show()
+        dialog.show()
     }
 
     private fun onEditProduct(productStore: List<ProductStore>) {

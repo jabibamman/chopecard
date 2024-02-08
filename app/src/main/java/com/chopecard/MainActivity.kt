@@ -1,22 +1,64 @@
-package com.chopecard
+    package com.chopecard
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate
-import com.chopecard.data.storage.UserPreferences
-import com.chopecard.databinding.ActivityMainBinding
-import com.chopecard.ui.activity.BaseActivity
+    import YourCardListAdapter
+    import android.os.Bundle
+    import android.util.Log
+    import android.view.View
+    import android.widget.ProgressBar
+    import androidx.appcompat.app.AppCompatDelegate
+    import androidx.recyclerview.widget.LinearLayoutManager
+    import androidx.recyclerview.widget.RecyclerView
+    import com.chopecard.data.storage.UserPreferences
+    import com.chopecard.databinding.ActivityMainBinding
+    import com.chopecard.domain.models.Product
+    import com.chopecard.presentation.viewModel.CollectorViewModel
+    import com.chopecard.presentation.viewModel.ProductDataState
+    import com.chopecard.ui.activity.BaseActivity
+    import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : BaseActivity() {
-    private lateinit var binding: ActivityMainBinding
+    class MainActivity : BaseActivity() {
+        private lateinit var binding: ActivityMainBinding
+        private lateinit var cardList: List<Product>
+        private val  collectorViewModel: CollectorViewModel by viewModel()
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+            setupFooter()
+            setupRecyclerView()
+            observeProducts()
+            binding.tvWelcome.text = getString(R.string.welcome, UserPreferences.getUserName(this))
+            collectorViewModel.getProducts()
+        }
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setupFooter()
+        private fun setupRecyclerView() {
+            val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+            val adapter = YourCardListAdapter(mutableListOf(), this)
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.adapter = adapter
+        }
 
-        binding.tvWelcome.text = getString(R.string.welcome, UserPreferences.getUserName(this))
+        private fun observeProducts() {
+            collectorViewModel.productLiveData.observe(this) { productDataState ->
+                when (productDataState) {
+                    is ProductDataState.Loading -> {
+                        findViewById<ProgressBar>(R.id.productsprogressBar).visibility = View.VISIBLE
+                    }
+
+                    is ProductDataState.Success -> {
+                        findViewById<ProgressBar>(R.id.productsprogressBar).visibility = View.GONE
+                        val adapter =
+                            findViewById<RecyclerView>(R.id.recyclerView).adapter as? YourCardListAdapter
+                        adapter?.updateList(productDataState.products)
+                    }
+
+                    is ProductDataState.Error -> {
+                        findViewById<ProgressBar>(R.id.productsprogressBar).visibility = View.GONE
+                        Log.e("MainActivity", "Error getting products", productDataState.exception)
+                    }
+                }
+            }
+        }
     }
-}
