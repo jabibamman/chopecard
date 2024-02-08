@@ -85,7 +85,15 @@
         </activity>
 
         <!-- Ajout de l'activité ProductDetailActivity -->
-        <activity android:name=".ui.activity.ProductDetailActivity" />
+        <activity
+            android:name=".ui.activity.ProductDetailActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 

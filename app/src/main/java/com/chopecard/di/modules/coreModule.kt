@@ -4,16 +4,19 @@ import CollectorViewModel
 import ManageFavoritesUseCase
 import com.chopecard.data.repository.AdminRepository
 import com.chopecard.data.repository.CardRepository
+import com.chopecard.data.repository.ProductRepository
 import com.chopecard.data.repository.StoreRepository
 import com.chopecard.data.repository.UserRepository
 import com.chopecard.data.repository.impl.AdminRepositoryImpl
 import com.chopecard.data.repository.impl.CardRepositoryImpl
+import com.chopecard.data.repository.impl.ProductRepositoyImpl
 import com.chopecard.data.repository.impl.StoreRepositoryImpl
 import com.chopecard.data.repository.impl.UserRepositoryImpl
 import com.chopecard.domain.usecases.AddProductUseCase
 import com.chopecard.domain.usecases.CreateStoreUseCase
 import com.chopecard.domain.usecases.CreateUserUseCase
 import com.chopecard.domain.usecases.DeleteProductUseCase
+import com.chopecard.domain.usecases.GetProductDetailUseCase
 import com.chopecard.domain.usecases.GetReservationsUseCase
 import com.chopecard.domain.usecases.GetStoreProductsUseCase
 import com.chopecard.domain.usecases.GetStoresUseCase
@@ -40,6 +43,7 @@ internal val coreModule = module {
     single<StoreRepository> { StoreRepositoryImpl(get()) }
     single { UserRepositoryImpl(get()) as UserRepository }
     single<AdminRepository> { AdminRepositoryImpl(get()) }
+    single<ProductRepository> { ProductRepositoyImpl(get()) }
 
     // Use Cases
     factory { AddProductUseCase(get()) }
@@ -55,7 +59,8 @@ internal val coreModule = module {
     factory { UpdateProductUseCase(get()) }
     factory { CreateUserUseCase(get()) }
     factory { GetUserUseCase(get()) }
-    factory{GetStoreProductsUseCase(get())}
+    factory { GetStoreProductsUseCase(get()) }
+    factory { GetProductDetailUseCase(get()) }
 
     // ViewModels
     viewModel { CollectorViewModel(get()) }
@@ -64,5 +69,5 @@ internal val coreModule = module {
     viewModel { StoreViewModel(get()) }
     viewModel { LoginViewModel(get(), get()) }
     viewModel { TicketViewModel(get()) }
-    viewModel {ProductDetailViewModel(get())}
+    viewModel { ProductDetailViewModel(get()) }
 }

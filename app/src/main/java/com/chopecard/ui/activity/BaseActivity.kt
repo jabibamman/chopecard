@@ -37,7 +37,7 @@ open class BaseActivity : AppCompatActivity() {
 
         }
         findViewById<ImageButton>(R.id.btnFavorites)?.setOnClickListener {
-            Log.d("FooterActivity", "Profile button clicked")
+            Log.d("FooterActivity", "Favorite button clicked")
             val intent = Intent(this, ProductDetailActivity::class.java)
             startActivity(intent)
 
