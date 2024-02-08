@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="@dimen/body_padding"
@@ -12,14 +13,16 @@
             android:layout_height="@dimen/image_height"
             android:layout_marginTop="@dimen/image_margin_top"
             android:layout_weight="2"
-            android:src="@drawable/placeholder_image" />
+            android:src="@drawable/placeholder_image"
+            android:importantForAccessibility="no" />
 
     <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/card_info_padding">
+            android:paddingStart="@dimen/card_info_padding"
+            tools:ignore="RtlSymmetry">
 
         <TextView
                 android:id="@+id/tvName"

@@ -1,11 +1,10 @@
 package com.chopecard.di.modules
 
-
-import FakeJsonConf
 import com.chopecard.data.network.AdminApiService
 import com.chopecard.data.network.ProductApiService
 import com.chopecard.data.network.StoreApiService
 import com.chopecard.data.network.UserApiService
+import com.chopecard.di.FakeJsonConf
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

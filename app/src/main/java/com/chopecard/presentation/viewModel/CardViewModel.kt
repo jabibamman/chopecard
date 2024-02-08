@@ -9,7 +9,7 @@ import com.chopecard.data.repository.CardRepository
 import kotlinx.coroutines.launch
 
 class CardViewModel(private val cardRepository: CardRepository) : ViewModel() {
-    val cardInfoLiveData = MutableLiveData<CardUIModel>()
+    private val cardInfoLiveData = MutableLiveData<CardUIModel>()
     fun loadCardInfo(cardName: String) {
         viewModelScope.launch {
             try {

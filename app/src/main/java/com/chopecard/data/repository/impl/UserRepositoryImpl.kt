@@ -42,7 +42,7 @@ class UserRepositoryImpl(private val userApiService: UserApiService) : UserRepos
             if (response.isSuccessful) {
                 val user = response.body()
                 Log.d("UserRepositoryImpl", "User: $user")
-                return user ?: User(0, "", "", emptyList())
+                return user ?: User(0, "", "", emptyList(), "USER")
             } else {
                 Log.e("UserRepositoryImpl", "Error getting user: HTTP ${response.code()} ${response.errorBody()?.string()}")
                 throw Exception("Error getting user: HTTP ${response.code()} ${response.errorBody()?.string()}")
@@ -62,7 +62,7 @@ class UserRepositoryImpl(private val userApiService: UserApiService) : UserRepos
             if (response.isSuccessful) {
                 val user = response.body()
                 Log.d("UserRepositoryImpl", "User: $user")
-                return user ?: User(0, "", "", emptyList())
+                return user ?: User(0, "", "", emptyList(), "USER")
             } else {
                 Log.e("UserRepositoryImpl", "Error getting user: HTTP ${response.code()} ${response.errorBody()?.string()}")
                 throw Exception("Error getting user: HTTP ${response.code()} ${response.errorBody()?.string()}")

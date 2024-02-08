@@ -50,9 +50,9 @@ class CardRepositoryImpl(private val cardApiService: CardApiService) : CardRepos
         val cardDTO = cardApiService.getCardById(cardId)
         return try {
             val response = cardDTO.execute()
-            response.body() ?: Card(0, "", "","","",0,0,0,"","",List<CardSet>(0) { CardSet("","","","","")}, List<CardImage>(0) { CardImage(0, "","","")}, List<CardPrice>(0) { CardPrice("", "", "","","")} )
+            response.body() ?: Card(0, "", "","","",0,0,0,"","",List(0) { CardSet("","","","","")}, List(0) { CardImage(0, "","","")}, List(0) { CardPrice("", "", "","","")} )
         } catch (e: Exception) {
-            Card(0, "", "","","",0,0,0,"","",List<CardSet>(0) { CardSet("","","","","")}, List<CardImage>(0) { CardImage(0, "","","")}, List<CardPrice>(0) { CardPrice("", "", "","","")} )
+            Card(0, "", "","","",0,0,0,"","",List(0) { CardSet("","","","","")}, List(0) { CardImage(0, "","","")}, List(0) { CardPrice("", "", "","","")} )
         }
     }
 
