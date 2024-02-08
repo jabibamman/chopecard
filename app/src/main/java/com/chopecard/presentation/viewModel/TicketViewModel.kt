@@ -25,7 +25,6 @@ class TicketViewModel(
     private val addTicketUseCase: AddTicketUseCase,
     private val deleteTicketUseCase: DeleteTicketUseCase
 ): ViewModel() {
-
     val ticketsLiveData = MutableLiveData<TicketDataState>()
     private val alertMessage = MutableLiveData<String>()
 

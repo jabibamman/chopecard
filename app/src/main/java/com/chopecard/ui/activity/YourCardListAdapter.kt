@@ -9,10 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chopecard.R
-import com.chopecard.data.model.Card
+import com.chopecard.domain.models.Product
 import com.chopecard.ui.activity.ImageActivity
 
-class YourCardListAdapter(private val cardList: List<Card>, private val context: Context) :
+class YourCardListAdapter(private val cardList: List<Product>, private val context: Context) :
     RecyclerView.Adapter<YourCardListAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,7 +31,7 @@ class YourCardListAdapter(private val cardList: List<Card>, private val context:
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentCard = cardList[position]
         holder.tvName.text = currentCard.name
-        holder.tvDescription.text = currentCard.desc
+        holder.tvDescription.text = currentCard.description
 
         val imageUrl = "https://images.ygoprodeck.com/images/cards/78121572.jpg"
 
@@ -53,5 +53,11 @@ class YourCardListAdapter(private val cardList: List<Card>, private val context:
 
     override fun getItemCount(): Int {
         return cardList.size
+    }
+
+    fun updateList(products: List<Product>) {
+        cardList.toMutableList().clear()
+        cardList.toMutableList().addAll(products)
+        notifyDataSetChanged()
     }
 }
