@@ -52,4 +52,12 @@
     <string name="shop_name">Shop Name</string>
     <string name="shop_address">1234 Main Street, Anytown</string>
     <string name="todo">TODO</string>
+
+    <!-- Product Detail -->
+    <string name="back">retour</string>
+    <string name="price_max_product">price_max_product</string>
+    <string name="price_min_product">price_min_product</string>
+    <string name="product_name">Product Name</string>
+    <string name="min_price">Min Price: %1$s</string>
+    <string name="max_price">Max Price: %1$s</string>
 </resources>

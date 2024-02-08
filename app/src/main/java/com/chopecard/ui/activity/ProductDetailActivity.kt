@@ -3,6 +3,7 @@ package com.chopecard.ui.activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -35,13 +36,12 @@ class ProductDetailActivity : BaseActivity() {
         binding = ProductDetailLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupFooter()
+        setupListener()
         initView()
-        val cardName = intent.getStringExtra("card_name") ?: ""
 
-        Log.d("ProductDetailActivity", "Card name: $cardName")
-
+        val cardName = intent.getStringExtra("card_name") ?: String()
         observeProduct()
-       productDetailViewModel.loadProductDetail(cardName)
+        productDetailViewModel.loadProductDetail(cardName)
     }
 
     private fun initView() {
@@ -73,6 +73,12 @@ class ProductDetailActivity : BaseActivity() {
         }
     }
 
+    private fun setupListener() {
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
+            finish()
+        }
+    }
+
     private fun showLoading(isLoading: Boolean) {
         progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
@@ -80,8 +86,8 @@ class ProductDetailActivity : BaseActivity() {
     private fun displayProductDetail(card: Card) {
         productNameTextView.text = card.name
         descriptionTextView.text = card.desc
-        priceMinTextView.text = "Min Price: ${card.card_prices[0].amazon_price}"
-        priceMaxTextView.text = "Max Price: ${card.card_prices[0].ebay_price}"
+        priceMinTextView.text = getString(R.string.min_price, card.card_prices[0].amazon_price)
+        priceMaxTextView.text = getString(R.string.max_price, card.card_prices[0].ebay_price)
         if (card.card_images.isNotEmpty()) {
             Log.d("ProductDetailActivity", "Loading image: ${card.card_images[0].image_url}")
             Glide.with(this)
