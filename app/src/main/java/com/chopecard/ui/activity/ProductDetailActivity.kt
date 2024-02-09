@@ -1,5 +1,6 @@
 package com.chopecard.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -30,6 +31,7 @@ class ProductDetailActivity : BaseActivity() {
     private lateinit var priceMaxTextView: TextView
     private lateinit var imageView: ImageView
     private lateinit var progressBar: ProgressBar
+    private lateinit var product: Card
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +65,7 @@ class ProductDetailActivity : BaseActivity() {
                 is ProductDetailState.Success -> {
                     findViewById<ProgressBar>(R.id.product_progress_bar).visibility = View.GONE
                     displayProductDetail(productDataState.product[0])
+                    product = productDataState.product[0]
                 }
 
                 is ProductDetailState.Error -> {
@@ -76,6 +79,12 @@ class ProductDetailActivity : BaseActivity() {
     private fun setupListener() {
         findViewById<Button>(R.id.btnBack).setOnClickListener {
             finish()
+        }
+
+        findViewById<ImageView>(R.id.imageViewCard).setOnClickListener {
+            val intent = Intent(this, ImageActivity::class.java)
+            intent.putExtra("image_url", product.card_images[0].image_url)
+            startActivity(intent)
         }
     }
 
