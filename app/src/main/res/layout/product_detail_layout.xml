@@ -1,64 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/image_produit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:clickable="false"
-    android:orientation="vertical">
+    android:clickable="false">
+
     <include
         layout="@layout/header_layout"
         android:id="@+id/headerLayout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="418dp"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        app:srcCompat="@drawable/svp_fr_1" />
-
+        android:id="@+id/imageViewCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/placeholder_image"
+        android:scaleType="fitCenter"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="1"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.44"
+        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/image_opened" />
     <TextView
-        android:id="@+id/product_name"
-        android:layout_width="match_parent"
+        android:id="@+id/tvProductName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Samiboss92"
+        android:text="@string/product_name"
         android:textColor="#2962FF"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Other TextViews for description and prices here -->
+
+    <ProgressBar
+        android:id="@+id/product_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:indeterminate="true"
+        app:layout_constraintTop_toBottomOf="@+id/price_max_product"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/descriptionproduct"
-        android:layout_width="match_parent"
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="descriptionproduct"
-        android:textSize="20sp" />
+        android:gravity="center_horizontal"
+        android:text="@string/description"
+        android:textColor="#2962FF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tvProductName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/priceMinproduct"
-        android:layout_width="match_parent"
+        android:id="@+id/price_min_product"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="priceMinproduct"
-        android:textSize="20sp" />
+        android:gravity="center_horizontal"
+        android:text="@string/price_min_product"
+        android:textColor="#2962FF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/priceMaxproduct"
-        android:layout_width="match_parent"
+        android:id="@+id/price_max_product"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="priceMaxproduct"
-        android:textSize="20sp" />
+        android:gravity="center_horizontal"
+        android:text="@string/price_max_product"
+        android:textColor="#2962FF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/price_min_product"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <include
         layout="@layout/footer_layout"
         android:id="@+id/footerLayout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="@dimen/footer_height"
-        android:visibility="visible"
-        tools:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent" />
-</LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        app:layout_constraintBottom_toTopOf="@+id/footerLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

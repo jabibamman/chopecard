@@ -1,30 +1,41 @@
 package com.chopecard.presentation.viewModel
 
-import androidx.lifecycle.LiveData
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.chopecard.domain.models.Product
-import com.chopecard.domain.usecases.GetProductDetailUseCase
+import com.chopecard.data.model.Card
+import com.chopecard.domain.usecases.GetTicketsUseCase
+import com.chopecard.domain.usecases.GetUserUseCase
+import com.chopecard.domain.usecases.yugioh.GetYugiohCardInfoByNameUseCase
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
-class ProductDetailViewModel(private val getProductDetailUseCase: GetProductDetailUseCase) : ViewModel() {
 
-    private val _productLiveData = MutableLiveData<Product>()
-    val productLiveData: LiveData<Product> = _productLiveData
+/** Represents the UI state. */
+sealed class ProductDetailState {
+    object Loading : ProductDetailState()
+    data class Success(val product: List<Card>): ProductDetailState()
+    data class Error(val exception: String): ProductDetailState()
+}
 
-    private val _errorLiveData = MutableLiveData<String>()
-    val errorLiveData: LiveData<String> = _errorLiveData
+class ProductDetailViewModel(
+    private val getYugiohCardInfoByNameUseCase: GetYugiohCardInfoByNameUseCase,
+    ) : ViewModel() {
+    val productLiveData = MutableLiveData<ProductDetailState>()
 
-    fun loadProductDetail(productId: Int) {
+    fun loadProductDetail(productName: String) {
+        productLiveData.postValue(ProductDetailState.Loading)
         viewModelScope.launch {
             try {
-                val product = getProductDetailUseCase.execute(productId)
-                _productLiveData.value = product
+                val product = getYugiohCardInfoByNameUseCase.execute(productName)
+                productLiveData.postValue(ProductDetailState.Success(product))
+                Log.d("ProductDetailViewModel", "Product: $product")
             } catch (e: HttpException) {
-                _errorLiveData.value = "HTTP Exception: ${e.message()}"
+                productLiveData.postValue(ProductDetailState.Error("HTTP Exception: ${e.message()}"))
+                Log.e("ProductDetailViewModel", "HTTP Exception: ${e.message()}")
             } catch (e: Exception) {
-                _errorLiveData.value = "Exception: ${e.message}"
+                productLiveData.postValue(ProductDetailState.Error("Exception: ${e.message}"))
+                Log.e("ProductDetailViewModel", "Exception: ${e.message}")
             }
         }
     }
