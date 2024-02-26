@@ -4,6 +4,7 @@ import com.chopecard.data.model.LoginUserDTO
 import com.chopecard.data.model.UserDTO
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.User
+import com.chopecard.domain.models.UserReservation
 
 interface UserRepository {
 
@@ -23,7 +24,7 @@ interface UserRepository {
     suspend fun deleteUser(userId: Int): String
 
     // Retrieves details of a store of a User by user ID
-    suspend fun getReservesByUserId(userId: Int): Store
+    suspend fun getReservesByUserId(userId: Int): List<UserReservation>
 
     // Retrieves details of a store of a User by user ID and reserveId
     suspend fun getReservesByIdAndByUserId(userId: Int, reserveId: Int): Store

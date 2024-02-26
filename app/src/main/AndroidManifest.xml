@@ -65,7 +65,15 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".ui.activity.UserReservationListActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.activity.ShopListActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat" >
@@ -103,6 +111,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+
 
     </application>
 

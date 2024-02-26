@@ -19,10 +19,10 @@ import com.chopecard.domain.usecases.DeleteProductUseCase
 import com.chopecard.domain.usecases.DeleteTicketUseCase
 import com.chopecard.domain.usecases.GetProductDetailUseCase
 import com.chopecard.domain.usecases.GetProductsUseCase
-import com.chopecard.domain.usecases.GetReservationsUseCase
 import com.chopecard.domain.usecases.GetStoreProductsUseCase
 import com.chopecard.domain.usecases.GetStoresUseCase
 import com.chopecard.domain.usecases.GetTicketsUseCase
+import com.chopecard.domain.usecases.GetUserReservationsUseCase
 import com.chopecard.domain.usecases.GetUserUseCase
 import com.chopecard.domain.usecases.ManageFavoritesUseCase
 import com.chopecard.domain.usecases.ReserveProductUseCase
@@ -57,7 +57,6 @@ internal val coreModule = module {
     factory { CreateStoreUseCase(get()) }
     factory { DeleteProductUseCase(get()) }
     factory { DeleteTicketUseCase(get()) }
-    factory { GetReservationsUseCase(get()) }
     factory { GetStoreProductsUseCase(get()) }
     factory { GetStoresUseCase(get()) }
     factory { GetTicketsUseCase(get()) }
@@ -71,6 +70,7 @@ internal val coreModule = module {
     factory { GetStoreProductsUseCase(get()) }
     factory { GetProductsUseCase(get()) }
     factory { GetProductDetailUseCase(get()) }
+    factory { GetUserReservationsUseCase(get()) }
 
     // ViewModels
     viewModel { CollectorViewModel(get()) }

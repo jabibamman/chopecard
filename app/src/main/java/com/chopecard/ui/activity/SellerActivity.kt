@@ -1,6 +1,8 @@
 package com.chopecard.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
@@ -14,6 +16,7 @@ import com.chopecard.data.model.UpdateProductDTO
 import com.chopecard.data.storage.UserPreferences
 import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
+import com.chopecard.presentation.fragment.UserReservationListFragment
 import com.chopecard.presentation.viewModel.SellerViewModel
 import com.chopecard.ui.utils.showAlert
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -66,6 +69,10 @@ class SellerActivity : BaseActivity() {
 
         findViewById<Button>(R.id.btnUnreserveProduct).setOnClickListener {
             onUnreserveProduct()
+        }
+
+        findViewById<Button>(R.id.btnGetReservations).setOnClickListener {
+            onGetReservations()
         }
 
     }
@@ -256,6 +263,10 @@ class SellerActivity : BaseActivity() {
         dialog.show()
     }
 
+    private fun onGetReservations() {
+        val intent = Intent(this, UserReservationListActivity::class.java)
+        startActivity(intent)
+    }
 
 
 

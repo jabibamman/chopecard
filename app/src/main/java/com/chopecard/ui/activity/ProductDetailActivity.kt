@@ -9,9 +9,6 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chopecard.R
 import com.chopecard.data.model.Card
@@ -47,7 +44,7 @@ class ProductDetailActivity : BaseActivity() {
     }
 
     private fun initView() {
-        productNameTextView = findViewById(R.id.tvProductName)
+        productNameTextView = findViewById(R.id.productName)
         descriptionTextView = findViewById(R.id.tvDescription)
         priceMinTextView = findViewById(R.id.price_min_product)
         priceMaxTextView = findViewById(R.id.price_max_product)

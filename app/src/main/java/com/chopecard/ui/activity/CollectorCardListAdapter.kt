@@ -24,7 +24,6 @@ class CollectorCardListAdapter(private val cardList: MutableList<Product>, priva
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.body_layout, parent, false)
-
         return ViewHolder(view)
     }
 
