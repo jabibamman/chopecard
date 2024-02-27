@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.chopecard"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.chopecard"
@@ -76,8 +76,11 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
 
+    // Compose Material
+    implementation("androidx.compose.material:material:1.4.1")
+    implementation("com.google.android.material:material:1.7.0-rc01")
+    implementation("androidx.compose.material3:material3-android:1.2.0")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
@@ -101,8 +104,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.fragment:fragment:1.6.2")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
-
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -32,11 +32,14 @@ class ProductDetailActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_Chopecard)
         binding = ProductDetailLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupFooter()
         setupListener()
         initView()
+
+        progressBar = binding.productProgressBar
 
         val cardName = intent.getStringExtra("card_name") ?: String()
         observeProduct()
@@ -49,7 +52,6 @@ class ProductDetailActivity : BaseActivity() {
         priceMinTextView = findViewById(R.id.price_min_product)
         priceMaxTextView = findViewById(R.id.price_max_product)
         imageView = binding.imageViewCard
-        progressBar = findViewById(R.id.product_progress_bar)
     }
 
     private fun observeProduct() {
@@ -90,17 +92,19 @@ class ProductDetailActivity : BaseActivity() {
     }
 
     private fun displayProductDetail(card: Card) {
-        productNameTextView.text = card.name
-        descriptionTextView.text = card.desc
-        priceMinTextView.text = getString(R.string.min_price, card.card_prices[0].amazon_price)
-        priceMaxTextView.text = getString(R.string.max_price, card.card_prices[0].ebay_price)
-        if (card.card_images.isNotEmpty()) {
-            Log.d("ProductDetailActivity", "Loading image: ${card.card_images[0].image_url}")
-            Glide.with(this)
-                .load(card.card_images[0].image_url)
-                .placeholder(R.drawable.placeholder_image)
-                .error(R.drawable.error_image)
-                .into(imageView)
+        with(binding) {
+            productNameTextView.text = card.name
+            descriptionTextView.text = card.desc
+            priceMinTextView.text = getString(R.string.min_price, card.card_prices[0].amazon_price)
+            priceMaxTextView.text = getString(R.string.max_price, card.card_prices[0].ebay_price)
+
+            if (card.card_images.isNotEmpty()) {
+                Glide.with(this@ProductDetailActivity)
+                    .load(card.card_images[0].image_url)
+                    .placeholder(R.drawable.placeholder_image)
+                    .error(R.drawable.error_image)
+                    .into(imageViewCard)
+            }
         }
     }
 

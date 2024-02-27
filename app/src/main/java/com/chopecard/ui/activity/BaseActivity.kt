@@ -42,11 +42,5 @@ open class BaseActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
         }
-        findViewById<ImageButton>(R.id.btnFavorites)?.setOnClickListener {
-            Log.d("FooterActivity", "Favorite button clicked")
-            val intent = Intent(this, ProductDetailActivity::class.java)
-            startActivity(intent)
-
-        }
     }
 }
