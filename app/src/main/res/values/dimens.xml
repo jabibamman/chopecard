@@ -26,4 +26,14 @@
     <!-- text size -->
     <dimen name="text_size_16">16</dimen>
 
+    <!-- default values -->
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="button_margin_bottom">16dp</dimen>
+    <dimen name="image_view_height_percent">0.44</dimen>
+
+
+
 </resources>

@@ -12,6 +12,7 @@ import org.koin.dsl.module
 
 fun injectModuleDependencies(context: Context) {
     try {
+
         startKoin {
             androidContext(context)
             modules(modules)

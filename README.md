@@ -41,7 +41,6 @@ ChopeCard is an Android (Kotlin) application designed for collectors and vendors
 2. Open the project in Android Studio.
 3. Ensure Android SDK 33 (Oreo) is installed.
 4. Build and run the application on an emulator or physical device.
-
 ## Contribution
 
 Contributions to the ChopeCard project are welcome. Please follow the standard pull request process if you wish to contribute.

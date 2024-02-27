@@ -38,7 +38,6 @@
     <string name="welcome">Welcome, %1$s</string>
     <string name="reserve_id">Reserve ID</string>
     <string name="password">Password</string>
-    <string name="image_opened">Image Opened</string>
     <string name="close">Fermer</string>
     <string name="logo_chopecard">logo chopecard</string>
 
@@ -52,4 +51,16 @@
     <string name="shop_name">Shop Name</string>
     <string name="shop_address">1234 Main Street, Anytown</string>
     <string name="todo">TODO</string>
+
+    <!-- Usage on all activities -->
+    <string name="back">retour</string>
+
+    <!-- Product Detail -->
+    <string name="price_max_product">price_max_product</string>
+    <string name="price_min_product">price_min_product</string>
+    <string name="product_name">Product Name</string>
+    <string name="min_price">Min Price: %1$s</string>
+    <string name="max_price">Max Price: %1$s</string>
+    <string name="image_opened">Image Opened</string>
+
 </resources>
