@@ -15,5 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "chopecard"
 include(":app")
-
-
