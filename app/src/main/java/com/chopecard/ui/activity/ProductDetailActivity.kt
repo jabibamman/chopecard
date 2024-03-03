@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide
 import com.chopecard.R
 import com.chopecard.data.model.Card
 import com.chopecard.databinding.ProductDetailLayoutBinding
-import com.chopecard.domain.models.Product
 import com.chopecard.presentation.viewModel.ProductDetailState
 import com.chopecard.presentation.viewModel.ProductDetailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -82,7 +81,7 @@ class ProductDetailActivity : BaseActivity() {
         }
 
         findViewById<ImageView>(R.id.imageViewCard).setOnClickListener {
-            if (this::product.isInitialized && product != null) {
+            if (this::product.isInitialized) {
                 Log.d("ProductDetailActivity", "Product: $product")
                 val intent = Intent(this, ImageActivity::class.java)
                 intent.putExtra("image_url", product.card_images[0].image_url)
@@ -92,10 +91,7 @@ class ProductDetailActivity : BaseActivity() {
             }
         }
     }
-    private fun showLoading(isLoading: Boolean) {
-        progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
-
+    
     private fun displayProductDetail(card: Card) {
         with(binding) {
             productNameTextView.text = card.name
@@ -113,7 +109,4 @@ class ProductDetailActivity : BaseActivity() {
         }
     }
 
-    private fun showError(errorMessage: String) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
-    }
 }
