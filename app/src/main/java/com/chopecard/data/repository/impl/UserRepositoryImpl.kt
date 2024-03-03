@@ -1,7 +1,6 @@
 package com.chopecard.data.repository.impl
 
 import android.util.Log
-import com.chopecard.data.model.Card
 import com.chopecard.data.model.LoginUserDTO
 import com.chopecard.data.model.UserDTO
 import com.chopecard.data.network.UserApiService
@@ -11,7 +10,6 @@ import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.User
 import com.chopecard.domain.models.UserReservation
-import retrofit2.Call
 import retrofit2.HttpException
 
 class UserRepositoryImpl(private val userApiService: UserApiService) : UserRepository {
@@ -106,9 +104,9 @@ class UserRepositoryImpl(private val userApiService: UserApiService) : UserRepos
         val reserveDTO = userApiService.getReservesByIdAndByUserId(userId, reserveId)
         return try {
             val response = reserveDTO.execute()
-            response.body() ?: Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f, ""), 0, 0f)})
+            response.body() ?: Store(0,"","",List(0) {ProductStore(0, Product(0, "", "", 0f, 0f, ""), 0, 0f)})
         } catch (e: Exception) {
-            Store(0,"","",List<ProductStore>(0) {ProductStore(0, Product(0, "", "", 0f, 0f, ""), 0, 0f)})
+            Store(0,"","",List(0) {ProductStore(0, Product(0, "", "", 0f, 0f, ""), 0, 0f)})
         }
     }
 

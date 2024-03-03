@@ -1,6 +1,5 @@
 package com.chopecard.domain.usecases
 
-import android.util.Log
 import com.chopecard.data.repository.UserRepository
 import com.chopecard.domain.models.UserReservation
 

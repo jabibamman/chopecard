@@ -16,8 +16,7 @@ import org.koin.android.ext.android.inject
 
 /** Represents the UI state. */
 
-class UserReservationListActivity(
-) : BaseActivity() {
+class UserReservationListActivity : BaseActivity() {
     private val getUserReservationsUseCase: GetUserReservationsUseCase by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +54,7 @@ class UserReservationListActivity(
         }
     }
 
-    suspend fun getReservations(): List<UserReservation> {
+    private suspend fun getReservations(): List<UserReservation> {
             var reservations = emptyList<UserReservation>()
             try {
                 val (userRole,userId,userName) = UserPreferences.getUserLogin(this)
@@ -67,7 +66,7 @@ class UserReservationListActivity(
                 Log.d("UserReservations", "ERROR: RESERVATION")
             }
 
-        return reservations;
+        return reservations
 
     }
 }
