@@ -9,7 +9,7 @@
     <!-- colors basic -->
     <color name="black">#FFFFFF</color> 
     <color name="white">#121212</color> 
-    <color name="dark_gray">#424242</color> 
+    <color name="dark_gray">#f2e4e4</color>
 
     <!-- colors for the app -->
     <color name="error">#CF6679</color> 
