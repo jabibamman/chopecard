@@ -66,6 +66,6 @@
 
     <!--  Reservation Item -->
     <string name="store_name">Store Name</string>
-    <string name="quantity_x">Quantity X</string>
+    <string name="quantity_x">Quantity %1$s</string>
 
 </resources>

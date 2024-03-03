@@ -1,6 +1,5 @@
 package com.chopecard.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,8 +30,7 @@ class UserReservationListAdapter(
             currentReservation = reservation
             storeName.text = reservation.store.name
             productName.text = reservation.productStore.product.name
-            productQuantity.text = "Quantity: ${reservation.quantity}"
-
+            productQuantity.text = reservation.quantity.toString()
         }
     }
 
