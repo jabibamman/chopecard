@@ -21,6 +21,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_playing_card"
+                android:fillColor="@color/drawable_color"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/cards" />
 
