@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chopecard.R
 import com.chopecard.domain.models.Product
+import com.chopecard.ui.utils.ProductDiffCallback
 
 class CollectorCardListAdapter(private val cardList: MutableList<Product>, private val context: Context) :
     RecyclerView.Adapter<CollectorCardListAdapter.ViewHolder>() {
@@ -50,9 +52,13 @@ class CollectorCardListAdapter(private val cardList: MutableList<Product>, priva
         return cardList.size
     }
 
-    fun updateList(products: List<Product>) {
-        cardList.clear()
-        cardList.addAll(products)
-        notifyDataSetChanged()
+    fun updateList(newProducts: List<Product>) {
+        val diffCallback = ProductDiffCallback(this.cardList, newProducts)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
+        this.cardList.clear()
+        this.cardList.addAll(newProducts)
+
+        diffResult.dispatchUpdatesTo(this)
     }
 }
