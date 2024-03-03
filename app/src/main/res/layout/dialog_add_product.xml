@@ -6,26 +6,26 @@
         android:padding="16dp">
 
     <EditText
-            android:id="@+id/etProductId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/product_id"
-            android:inputType="number"
-            android:autofillHints="" />
+        android:id="@+id/etProductId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/product_id"
+        android:autofillHints="@string/product_id"
+        android:inputType="number" />
 
     <EditText
-            android:id="@+id/etQuantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/quantity"
-            android:inputType="number"
-            android:autofillHints="" />
+        android:id="@+id/etQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/quantity"
+        android:autofillHints="@string/quantity"
+        android:inputType="number"/>
 
     <EditText
-            android:id="@+id/etPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/price"
-            android:inputType="numberDecimal"
-            android:autofillHints="" />
+        android:id="@+id/etPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/price"
+        android:autofillHints="@string/price"
+        android:inputType="numberDecimal"/>
 </LinearLayout>
