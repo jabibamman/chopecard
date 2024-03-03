@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Chopecard" parent="Theme.Material3.Light.NoActionBar">
-    </style>
-    <color name="my_message_bg">#2196F3</color>
+    <style name="Theme.Chopecard" parent="Theme.Material3.Light.NoActionBar" />
 
     <color name="edit_text_bg">#252424</color>
     <color name="header_background">#FFFFFF</color>
@@ -10,5 +8,4 @@
 
     <color name="primaryColor">#334455</color>
     <color name="secondaryColor">#667788</color>
-    <color name="backgroundColor">#121212</color>
 </resources>
