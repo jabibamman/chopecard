@@ -5,39 +5,48 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chopecard.data.model.Card
-import com.chopecard.domain.usecases.GetTicketsUseCase
-import com.chopecard.domain.usecases.GetUserUseCase
 import com.chopecard.domain.usecases.yugioh.GetYugiohCardInfoByNameUseCase
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-/** Represents the UI state. */
 sealed class ProductDetailState {
     object Loading : ProductDetailState()
-    data class Success(val product: List<Card>): ProductDetailState()
-    data class Error(val exception: String): ProductDetailState()
+    data class Success(val product: List<Card>) : ProductDetailState()
+    data class Error(val message: String) : ProductDetailState()
 }
 
 class ProductDetailViewModel(
-    private val getYugiohCardInfoByNameUseCase: GetYugiohCardInfoByNameUseCase,
-    ) : ViewModel() {
+    private val getYugiohCardInfoByNameUseCase: GetYugiohCardInfoByNameUseCase
+) : ViewModel() {
     val productLiveData = MutableLiveData<ProductDetailState>()
 
-    fun loadProductDetail(productName: String) {
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
+        handleException(exception)
+    }
 
+    fun loadProductDetail(productName: String) {
         productLiveData.postValue(ProductDetailState.Loading)
-        viewModelScope.launch {
+        viewModelScope.launch(coroutineExceptionHandler) {
             try {
                 val product = getYugiohCardInfoByNameUseCase.execute(productName)
-                productLiveData.postValue(ProductDetailState.Success(product))
-                Log.d("ProductDetailViewModel", "Product: $product")
+                if (product.isEmpty()) {
+                    productLiveData.postValue(ProductDetailState.Error("Product not found"))
+                } else {
+                    productLiveData.postValue(ProductDetailState.Success(product))
+                }
             } catch (e: HttpException) {
-                productLiveData.postValue(ProductDetailState.Error("HTTP Exception: ${e.message()}"))
-                Log.e("ProductDetailViewModel", "HTTP Exception: ${e.message()}")
-            } catch (e: Exception) {
-                productLiveData.postValue(ProductDetailState.Error("Exception: ${e.message}"))
-                Log.e("ProductDetailViewModel", "Exception: ${e.message}")
+                handleException(e)
             }
         }
+    }
+
+    private fun handleException(exception: Throwable) {
+        val errorMessage = when (exception) {
+            is HttpException -> "HTTP Error: ${exception.message}"
+            else -> "An error occurred: ${exception.localizedMessage}"
+        }
+        productLiveData.postValue(ProductDetailState.Error(errorMessage))
+        Log.e("ProductDetailViewModel", errorMessage)
     }
 }
