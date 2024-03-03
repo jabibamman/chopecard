@@ -1,22 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg">#FFFFFFFF</color>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="drawable_color">#FFFFFFFF</color>
+    <color name="bg">#121212</color>
+    <color name="purple_200">#CF9FFF</color> 
+    <color name="purple_500">#BB86FC</color> 
+    <color name="purple_700">#985EFF</color> 
+    <color name="teal_200">#03DAC6</color> 
+    <color name="teal_700">#018786</color> 
+
+    <!-- colors basic -->
+    <color name="black">#FFFFFF</color> 
+    <color name="white">#121212</color> 
+    <color name="dark_gray">#424242</color> 
+
+    <!-- colors for the app -->
+    <color name="error">#CF6679</color> 
+    <color name="drawable_color">#FFFFFF</color> 
 
     <color name="splashColorPrimary">#ff1b49</color>
-    <color name="splashColorPrimaryDark">#FF000000</color>
+    <color name="splashColorPrimaryDark">#ff1744</color>
     <color name="splashColorAccent">#e67d20</color>
 
-    <color name="text_view_adaptive_color">@color/white</color>
+    <color name="text_view_adaptive_color">#FFFFFF</color>
 
     <!-- Font Colors -->
-    <color name="primaryFontColor">@color/white</color>
-    <color name="dark_gray">#E0E0E0</color>
+    <color name="primaryFontColor">#FFFFFF</color> 
+    <color name="primary_text">#BB86FC</color> 
+    <color name="secondary_text">#CF9FFF</color> 
+    <color name="button_tint">#BB86FC</color> 
+    <color name="button_text">#FFFFFF</color> 
 </resources>

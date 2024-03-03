@@ -15,7 +15,7 @@
     <color name="primaryColor">#334455</color>
     <color name="secondaryColor">#667788</color>
     <color name="accentColor">#AABBCC</color>
-    <color name="backgroundColor">#DDEEFF</color>
+    <color name="backgroundColor">#121212</color>
     <color name="headerBackgroundColor">#112233</color>
     <color name="footerBackgroundColor">#445566</color>
     <color name="cardBackgroundColor">#778899</color>

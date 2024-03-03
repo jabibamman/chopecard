@@ -17,12 +17,12 @@
         android:id="@+id/tvShopName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
         android:gravity="center"
         android:textColor="@color/primaryFontColor"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size_large"
         android:textStyle="bold" />
 
     <Space
@@ -32,13 +32,13 @@
 
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/height_0dp"
             android:layout_weight="1">
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="@dimen/default_padding">
 
             <Button
                     android:id="@+id/btnAddProduct"
@@ -89,11 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/go_back"
-                    android:layout_marginTop="16dp"/>
-
-
-
-
+                    android:layout_marginTop="@dimen/default_margin" />
         </LinearLayout>
     </ScrollView>
 

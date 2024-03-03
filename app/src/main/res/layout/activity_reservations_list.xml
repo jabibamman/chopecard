@@ -41,10 +41,10 @@ tools:context=".ui.activity.UserReservationListActivity">
 
 <ImageButton
     android:id="@+id/btnLogout"
-    android:layout_width="48dp"
-    android:layout_height="48dp"
+    android:layout_width="@dimen/width_btn_logout"
+    android:layout_height="@dimen/height_btn_logout"
     android:src="@drawable/ic_logout"
-    android:layout_margin="8dp"
+    android:layout_margin="@dimen/margin_btn_logout"
     android:contentDescription="@string/logout"
     app:layout_constraintBottom_toTopOf="@id/footerLayout"
     app:layout_constraintEnd_toEndOf="@id/footerLayout" />
