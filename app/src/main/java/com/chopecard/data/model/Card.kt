@@ -1,12 +1,10 @@
-@file:Suppress("PropertyName", "PropertyName", "PropertyName", "PropertyName", "PropertyName",
-    "PropertyName", "PropertyName", "PropertyName"
-)
+@file:Suppress("PropertyName")
 
 package com.chopecard.data.model
 
 data class CardResponse(val data: List<Card>)
 
-@Suppress("PropertyName", "PropertyName", "PropertyName", "PropertyName", "PropertyName")
+@Suppress("PropertyName")
 data class Card(
     val id: Long,
     val name: String,

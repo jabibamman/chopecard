@@ -18,13 +18,12 @@ import com.chopecard.domain.usecases.UpdateProductUseCase
 import kotlinx.coroutines.launch
 
 class SellerViewModel(
-    private val getStoresUseCase: GetStoresUseCase,
+    private val ignoredGetStoresUseCase: GetStoresUseCase,
     private val addProductUseCase: AddProductUseCase,
     private val deleteProductUseCase: DeleteProductUseCase,
     private val updateProductUseCase: UpdateProductUseCase,
     private val reserveProductUseCase: ReserveProductUseCase,
     private val unreserveProductUseCase: UnreserveProductUseCase
-    // Add other use cases as needed
 ) : ViewModel() {
     val alertMessage = MutableLiveData<String>()
 
