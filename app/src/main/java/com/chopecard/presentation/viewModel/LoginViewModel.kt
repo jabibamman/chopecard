@@ -31,13 +31,13 @@ class LoginViewModel(
         }
     }
 
-    fun getUser(userId: Int, onResult: (User?) -> Unit) {
+    fun getUser(userId: Int, ignoredOnResult: (User?) -> Unit) {
         viewModelScope.launch {
             try {
                 val user = getUserUseCase.execute(userId)
-                onResult(user)
+                ignoredOnResult(user)
             } catch (e: Exception) {
-                onResult(null)
+                ignoredOnResult(null)
             }
         }
     }

@@ -13,7 +13,7 @@ class UserReservationListAdapter(
     private val onClick: (UserReservation) -> Unit
 ) : RecyclerView.Adapter<UserReservationListAdapter.ReservationViewHolder>() {
 
-    class ReservationViewHolder(view: View, val onClick: (UserReservation) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ReservationViewHolder(view: View, val ignoredOnClick: (UserReservation) -> Unit) : RecyclerView.ViewHolder(view) {
         private val storeName: TextView = view.findViewById(R.id.storeName)
         private val productName: TextView = view.findViewById(R.id.productName)
         private val productQuantity: TextView = view.findViewById(R.id.productQuantity)
@@ -21,7 +21,7 @@ class UserReservationListAdapter(
 
         init {
             view.setOnClickListener {
-                currentReservation?.let { onClick(it) }
+                currentReservation?.let { ignoredOnClick(it) }
             }
         }
 

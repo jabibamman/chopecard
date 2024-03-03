@@ -1,4 +1,4 @@
-
+package com.chopecard.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chopecard.R
 import com.chopecard.domain.models.Product
-import com.chopecard.ui.activity.ProductDetailActivity
 
 class CollectorCardListAdapter(private val cardList: MutableList<Product>, private val context: Context) :
     RecyclerView.Adapter<CollectorCardListAdapter.ViewHolder>() {

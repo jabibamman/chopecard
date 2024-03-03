@@ -1,6 +1,6 @@
     package com.chopecard
 
-    import CollectorCardListAdapter
+    import com.chopecard.ui.activity.CollectorCardListAdapter
     import android.os.Bundle
     import android.util.Log
     import android.view.View

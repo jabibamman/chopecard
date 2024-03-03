@@ -13,7 +13,7 @@ import retrofit2.HttpException
 sealed class ProductDetailState {
     object Loading : ProductDetailState()
     data class Success(val product: List<Card>) : ProductDetailState()
-    data class Error(val message: String) : ProductDetailState()
+    data class Error(val ignoredMessage: String) : ProductDetailState()
 }
 
 class ProductDetailViewModel(
