@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">chopecard</string>
-    <string name="username_placeholder">Username</string>
-    <string name="balance_placeholder">$0.00</string>
 
     <!-- footer -->
     <string name="cards">Cards\n</string>
@@ -48,7 +46,6 @@
     <!-- Shop List -->
     <string name="shop_name">Shop Name</string>
     <string name="shop_address">1234 Main Street, Anytown</string>
-    <string name="todo">TODO</string>
 
     <!-- Usage on all activities -->
     <string name="back">Back</string>

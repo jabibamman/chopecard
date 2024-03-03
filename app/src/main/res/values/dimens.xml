@@ -8,19 +8,14 @@
     <dimen name="text_size_large">24sp</dimen>
     <dimen name="text_size_medium">20sp</dimen>
     <dimen name="text_size_small">16sp</dimen>
-    <dimen name="button_margin_bottom">16dp</dimen>
-    <dimen name="image_view_height_percent">0.44</dimen>
     <dimen name="height_0dp">0dp</dimen>
 
     <!-- layout main/body -->
-    <dimen name="activity_padding">16dp</dimen>
-    <dimen name="cards_list_padding">8dp</dimen>
     <dimen name="header_padding">16dp</dimen>
     <dimen name="body_padding">16dp</dimen>
     <dimen name="footer_padding">16dp</dimen>
     <dimen name="card_info_padding">16dp</dimen>
 
-    <dimen name="header_text_size">24sp</dimen>
     <dimen name="imageviewcard_body_width">108dp</dimen>
     <dimen name="image_height">170dp</dimen>
     <dimen name="image_margin_top">8dp</dimen>
@@ -29,11 +24,9 @@
     <dimen name="logo_height">100dp</dimen>
 
     <!-- body -->
-    <dimen name="body_height">530dp</dimen>
 
     <!-- footer -->
     <dimen name="footer_height">85dp</dimen>
-    <dimen name="recycler_shop_list_height">540</dimen>
 
     <!-- layout reservations list -->
     <dimen name="width_btn_logout">48dp</dimen>
@@ -41,7 +34,4 @@
     <dimen name="margin_btn_logout">8dp</dimen>
 
     <!-- layout activity shop list -->
-    <dimen name="width_btn_logout_shop_list">48dp</dimen>
-    <dimen name="height_btn_logout_shop_list">48dp</dimen>
-    <dimen name="margin_btn_logout_shop_list">8dp</dimen>
 </resources>
