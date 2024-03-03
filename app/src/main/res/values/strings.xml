@@ -4,11 +4,10 @@
     <string name="balance_placeholder">$0.00</string>
 
     <!-- footer -->
-    <string name="home">Home\n</string>
-    <string name="favorites">Favorites</string>
-    <string name="nearby">Nearby</string>
-    <string name="account">Account</string>
+    <string name="cards">Cards\n</string>
     <string name="listed_shops">Listed Shops</string>
+    <string name="admin">Admin</string>
+    <string name="logout">Logout</string>
 
     <!-- seller -->
     <string name="add_new_product">Add New Product</string>
@@ -32,7 +31,6 @@
     <string name="email">Email</string>
     <string name="login">Login\n</string>
     <string name="register">Register</string>
-    <string name="logout">Logout</string>
 
     <!-- ActivityMain -->
     <string name="welcome">Welcome, %1$s</string>

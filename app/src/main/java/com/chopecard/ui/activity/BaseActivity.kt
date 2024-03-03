@@ -19,7 +19,7 @@ open class BaseActivity : AppCompatActivity() {
     protected fun setupFooter() {
         val userRole = UserPreferences.getUserLogin(this).first
         if (userRole == "ADMIN") {
-            val adminButton = findViewById<ImageButton>(R.id.btnNearby)
+            val adminButton = findViewById<ImageButton>(R.id.btnAdmin)
             adminButton.visibility = android.view.View.VISIBLE
             adminButton.setOnClickListener {
                 Log.d("FooterActivity", "Admin button clicked")
@@ -36,8 +36,8 @@ open class BaseActivity : AppCompatActivity() {
             finish()
         }
 
-        findViewById<ImageButton>(R.id.btnHome)?.setOnClickListener {
-            Log.d("FooterActivity", "Home button clicked")
+        findViewById<ImageButton>(R.id.btnCards)?.setOnClickListener {
+            Log.d("FooterActivity", "Card button clicked")
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
