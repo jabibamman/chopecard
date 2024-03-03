@@ -2,6 +2,7 @@ package com.chopecard.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.chopecard.R
 import com.chopecard.data.model.Card
 import com.chopecard.databinding.ProductDetailLayoutBinding
+import com.chopecard.domain.models.Product
 import com.chopecard.presentation.viewModel.ProductDetailState
 import com.chopecard.presentation.viewModel.ProductDetailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,6 +43,7 @@ class ProductDetailActivity : BaseActivity() {
 
         val cardName = intent.getStringExtra("card_name") ?: String()
         observeProduct()
+
         productDetailViewModel.loadProductDetail(cardName)
     }
 
@@ -67,7 +70,7 @@ class ProductDetailActivity : BaseActivity() {
 
                 is ProductDetailState.Error -> {
                     findViewById<ProgressBar>(R.id.product_progress_bar).visibility = View.GONE
-                    Toast.makeText(this, "Error getting product", Toast.LENGTH_LONG).show()
+                    Log.e("ProductDetailActivity", "Error getting product")
                 }
             }
         }
@@ -79,12 +82,16 @@ class ProductDetailActivity : BaseActivity() {
         }
 
         findViewById<ImageView>(R.id.imageViewCard).setOnClickListener {
-            val intent = Intent(this, ImageActivity::class.java)
-            intent.putExtra("image_url", product.card_images[0].image_url)
-            startActivity(intent)
+            if (this::product.isInitialized && product != null) {
+                Log.d("ProductDetailActivity", "Product: $product")
+                val intent = Intent(this, ImageActivity::class.java)
+                intent.putExtra("image_url", product.card_images[0].image_url)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "No image available", Toast.LENGTH_LONG).show()
+            }
         }
     }
-
     private fun showLoading(isLoading: Boolean) {
         progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
