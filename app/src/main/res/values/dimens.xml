@@ -27,11 +27,4 @@
 
     <!-- footer -->
     <dimen name="footer_height">85dp</dimen>
-
-    <!-- layout reservations list -->
-    <dimen name="width_btn_logout">48dp</dimen>
-    <dimen name="height_btn_logout">48dp</dimen>
-    <dimen name="margin_btn_logout">8dp</dimen>
-
-    <!-- layout activity shop list -->
 </resources>
