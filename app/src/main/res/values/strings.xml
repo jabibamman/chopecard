@@ -61,4 +61,11 @@
     <string name="max_price">Max Price: %1$s</string>
     <string name="image_opened">Image Opened</string>
 
+    <!-- Fragment User Reservation List -->
+    <string name="listed_reservations">Listed Reservations</string>
+
+    <!--  Reservation Item -->
+    <string name="store_name">Store Name</string>
+    <string name="quantity_x">Quantity X</string>
+
 </resources>
