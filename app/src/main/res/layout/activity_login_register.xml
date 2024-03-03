@@ -14,7 +14,9 @@
             android:textColor="@color/primaryFontColor"
             android:textColorHint="@color/primaryFontColor"
             android:visibility="gone"
-            android:hint="@string/name"/>
+            android:hint="@string/name"
+            android:inputType="text"
+            android:autofillHints="" />
 
     <EditText
             android:id="@+id/etMail"
@@ -23,7 +25,8 @@
             android:hint="@string/email"
             android:textColor="@color/primaryFontColor"
             android:textColorHint="@color/primaryFontColor"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:autofillHints="" />
 
 
     <EditText
@@ -33,7 +36,8 @@
         android:hint="@string/password"
         android:textColor="@color/primaryFontColor"
         android:textColorHint="@color/primaryFontColor"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:autofillHints="" />
 
     <Button
             android:id="@+id/btnLogin"

@@ -10,19 +10,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/product_id"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:autofillHints="" />
 
     <EditText
             android:id="@+id/etQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/quantity"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:autofillHints="" />
 
     <EditText
             android:id="@+id/etPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/price"
-            android:inputType="numberDecimal"/>
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
 </LinearLayout>
