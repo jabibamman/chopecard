@@ -42,5 +42,13 @@ open class BaseActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
         }
+
+        findViewById<ImageButton>(R.id.btnLogout)?.setOnClickListener {
+            Log.d("ShopListActivity", "Logout button clicked")
+            UserPreferences.clearAllPreference(this)
+            val intent = Intent(this, LoginRegisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
