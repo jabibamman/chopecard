@@ -62,12 +62,11 @@ class UserReservationListActivity : BaseActivity() {
     private suspend fun getReservations(): List<UserReservation> {
             var reservations = emptyList<UserReservation>()
             try {
-                val (userRole,userId,userName) = UserPreferences.getUserLogin(this)
+                val (_,userId, _) = UserPreferences.getUserLogin(this)
                 Log.d("UserReservations","$userId")
                 reservations  = getUserReservationsUseCase.execute(userId)
                 Log.d("UserReservations", "Stores: $reservations")
             } catch (e: Exception) {
-                Log.d("dsfsfdsdffds","$e")
                 Log.d("UserReservations", "ERROR: RESERVATION")
             }
 
