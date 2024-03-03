@@ -15,7 +15,11 @@
         android:indeterminate="true"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_marginTop="20dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <include
         layout="@layout/header_layout"
