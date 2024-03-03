@@ -44,6 +44,8 @@
             android:layout_height="wrap_content">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -52,4 +54,6 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
 </androidx.appcompat.widget.LinearLayoutCompat>

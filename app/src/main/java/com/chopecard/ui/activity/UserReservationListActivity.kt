@@ -3,6 +3,7 @@ package com.chopecard.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
@@ -50,6 +51,10 @@ class UserReservationListActivity : BaseActivity() {
             UserPreferences.clearAllPreference(this)
             val intent = Intent(this, LoginRegisterActivity::class.java)
             startActivity(intent)
+            finish()
+        }
+
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
             finish()
         }
     }

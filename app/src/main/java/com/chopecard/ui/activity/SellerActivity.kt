@@ -41,7 +41,7 @@ class SellerActivity : BaseActivity() {
     }
 
     private fun setupListeners() {
-        findViewById<Button>(R.id.btnGoBack).setOnClickListener {
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
             finish()
         }
 

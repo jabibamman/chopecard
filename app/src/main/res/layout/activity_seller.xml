@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/body_background"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/body_background"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
 
     <include layout="@layout/header_layout"
         android:id="@+id/headerLayout"
@@ -80,18 +81,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/view_reservers"/>
-
-            <Button
-                android:id="@+id/btnGoBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/go_back"
-                android:layout_marginTop="@dimen/default_margin" />
         </LinearLayout>
     </ScrollView>
+    <include
+        layout="@layout/btn_back"
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Conteneur pour le fragment -->
-
     <include layout="@layout/footer_layout"
         android:id="@+id/footerLayout"
         android:layout_width="match_parent"
