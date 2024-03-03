@@ -32,7 +32,6 @@ android {
 
             buildConfigField("String","BASE_URL", "\"http://176.134.7.134:3000\"")
             buildConfigField("String","EXTERNAL_URL", "\"http://localhost:8080/v1/\"")
-
         }
 
         release {
@@ -42,7 +41,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
         }
     }
     compileOptions {

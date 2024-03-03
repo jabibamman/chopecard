@@ -38,8 +38,8 @@
     <string name="welcome">Welcome, %1$s</string>
     <string name="reserve_id">Reserve ID</string>
     <string name="password">Password</string>
-    <string name="close">Fermer</string>
-    <string name="logo_chopecard">logo chopecard</string>
+    <string name="close">Close</string>
+    <string name="logo_chopecard">chopecard logo</string>
 
 
     <!-- DialogAddProduct -->
@@ -53,7 +53,7 @@
     <string name="todo">TODO</string>
 
     <!-- Usage on all activities -->
-    <string name="back">retour</string>
+    <string name="back">Back</string>
 
     <!-- Product Detail -->
     <string name="price_max_product">price_max_product</string>
