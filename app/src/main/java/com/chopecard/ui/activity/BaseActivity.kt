@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.chopecard.MainActivity
 import com.chopecard.R
 import com.chopecard.data.storage.UserPreferences
+import com.chopecard.domain.models.ERole
 import com.chopecard.ui.utils.ActivityName
 import com.chopecard.ui.utils.CurrentActivityTracker
 
@@ -20,7 +21,7 @@ open class BaseActivity : AppCompatActivity() {
 
     protected fun setupFooter() {
         val userRole = UserPreferences.getUserLogin(this).first
-        if (userRole == "ADMIN") {
+        if (userRole == ERole.ADMIN.name) {
             val adminButton = findViewById<ImageButton>(R.id.btnAdmin)
             adminButton.visibility = android.view.View.VISIBLE
             if (CurrentActivityTracker.getCurrentActivity() != ActivityName.AdminActivity) {
