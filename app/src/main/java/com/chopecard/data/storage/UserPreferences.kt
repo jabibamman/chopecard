@@ -5,7 +5,6 @@ import com.chopecard.domain.models.ERole
 
 object UserPreferences {
     private const val PREFERENCES_FILE_KEY = "com.chopecard.userprefs"
-    private const val IS_LOGGED_IN_KEY = "isLoggedIn"
     private const val SHOW_WELCOME_KEY = "showWelcome"
 
     fun saveUserLogin(context: Context, userId: Int, userName: String, userRole:String) {
@@ -37,11 +36,6 @@ object UserPreferences {
             putBoolean(SHOW_WELCOME_KEY, false)
             apply()
         }
-    }
-
-    fun shouldShowWelcome(context: Context): Boolean {
-        val sharedPreferences = context.getSharedPreferences(PREFERENCES_FILE_KEY, Context.MODE_PRIVATE)
-        return sharedPreferences.getBoolean(SHOW_WELCOME_KEY, true)
     }
 
     fun clearUserLogin(context: Context) {

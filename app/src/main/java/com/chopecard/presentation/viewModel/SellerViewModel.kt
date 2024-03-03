@@ -47,18 +47,6 @@ class SellerViewModel(
         }
     }
 
-    fun getStores() {
-        viewModelScope.launch {
-            try {
-                getStoresUseCase.execute()
-                // Update UI accordingly based on success
-
-            } catch (e: Exception) {
-                // Handle error
-            }
-        }
-    }
-
     fun deleteProduct(deleteProductDTO: DeleteProductDTO) {
         viewModelScope.launch {
             try {

@@ -10,7 +10,6 @@
     import androidx.recyclerview.widget.RecyclerView
     import com.chopecard.data.storage.UserPreferences
     import com.chopecard.databinding.ActivityMainBinding
-    import com.chopecard.domain.models.Product
     import com.chopecard.presentation.viewModel.CollectorViewModel
     import com.chopecard.presentation.viewModel.ProductDataState
     import com.chopecard.ui.activity.BaseActivity
@@ -18,7 +17,6 @@
 
     class MainActivity : BaseActivity() {
         private lateinit var binding: ActivityMainBinding
-        private lateinit var cardList: List<Product>
         private val  collectorViewModel: CollectorViewModel by viewModel()
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
