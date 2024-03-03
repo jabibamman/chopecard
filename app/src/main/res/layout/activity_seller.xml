@@ -7,11 +7,11 @@
         android:orientation="vertical">
 
     <include layout="@layout/header_layout"
-            android:id="@+id/headerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            tools:visibility="visible"/>
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        tools:visibility="visible"/>
 
     <TextView
         android:id="@+id/tvShopName"
@@ -26,9 +26,8 @@
         android:textStyle="bold" />
 
     <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp"/>
-
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
 
     <ScrollView
             android:layout_width="match_parent"
@@ -41,64 +40,63 @@
                 android:padding="@dimen/default_padding">
 
             <Button
-                    android:id="@+id/btnAddProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add_new_product"/>
-
-            <Button
-                    android:id="@+id/btnUpdateProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/update_product"/>
-
-            <Button
-                    android:id="@+id/btnDeleteProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/delete_product"/>
-
-            <Button
-                    android:id="@+id/btnReserveProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/reserve_product"/>
-
-            <Button
-                    android:id="@+id/btnUnreserveProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/unreserve_product"/>
-
-            <Button
-                    android:id="@+id/btnGetReservations"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/view_reservations"/>
-
-            <Button
+                android:id="@+id/btnAddProduct"
                 android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/view_reservers"/>
-
-
+                android:layout_height="wrap_content"
+                android:text="@string/add_new_product"/>
 
             <Button
-                    android:id="@+id/btnGoBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/go_back"
-                    android:layout_marginTop="@dimen/default_margin" />
+                android:id="@+id/btnUpdateProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/update_product"/>
+
+            <Button
+                android:id="@+id/btnDeleteProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_product"/>
+
+            <Button
+                android:id="@+id/btnReserveProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reserve_product"/>
+
+            <Button
+                android:id="@+id/btnUnreserveProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/unreserve_product"/>
+
+            <Button
+                android:id="@+id/btnGetReservations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/view_reservations"/>
+
+            <Button
+                android:id="@+id/btnGetReservers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/view_reservers"/>
+
+            <Button
+                android:id="@+id/btnGoBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/go_back"
+                android:layout_marginTop="@dimen/default_margin" />
         </LinearLayout>
     </ScrollView>
 
     <!-- Conteneur pour le fragment -->
 
     <include layout="@layout/footer_layout"
-            android:id="@+id/footerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/footer_height"
-            android:layout_alignParentBottom="true"
-            android:visibility="visible"
-            tools:visibility="visible" />
+        android:id="@+id/footerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/footer_height"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible"
+        tools:visibility="visible" />
 </androidx.appcompat.widget.LinearLayoutCompat>
