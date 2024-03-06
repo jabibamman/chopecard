@@ -76,14 +76,13 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
 
     // Compose Material
-    implementation("androidx.compose.material:material:1.6.2")
+    implementation("androidx.compose.material:material:1.6.3")
     implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.compose.material3:material3-android:1.2.0")
+    implementation("androidx.compose.material3:material3-android:1.2.1")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
 
     implementation("androidx.recyclerview:recyclerview:1.3.2")
-
 
     // Koin pour Kotlin
     implementation("io.insert-koin:koin-android:3.5.0")
