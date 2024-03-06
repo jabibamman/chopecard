@@ -11,23 +11,19 @@ import com.chopecard.data.model.ReserveDTO
 import com.chopecard.data.model.UpdateProductDTO
 import com.chopecard.domain.usecases.AddProductUseCase
 import com.chopecard.domain.usecases.DeleteProductUseCase
-import com.chopecard.domain.usecases.GetStoresUseCase
 import com.chopecard.domain.usecases.ReserveProductUseCase
 import com.chopecard.domain.usecases.UnreserveProductUseCase
 import com.chopecard.domain.usecases.UpdateProductUseCase
 import kotlinx.coroutines.launch
 
 class SellerViewModel(
-    private val getStoresUseCase: GetStoresUseCase,
     private val addProductUseCase: AddProductUseCase,
     private val deleteProductUseCase: DeleteProductUseCase,
     private val updateProductUseCase: UpdateProductUseCase,
     private val reserveProductUseCase: ReserveProductUseCase,
     private val unreserveProductUseCase: UnreserveProductUseCase
-    // Add other use cases as needed
 ) : ViewModel() {
     val alertMessage = MutableLiveData<String>()
-
 
     fun addProduct(storeId: Int, productId: Int, productStoreDTO: ProductStoreDTO) {
         viewModelScope.launch {
@@ -44,18 +40,6 @@ class SellerViewModel(
                 Log.e("SellerViewModel", "Error adding product", e)
                 alertMessage.postValue("Erreur lors de l'ajout du produit.")
 
-            }
-        }
-    }
-
-    fun getStores() {
-        viewModelScope.launch {
-            try {
-                getStoresUseCase.execute()
-                // Update UI accordingly based on success
-
-            } catch (e: Exception) {
-                // Handle error
             }
         }
     }
@@ -125,6 +109,4 @@ class SellerViewModel(
             }
         }
     }
-
-    // Implement other actions (e.g., updateProduct, deleteProduct) similarly
 }

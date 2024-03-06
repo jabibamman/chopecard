@@ -4,6 +4,7 @@ import com.chopecard.data.model.LoginUserDTO
 import com.chopecard.data.model.UserDTO
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.User
+import com.chopecard.domain.models.UserReservation
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -30,7 +31,7 @@ interface UserApiService {
     fun deleteUserById(@Path("userId") userId: Int): Call<String>
 
     @GET("/v1/user/{userId}/reserves")
-    fun getReservesByUserId(@Path("userId") userId: Int): Call<Store>
+    suspend fun getReservesByUserId(@Path("userId") userId: Int): Response<List<UserReservation>>
 
     @GET("/v1/user/{userId}/reserves/{reservesId}")
     fun getReservesByIdAndByUserId(@Path("userId") userId: Int, @Path("reservesId") reservesId: Int): Call<Store>

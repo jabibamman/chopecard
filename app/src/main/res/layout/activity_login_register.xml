@@ -3,48 +3,51 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor"
+        android:background="@color/body_background"
         android:orientation="vertical"
         android:padding="16dp">
 
     <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/primaryFontColor"
-            android:textColorHint="@color/primaryFontColor"
-            android:visibility="gone"
-            android:hint="@string/name"/>
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primaryFontColor"
+        android:textColorHint="@color/primaryFontColor"
+        android:visibility="gone"
+        android:hint="@string/name"
+        android:autofillHints="@string/name"
+        android:inputType="text" />
 
     <EditText
-            android:id="@+id/etMail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/email"
-            android:textColor="@color/primaryFontColor"
-            android:textColorHint="@color/primaryFontColor"
-            android:inputType="textEmailAddress"/>
-
+        android:id="@+id/etMail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        android:autofillHints="@string/email"
+        android:textColor="@color/primaryFontColor"
+        android:textColorHint="@color/primaryFontColor"
+        android:inputType="textEmailAddress"/>
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/password"
+        android:autofillHints="@string/password"
         android:textColor="@color/primaryFontColor"
         android:textColorHint="@color/primaryFontColor"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword" />
 
     <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login"/>
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login"/>
 
     <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/register"/>
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register"/>
 
 </LinearLayout>

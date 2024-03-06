@@ -16,22 +16,20 @@ import com.chopecard.domain.usecases.CreateStoreUseCase
 import com.chopecard.domain.usecases.CreateUserUseCase
 import com.chopecard.domain.usecases.DeleteProductUseCase
 import com.chopecard.domain.usecases.DeleteTicketUseCase
+import com.chopecard.domain.usecases.GetProductDetailUseCase
 import com.chopecard.domain.usecases.GetProductsUseCase
-import com.chopecard.domain.usecases.GetReservationsUseCase
 import com.chopecard.domain.usecases.GetStoreProductsUseCase
 import com.chopecard.domain.usecases.GetStoresUseCase
 import com.chopecard.domain.usecases.GetTicketsUseCase
+import com.chopecard.domain.usecases.GetUserReservationsUseCase
 import com.chopecard.domain.usecases.GetUserUseCase
-import com.chopecard.domain.usecases.ManageFavoritesUseCase
 import com.chopecard.domain.usecases.ReserveProductUseCase
 import com.chopecard.domain.usecases.UnreserveProductUseCase
 import com.chopecard.domain.usecases.UpdateProductUseCase
 import com.chopecard.domain.usecases.yugioh.GetYugiohCardInfoByNameUseCase
-import com.chopecard.domain.usecases.yugioh.GetYugiohCardSetInfoUseCase
-import com.chopecard.domain.usecases.yugioh.GetYugiohCardsInfoByTypeUseCase
-import com.chopecard.presentation.viewModel.CardViewModel
 import com.chopecard.presentation.viewModel.CollectorViewModel
 import com.chopecard.presentation.viewModel.LoginViewModel
+import com.chopecard.presentation.viewModel.ProductDetailViewModel
 import com.chopecard.presentation.viewModel.SellerViewModel
 import com.chopecard.presentation.viewModel.StoreViewModel
 import com.chopecard.presentation.viewModel.TicketViewModel
@@ -55,27 +53,25 @@ internal val coreModule = module {
     factory { CreateStoreUseCase(get()) }
     factory { DeleteProductUseCase(get()) }
     factory { DeleteTicketUseCase(get()) }
-    factory { GetReservationsUseCase(get()) }
     factory { GetStoreProductsUseCase(get()) }
     factory { GetStoresUseCase(get()) }
     factory { GetTicketsUseCase(get()) }
-    factory { ManageFavoritesUseCase(get()) }
     factory { ReserveProductUseCase(get()) }
     factory { UnreserveProductUseCase(get()) }
     factory { UpdateProductUseCase(get()) }
     factory { CreateUserUseCase(get()) }
     factory { GetUserUseCase(get()) }
-    factory { GetYugiohCardSetInfoUseCase(get()) }
     factory { GetYugiohCardInfoByNameUseCase(get()) }
-    factory { GetYugiohCardsInfoByTypeUseCase(get()) }
     factory { GetStoreProductsUseCase(get()) }
     factory { GetProductsUseCase(get()) }
+    factory { GetProductDetailUseCase(get()) }
+    factory { GetUserReservationsUseCase(get()) }
 
     // ViewModels
-    viewModel { CollectorViewModel() }
-    viewModel { SellerViewModel(get(), get(), get(), get(), get(), get()) }
-    viewModel { CardViewModel(get()) }
+    viewModel { CollectorViewModel(get()) }
+    viewModel { SellerViewModel(get(), get(), get(), get(), get()) }
     viewModel { StoreViewModel(get()) }
     viewModel { LoginViewModel(get(), get()) }
     viewModel { TicketViewModel(get(), get(), get()) }
+    viewModel { ProductDetailViewModel(get()) }
 }

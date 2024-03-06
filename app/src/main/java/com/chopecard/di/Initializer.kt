@@ -7,16 +7,16 @@ import com.chopecard.di.modules.remoteModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
-import org.koin.core.error.ApplicationAlreadyStartedException
 import org.koin.dsl.module
 
 fun injectModuleDependencies(context: Context) {
     try {
+
         startKoin {
             androidContext(context)
             modules(modules)
         }
-    } catch (alreadyStart: ApplicationAlreadyStartedException) {
+    } catch (e: Exception) {
         loadKoinModules(modules)
     }
 }

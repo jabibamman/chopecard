@@ -12,15 +12,14 @@ import kotlinx.coroutines.launch
 sealed class StoreDataState {
     object Loading : StoreDataState()
     data class Success(val stores: List<Store>): StoreDataState()
-    data class Error(val exception: Throwable): StoreDataState()
+    data class Error(val ignoredException: Throwable): StoreDataState()
 }
 
 class StoreViewModel(
-    private val getStoresUseCase: GetStoresUseCase
+    private val getStoresUseCase: GetStoresUseCase,
 ) : ViewModel() {
 
     val storesLiveData = MutableLiveData<StoreDataState>()
-
     fun getStores() {
         storesLiveData.postValue(StoreDataState.Loading)
         viewModelScope.launch {
@@ -35,5 +34,6 @@ class StoreViewModel(
     }
 
 
-    // TODO: other actions (updateProduct, deleteProduct...)
+
+
 }

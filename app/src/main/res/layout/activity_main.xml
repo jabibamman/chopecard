@@ -10,38 +10,40 @@
         tools:ignore="ExtraText">
 
     <include
-            layout="@layout/header_layout"
-            android:id="@+id/headerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            tools:visibility="visible"
-            app:layout_constraintTop_toTopOf="parent" />
+        layout="@layout/header_layout"
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        tools:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent" />
     <!-- Welcome USERNAME -->
     <TextView
-            android:id="@+id/tvWelcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:textAlignment="center"
-            android:textColor="@color/primaryFontColor"
-            android:textSize="24sp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            app:layout_constraintTop_toBottomOf="@id/headerLayout" />
+        android:id="@+id/tvWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:textAlignment="center"
+        android:textColor="@color/primaryFontColor"
+        android:textSize="@dimen/text_size_large"
+        android:visibility="visible"
+        tools:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout" />
 
     <ProgressBar
-            android:id="@+id/productsprogressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/body_background"
-            android:layout_centerInParent="true"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/tvWelcome"
-            app:layout_constraintBottom_toTopOf="@id/recyclerView" />
-
+        android:id="@+id/productsprogressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/body_background"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView" />
+ 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -53,12 +55,12 @@
         app:layout_constraintBottom_toTopOf="@id/footerLayout" />
 
     <include
-            layout="@layout/footer_layout"
-            android:id="@+id/footerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/footer_height"
-            android:visibility="visible"
-            tools:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent" />
+        layout="@layout/footer_layout"
+        android:id="@+id/footerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/footer_height"
+        android:visibility="visible"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

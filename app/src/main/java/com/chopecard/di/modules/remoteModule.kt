@@ -1,6 +1,7 @@
 package com.chopecard.di.modules
 
 import com.chopecard.data.network.AdminApiService
+import com.chopecard.data.network.CardApiService
 import com.chopecard.data.network.ProductApiService
 import com.chopecard.data.network.StoreApiService
 import com.chopecard.data.network.UserApiService
@@ -29,6 +30,11 @@ internal val remoteModule = module {
         )
     }
 
+    single {
+        createWebService<CardApiService>(
+            get(named(fakeApiRetrofitClient))
+        )
+    }
     single {
         createWebService<ProductApiService>(
             get(named(fakeApiRetrofitClient))

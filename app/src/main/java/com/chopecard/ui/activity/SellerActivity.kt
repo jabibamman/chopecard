@@ -1,5 +1,6 @@
 package com.chopecard.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
@@ -26,6 +27,7 @@ class SellerActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller)
         setupFooter()
+        @Suppress("DEPRECATION")
         store = intent.getParcelableExtra("store")
         val tvShopName = findViewById<TextView>(R.id.tvShopName)
 
@@ -40,7 +42,7 @@ class SellerActivity : BaseActivity() {
     }
 
     private fun setupListeners() {
-        findViewById<Button>(R.id.btnGoBack).setOnClickListener {
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
             finish()
         }
 
@@ -66,6 +68,10 @@ class SellerActivity : BaseActivity() {
 
         findViewById<Button>(R.id.btnUnreserveProduct).setOnClickListener {
             onUnreserveProduct()
+        }
+
+        findViewById<Button>(R.id.btnGetReservations).setOnClickListener {
+            onGetReservations()
         }
 
     }
@@ -256,6 +262,10 @@ class SellerActivity : BaseActivity() {
         dialog.show()
     }
 
+    private fun onGetReservations() {
+        val intent = Intent(this, UserReservationListActivity::class.java)
+        startActivity(intent)
+    }
 
 
 

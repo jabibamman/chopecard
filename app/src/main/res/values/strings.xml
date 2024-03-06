@@ -1,14 +1,11 @@
 <resources>
     <string name="app_name">chopecard</string>
-    <string name="username_placeholder">Username</string>
-    <string name="balance_placeholder">$0.00</string>
 
     <!-- footer -->
-    <string name="home">Home\n</string>
-    <string name="favorites">Favorites</string>
-    <string name="nearby">Nearby</string>
-    <string name="account">Account</string>
+    <string name="cards">Cards\n</string>
     <string name="listed_shops">Listed Shops</string>
+    <string name="admin">Admin</string>
+    <string name="logout">Logout</string>
 
     <!-- seller -->
     <string name="add_new_product">Add New Product</string>
@@ -18,7 +15,6 @@
     <string name="unreserve_product">Unreserve Product</string>
     <string name="view_reservations">View Reservations</string>
     <string name="view_reservers">View Reservers</string>
-    <string name="go_back">Back</string>
 
     <!-- admin -->
     <string name="tickets">Tickets</string>
@@ -32,15 +28,13 @@
     <string name="email">Email</string>
     <string name="login">Login\n</string>
     <string name="register">Register</string>
-    <string name="logout">Logout</string>
 
     <!-- ActivityMain -->
     <string name="welcome">Welcome, %1$s</string>
     <string name="reserve_id">Reserve ID</string>
     <string name="password">Password</string>
-    <string name="image_opened">Image Opened</string>
-    <string name="close">Fermer</string>
-    <string name="logo_chopecard">logo chopecard</string>
+    <string name="close">Close</string>
+    <string name="logo_chopecard">chopecard logo</string>
 
 
     <!-- DialogAddProduct -->
@@ -51,5 +45,21 @@
     <!-- Shop List -->
     <string name="shop_name">Shop Name</string>
     <string name="shop_address">1234 Main Street, Anytown</string>
-    <string name="todo">TODO</string>
+
+    <!-- Usage on all activities -->
+    <string name="back">Back</string>
+
+    <!-- Product Detail -->
+    <string name="product_name">Product Name</string>
+    <string name="amazon_price_value">Amazon\'s price: $%1$s</string>
+    <string name="ebay_price_value">Ebay\'s price: $%1$s</string>
+    <string name="image_opened">Image Opened</string>
+
+    <!-- Fragment User Reservation List -->
+    <string name="listed_reservations">Listed Reservations</string>
+
+    <!--  Reservation Item -->
+    <string name="store_name">Store Name</string>
+    <string name="quantity_x">Quantity %1$s</string>
+
 </resources>

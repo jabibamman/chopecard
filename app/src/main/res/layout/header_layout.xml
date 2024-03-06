@@ -7,8 +7,7 @@
         android:background="@color/header_background">
 
    <ImageView
-           android:id="@+id/imageViewLogo"
-           android:layout_width="@dimen/logo_width"
+       android:layout_width="@dimen/logo_width"
            android:layout_height="@dimen/logo_height"
            android:src="@drawable/logo"
            android:layout_centerInParent="true"

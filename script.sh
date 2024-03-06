@@ -12,7 +12,6 @@ declare -a FILES=(
   "domain/models/Card.kt"
   "domain/models/Extension.kt"
   "domain/usecases/FetchProductsUseCase.kt"
-  "domain/usecases/ManageFavoritesUseCase.kt"
   "domain/usecases/UpdateStockUseCase.kt"
   "data/repository/ProductRepositoryImpl.kt"
   "data/repository/StoreRepositoryImpl.kt"
