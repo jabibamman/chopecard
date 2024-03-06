@@ -78,21 +78,19 @@
                 android:textSize="@dimen/text_size_small" />
 
             <TextView
-                android:id="@+id/price_min_product"
+                android:id="@+id/amazon_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/price_min_product"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/text_size_medium"
                 android:layout_marginTop="8dp" />
 
             <TextView
-                android:id="@+id/price_max_product"
+                android:id="@+id/ebay_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/price_max_product"
                 android:textColor="@color/error"
                 android:textSize="@dimen/text_size_medium"
                 android:layout_marginTop="8dp" />

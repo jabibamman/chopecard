@@ -49,8 +49,8 @@ class ProductDetailActivity : BaseActivity() {
     private fun initView() {
         productNameTextView = findViewById(R.id.productName)
         descriptionTextView = findViewById(R.id.tvDescription)
-        priceMinTextView = findViewById(R.id.price_min_product)
-        priceMaxTextView = findViewById(R.id.price_max_product)
+        priceMinTextView = findViewById(R.id.amazon_price)
+        priceMaxTextView = findViewById(R.id.ebay_price)
         imageView = binding.imageViewCard
     }
 
@@ -96,8 +96,8 @@ class ProductDetailActivity : BaseActivity() {
         with(binding) {
             productNameTextView.text = card.name
             descriptionTextView.text = card.desc
-            priceMinTextView.text = getString(R.string.min_price, card.card_prices[0].amazon_price)
-            priceMaxTextView.text = getString(R.string.max_price, card.card_prices[0].ebay_price)
+            priceMinTextView.text = getString(R.string.amazon_price_value, card.card_prices[0].amazon_price)
+            priceMaxTextView.text = getString(R.string.ebay_price_value, card.card_prices[0].ebay_price)
 
             if (card.card_images.isNotEmpty()) {
                 Glide.with(this@ProductDetailActivity)
@@ -108,5 +108,4 @@ class ProductDetailActivity : BaseActivity() {
             }
         }
     }
-
 }
