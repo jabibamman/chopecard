@@ -12,7 +12,7 @@ import com.chopecard.domain.models.Store
 class ShopListAdapter(private val shopList: MutableList<Store>, private val onClick: (Store) -> Unit) :
     RecyclerView.Adapter<ShopListAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View, val onClick: (Store) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, val ignoredOnClick: (Store) -> Unit) : RecyclerView.ViewHolder(view) {
         private val shopName: TextView = view.findViewById(R.id.tvShopName)
         private val shopAdress: TextView = view.findViewById(R.id.tvShopAddress)
 
@@ -20,7 +20,7 @@ class ShopListAdapter(private val shopList: MutableList<Store>, private val onCl
 
         init {
             view.setOnClickListener {
-                currentStore?.let { onClick(it) }
+                currentStore?.let { ignoredOnClick(it) }
             }
         }
 

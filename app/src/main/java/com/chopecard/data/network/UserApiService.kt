@@ -2,7 +2,6 @@ package com.chopecard.data.network
 
 import com.chopecard.data.model.LoginUserDTO
 import com.chopecard.data.model.UserDTO
-import com.chopecard.domain.models.Product
 import com.chopecard.domain.models.Store
 import com.chopecard.domain.models.User
 import com.chopecard.domain.models.UserReservation

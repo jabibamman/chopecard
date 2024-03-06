@@ -23,7 +23,12 @@ class ProductRepositoryImpl(private val productApiService: ProductApiService) : 
     }
 
     override suspend fun getProduct(productId: Int): Product {
-        TODO("Not yet implemented")
+        val productDTO = productApiService.getProductById(productId)
+        return try {
+            val response = productDTO.execute()
+            response.body() ?: Product(0, "", "", 0f, 0f, "")
+        } catch (e: Exception) {
+            Product(0, "", "", 0f, 0f, "")
+        }
     }
-
 }

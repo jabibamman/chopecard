@@ -9,13 +9,12 @@
     tools:context=".ui.activity.ShopListActivity">
 
     <TextView
-        android:id="@+id/tvListedReservationList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Listed Reservations"
+        android:text="@string/listed_reservations"
         android:textColor="@color/primaryFontColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,6 +44,8 @@
             android:layout_height="wrap_content">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -53,4 +54,6 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
 </androidx.appcompat.widget.LinearLayoutCompat>

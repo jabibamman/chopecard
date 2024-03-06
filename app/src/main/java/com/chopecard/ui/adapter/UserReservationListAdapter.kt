@@ -1,6 +1,5 @@
 package com.chopecard.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ class UserReservationListAdapter(
     private val onClick: (UserReservation) -> Unit
 ) : RecyclerView.Adapter<UserReservationListAdapter.ReservationViewHolder>() {
 
-    class ReservationViewHolder(view: View, val onClick: (UserReservation) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ReservationViewHolder(view: View, val ignoredOnClick: (UserReservation) -> Unit) : RecyclerView.ViewHolder(view) {
         private val storeName: TextView = view.findViewById(R.id.storeName)
         private val productName: TextView = view.findViewById(R.id.productName)
         private val productQuantity: TextView = view.findViewById(R.id.productQuantity)
@@ -22,7 +21,7 @@ class UserReservationListAdapter(
 
         init {
             view.setOnClickListener {
-                currentReservation?.let { onClick(it) }
+                currentReservation?.let { ignoredOnClick(it) }
             }
         }
 
@@ -31,8 +30,7 @@ class UserReservationListAdapter(
             currentReservation = reservation
             storeName.text = reservation.store.name
             productName.text = reservation.productStore.product.name
-            productQuantity.text = "Quantity: ${reservation.quantity}"
-
+            productQuantity.text = reservation.quantity.toString()
         }
     }
 

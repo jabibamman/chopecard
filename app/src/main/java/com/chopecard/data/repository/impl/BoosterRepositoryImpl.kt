@@ -6,7 +6,7 @@ import com.chopecard.domain.models.Booster
 import retrofit2.Call
 
 
-class BoosterRepositoyImpl(private val boosterApiService: BoosterApiService) : BoosterRepository {
+class BoosterRepositoryImpl(private val boosterApiService: BoosterApiService) : BoosterRepository {
     override suspend fun getBoosters(): List<Booster> {
         val boosterDTOs: Call<List<Booster>> = boosterApiService.getBoosters()
         return try {

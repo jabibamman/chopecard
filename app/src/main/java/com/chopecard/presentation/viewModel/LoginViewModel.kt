@@ -18,12 +18,12 @@ class LoginViewModel(
     val userCreationResult = MutableLiveData<UserCreationResult>()
     val userData = MutableLiveData<User>()
 
-    fun createUser(user: UserDTO) {
+    fun createUser(userDTO: UserDTO) {
         viewModelScope.launch {
             try {
-                val user = createUserUseCase.execute(user)
-                userCreationResult.value = UserCreationResult.Success(user)
-                Log.d("LoginViewModel", "User created: $user")
+                val createdUser = createUserUseCase.execute(userDTO)
+                userCreationResult.value = UserCreationResult.Success(createdUser)
+                Log.d("LoginViewModel", "User created: $createdUser")
             } catch (e: Exception) {
                 Log.e("LoginViewModel", "Error creating user", e)
                 userCreationResult.value = UserCreationResult.Failure(e)
@@ -31,13 +31,13 @@ class LoginViewModel(
         }
     }
 
-    fun getUser(userId: Int, onResult: (User?) -> Unit) {
+    fun getUser(userId: Int, ignoredOnResult: (User?) -> Unit) {
         viewModelScope.launch {
             try {
                 val user = getUserUseCase.execute(userId)
-                onResult(user)
+                ignoredOnResult(user)
             } catch (e: Exception) {
-                onResult(null)
+                ignoredOnResult(null)
             }
         }
     }

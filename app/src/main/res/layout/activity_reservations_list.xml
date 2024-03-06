@@ -27,6 +27,16 @@ tools:context=".ui.activity.UserReservationListActivity">
     app:layout_constraintEnd_toEndOf="parent"
     android:background="@color/body_background" />
 
+
+    <include
+        layout="@layout/btn_back"
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/footerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 <ProgressBar
     android:id="@+id/progressBar"
     android:layout_width="wrap_content"
@@ -39,17 +49,8 @@ tools:context=".ui.activity.UserReservationListActivity">
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"/>
 
-<ImageButton
-    android:id="@+id/btnLogout"
-    android:layout_width="48dp"
-    android:layout_height="48dp"
-    android:src="@drawable/ic_logout"
-    android:layout_margin="8dp"
-    android:contentDescription="@string/logout"
-    app:layout_constraintBottom_toTopOf="@id/footerLayout"
-    app:layout_constraintEnd_toEndOf="@id/footerLayout" />
 
-<include layout="@layout/footer_layout"
+    <include layout="@layout/footer_layout"
     android:id="@+id/footerLayout"
     android:layout_width="match_parent"
     android:layout_height="@dimen/footer_height"

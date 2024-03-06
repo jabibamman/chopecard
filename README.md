@@ -8,11 +8,10 @@ ChopeCard is an Android (Kotlin) application designed for collectors and vendors
 
 ### For Collectors
 
-- **Search Products**: Find products by license, extension, type, or specific card.
 - **Account Creation**: Sign up to access enhanced features.
-- **Favorites**: Save favorite stores and products for easy access.
-- **Nearest Stores**: View nearby stores selling collectible cards.
-- **Search History**: Review past search queries.
+- **Search Products**: Find products by license, extension, type, or specific card.
+- **Search Shops**: Find shops by their name and manage them.
+- **Admin View**: View created tickets about problems with the application.
 
 ### For Vendors
 
@@ -41,6 +40,7 @@ ChopeCard is an Android (Kotlin) application designed for collectors and vendors
 2. Open the project in Android Studio.
 3. Ensure Android SDK 33 (Oreo) is installed.
 4. Build and run the application on an emulator or physical device.
+
 ## Contribution
 
 Contributions to the ChopeCard project are welcome. Please follow the standard pull request process if you wish to contribute.

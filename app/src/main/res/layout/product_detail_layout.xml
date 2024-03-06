@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/image_produit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/body_background"
     android:clickable="false">
 
     <ProgressBar
@@ -15,7 +14,11 @@
         android:indeterminate="true"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_marginTop="20dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <include
         layout="@layout/header_layout"
@@ -75,21 +78,19 @@
                 android:textSize="@dimen/text_size_small" />
 
             <TextView
-                android:id="@+id/price_min_product"
+                android:id="@+id/amazon_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/price_min_product"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/text_size_medium"
                 android:layout_marginTop="8dp" />
 
             <TextView
-                android:id="@+id/price_max_product"
+                android:id="@+id/ebay_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/price_max_product"
                 android:textColor="@color/error"
                 android:textSize="@dimen/text_size_medium"
                 android:layout_marginTop="8dp" />
@@ -97,18 +98,13 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <Button
+    <include
+        layout="@layout/btn_back"
         android:id="@+id/btnBack"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:backgroundTint="#2962FF"
-        android:text="@string/back"
-        android:textColor="@color/button_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

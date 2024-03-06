@@ -10,11 +10,11 @@ fun showAlert(message: String, context: Context) {
     }.show()
 }
 
-fun showConfirmationAlert(message: String, context: Context, onPositiveClick: () -> Unit) {
+fun showConfirmationAlert(message: String, context: Context, ignoredOnPositiveClick: () -> Unit) {
     AlertDialog.Builder(context).apply {
         setMessage(message)
         setPositiveButton("Yes") { dialog, _ ->
-            onPositiveClick()
+            ignoredOnPositiveClick()
             dialog.dismiss()
         }
         setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }

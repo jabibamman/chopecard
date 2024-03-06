@@ -1,7 +1,6 @@
 package com.chopecard.presentation.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,15 +24,13 @@ class UserReservationListFragment : Fragment() {
         recyclerView = view.findViewById(R.id.rvUserReservationList)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Récupérer et afficher les réservations
+        @Suppress("DEPRECATION")
         arguments?.getParcelableArrayList<UserReservation>("reservations")?.let { reservations ->
             updateRecyclerView(reservations)
         }
     }
 
     private fun updateRecyclerView(reservations: List<UserReservation>) {
-        recyclerView.adapter = UserReservationListAdapter(reservations) { userReservation ->
-            // Implémentez la logique de clic sur l'élément ici si nécessaire
-        }
+        recyclerView.adapter = UserReservationListAdapter(reservations) { _ -> }
     }
 }

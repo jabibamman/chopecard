@@ -1,7 +1,8 @@
+@file:Suppress("PropertyName")
+
 package com.chopecard.data.model
 
-data class CardResponse(val data: List<Card>)
-
+@Suppress("PropertyName")
 data class Card(
     val id: Long,
     val name: String,

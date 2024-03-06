@@ -2,7 +2,6 @@ package com.chopecard.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
@@ -16,7 +15,6 @@ import com.chopecard.data.model.UpdateProductDTO
 import com.chopecard.data.storage.UserPreferences
 import com.chopecard.domain.models.ProductStore
 import com.chopecard.domain.models.Store
-import com.chopecard.presentation.fragment.UserReservationListFragment
 import com.chopecard.presentation.viewModel.SellerViewModel
 import com.chopecard.ui.utils.showAlert
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -29,6 +27,7 @@ class SellerActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller)
         setupFooter()
+        @Suppress("DEPRECATION")
         store = intent.getParcelableExtra("store")
         val tvShopName = findViewById<TextView>(R.id.tvShopName)
 
@@ -43,7 +42,7 @@ class SellerActivity : BaseActivity() {
     }
 
     private fun setupListeners() {
-        findViewById<Button>(R.id.btnGoBack).setOnClickListener {
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
             finish()
         }
 

@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/subject"
+        android:autofillHints="@string/subject"
         android:inputType="text" />
 
     <EditText
@@ -17,5 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/description"
+        android:autofillHints="@string/description"
         android:inputType="text" />
 </LinearLayout>

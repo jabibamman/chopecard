@@ -1,33 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg">#FFFFFFFF</color>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
 
     <!-- colors basic -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="dark_gray">#616161</color>
+    <color name="dark_gray">#808080</color>
 
     <!-- colors for the app -->
     <color name="error">#F44336</color>
     <color name="drawable_color">#FF000000</color>
 
-    <color name="splashColorPrimary">#ff1b49</color>
-    <color name="splashColorPrimaryDark">#FF000000</color>
-    <color name="splashColorAccent">#e67d20</color>
-
-    <color name="text_view_adaptive_color">@color/white</color>
-
     <!-- Font Colors -->
     <color name="primaryFontColor">@color/black</color>
     <color name="primary_text">#2962FF</color>
     <color name="secondary_text">#4CAF50</color>
-    <color name="button_tint">#2962FF</color>
     <color name="button_text">#FFFFFF</color>
-
-
 </resources>

@@ -9,7 +9,6 @@
     tools:context=".ui.activity.ShopListActivity">
 
     <TextView
-        android:id="@+id/tvListedReservationList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/listed_shops"

@@ -20,9 +20,9 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="@dimen/default_margin_half"
+        android:layout_marginTop="@dimen/default_margin_half"
+        android:layout_marginBottom="@dimen/default_margin_half"
         android:text="@string/tickets"
         android:textColor="@color/primaryFontColor" />
 
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/default_margin_half"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="8dp"
+        android:padding="@dimen/default_padding_half"
         android:background="@color/body_background"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
@@ -47,7 +47,7 @@
         android:id="@+id/addTicket"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/default_margin_half"
         android:background="@color/secondaryColor"
         android:text="@string/add_ticket"
         android:textColor="@color/primaryFontColor" />

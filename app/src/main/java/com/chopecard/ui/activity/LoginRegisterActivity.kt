@@ -110,7 +110,6 @@ class LoginRegisterActivity : AppCompatActivity() {
                 showAlert("Invalid credentials", this)
             }
         }
-
     }
 
     private fun performRegistration() {
@@ -125,7 +124,7 @@ class LoginRegisterActivity : AppCompatActivity() {
 
         Log.d("LoginRegisterActivity", "User created")
 
-        loginViewModel.userCreationResult.observe(this) { result ->
+        val observer = Observer<UserCreationResult> { result ->
             when (result) {
                 is UserCreationResult.Success -> {
                     Log.d(
@@ -154,6 +153,9 @@ class LoginRegisterActivity : AppCompatActivity() {
                 }
             }
         }
-    }
 
+        loginViewModel.userCreationResult.observe(this, observer)
+
+        loginViewModel.userCreationResult.removeObserver(observer)
+    }
 }

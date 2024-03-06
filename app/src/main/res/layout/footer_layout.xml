@@ -15,43 +15,42 @@
             android:padding="@dimen/footer_padding"
             android:layout_alignParentBottom="true">
 
-
         <ImageButton
-                android:id="@+id/btnHome"
+                android:id="@+id/btnCards"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/ic_home"
+                android:src="@drawable/ic_playing_card"
+                android:fillColor="@color/drawable_color"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/home" />
-
-        <ImageButton
-                android:id="@+id/btnFavorites"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/ic_favorites"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/favorites" />
-
-
-        <ImageButton
-                android:id="@+id/btnNearby"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/ic_nearby"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:visibility="gone"
-                android:contentDescription="@string/nearby" />
+                android:contentDescription="@string/cards" />
 
         <ImageButton
                 android:id="@+id/btnShops"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/ic_account"
+                android:src="@drawable/ic_shop"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/account" />
+                android:contentDescription="@string/listed_shops" />
+
+        <ImageButton
+            android:id="@+id/btnAdmin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_admin"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:visibility="gone"
+            android:contentDescription="@string/admin" />
+
+        <ImageButton
+            android:id="@+id/btnLogout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_logout"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/logout" />
     </LinearLayout>
 </RelativeLayout>

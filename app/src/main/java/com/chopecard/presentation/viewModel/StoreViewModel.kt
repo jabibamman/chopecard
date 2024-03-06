@@ -4,22 +4,16 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.chopecard.data.repository.StoreRepository
-import com.chopecard.data.storage.UserPreferences
 import com.chopecard.domain.models.Store
-import com.chopecard.domain.models.UserReservation
 import com.chopecard.domain.usecases.GetStoresUseCase
-import com.chopecard.domain.usecases.GetUserReservationsUseCase
 import kotlinx.coroutines.launch
 
 /** Represents the UI state. */
 sealed class StoreDataState {
     object Loading : StoreDataState()
     data class Success(val stores: List<Store>): StoreDataState()
-    data class Error(val exception: Throwable): StoreDataState()
+    data class Error(val ignoredException: Throwable): StoreDataState()
 }
-
-
 
 class StoreViewModel(
     private val getStoresUseCase: GetStoresUseCase,

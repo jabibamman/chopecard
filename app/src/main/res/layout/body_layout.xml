@@ -9,7 +9,7 @@
 
     <ImageView
             android:id="@+id/imageViewCard"
-            android:layout_width="108dp"
+            android:layout_width="@dimen/imageviewcard_body_width"
             android:layout_height="@dimen/image_height"
             android:layout_marginTop="@dimen/image_margin_top"
             android:layout_weight="2"
@@ -37,32 +37,6 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textColor="@color/secondaryColor" />
-
-        <TextView
-                android:id="@+id/textViewCardRarity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/secondaryColor" />
-
-        <TextView
-                android:id="@+id/textViewCardPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/secondaryColor" />
-
-        <TextView
-                android:id="@+id/textViewCardDesc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/secondaryColor" />
-
-
-
-
-        <!-- more textViews for other card attributes like frameType, desc, etc. -->
 
     </LinearLayout>
 </LinearLayout>

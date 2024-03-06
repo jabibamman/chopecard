@@ -3,6 +3,7 @@ package com.chopecard.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
@@ -16,8 +17,7 @@ import org.koin.android.ext.android.inject
 
 /** Represents the UI state. */
 
-class UserReservationListActivity(
-) : BaseActivity() {
+class UserReservationListActivity : BaseActivity() {
     private val getUserReservationsUseCase: GetUserReservationsUseCase by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,21 +53,24 @@ class UserReservationListActivity(
             startActivity(intent)
             finish()
         }
+
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
+            finish()
+        }
     }
 
-    suspend fun getReservations(): List<UserReservation> {
+    private suspend fun getReservations(): List<UserReservation> {
             var reservations = emptyList<UserReservation>()
             try {
-                val (userRole,userId,userName) = UserPreferences.getUserLogin(this)
+                val (_,userId, _) = UserPreferences.getUserLogin(this)
                 Log.d("UserReservations","$userId")
                 reservations  = getUserReservationsUseCase.execute(userId)
                 Log.d("UserReservations", "Stores: $reservations")
             } catch (e: Exception) {
-                Log.d("dsfsfdsdffds","$e")
                 Log.d("UserReservations", "ERROR: RESERVATION")
             }
 
-        return reservations;
+        return reservations
 
     }
 }
