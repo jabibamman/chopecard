@@ -2,17 +2,17 @@
     <color name="purple_700">#985EFF</color>
 
     <!-- colors basic -->
-    <color name="black">#FFFFFF</color> 
-    <color name="white">#121212</color> 
+    <color name="black">#FFFFFF</color>
+    <color name="white">#121212</color>
     <color name="dark_gray">#f2e4e4</color>
 
     <!-- colors for the app -->
-    <color name="error">#CF6679</color> 
+    <color name="error">#CF6679</color>
     <color name="drawable_color">#FFFFFF</color>
 
     <!-- Font Colors -->
-    <color name="primaryFontColor">#FFFFFF</color> 
-    <color name="primary_text">#BB86FC</color> 
+    <color name="primaryFontColor">#FFFFFF</color>
+    <color name="primary_text">#BB86FC</color>
     <color name="secondary_text">#CF9FFF</color>
     <color name="button_text">#FFFFFF</color>
 </resources>

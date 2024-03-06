@@ -91,7 +91,7 @@ class ProductDetailActivity : BaseActivity() {
             }
         }
     }
-    
+
     private fun displayProductDetail(card: Card) {
         with(binding) {
             productNameTextView.text = card.name
