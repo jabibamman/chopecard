@@ -8,7 +8,6 @@ import com.chopecard.data.repository.UserRepository
 import com.chopecard.data.repository.impl.AdminRepositoryImpl
 import com.chopecard.data.repository.impl.CardRepositoryImpl
 import com.chopecard.data.repository.impl.ProductRepositoryImpl
-import com.chopecard.data.repository.impl.ProductRepositoyImpl
 import com.chopecard.data.repository.impl.StoreRepositoryImpl
 import com.chopecard.data.repository.impl.UserRepositoryImpl
 import com.chopecard.domain.usecases.AddProductUseCase
@@ -48,7 +47,6 @@ internal val coreModule = module {
     single<StoreRepository> { StoreRepositoryImpl(get()) }
     single<UserRepository> { UserRepositoryImpl(get()) }
     single<AdminRepository> { AdminRepositoryImpl(get()) }
-    single<ProductRepository> { ProductRepositoyImpl(get()) }
 
     // Use Cases
     factory { AddProductUseCase(get()) }
@@ -72,7 +70,7 @@ internal val coreModule = module {
 
     // ViewModels
     viewModel { CollectorViewModel(get()) }
-    viewModel { SellerViewModel(get(), get(), get(), get(), get(), get()) }
+    viewModel { SellerViewModel(get(), get(), get(), get(), get()) }
     viewModel { CardViewModel(get()) }
     viewModel { StoreViewModel(get()) }
     viewModel { LoginViewModel(get(), get()) }

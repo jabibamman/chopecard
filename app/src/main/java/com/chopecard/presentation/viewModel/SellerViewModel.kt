@@ -11,14 +11,12 @@ import com.chopecard.data.model.ReserveDTO
 import com.chopecard.data.model.UpdateProductDTO
 import com.chopecard.domain.usecases.AddProductUseCase
 import com.chopecard.domain.usecases.DeleteProductUseCase
-import com.chopecard.domain.usecases.GetStoresUseCase
 import com.chopecard.domain.usecases.ReserveProductUseCase
 import com.chopecard.domain.usecases.UnreserveProductUseCase
 import com.chopecard.domain.usecases.UpdateProductUseCase
 import kotlinx.coroutines.launch
 
 class SellerViewModel(
-    private val ignoredGetStoresUseCase: GetStoresUseCase,
     private val addProductUseCase: AddProductUseCase,
     private val deleteProductUseCase: DeleteProductUseCase,
     private val updateProductUseCase: UpdateProductUseCase,
@@ -111,6 +109,4 @@ class SellerViewModel(
             }
         }
     }
-
-    // Implement other actions (e.g., updateProduct, deleteProduct) similarly
 }
