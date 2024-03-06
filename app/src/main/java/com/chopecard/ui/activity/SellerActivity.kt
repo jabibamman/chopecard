@@ -27,6 +27,7 @@ class SellerActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller)
         setupFooter()
+        @Suppress("DEPRECATION")
         store = intent.getParcelableExtra("store")
         val tvShopName = findViewById<TextView>(R.id.tvShopName)
 

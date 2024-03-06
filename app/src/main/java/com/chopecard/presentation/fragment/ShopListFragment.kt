@@ -31,6 +31,8 @@ class ShopListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        progressBar = activity?.findViewById(R.id.progressBar)
+            ?: throw IllegalStateException("Activity cannot be null")
         setupRecyclerView(view)
         observeStores()
         storeViewModel.getStores()
@@ -62,10 +64,5 @@ class ShopListFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        progressBar = activity?.findViewById(R.id.progressBar) ?: throw IllegalStateException("Activity cannot be null")
     }
 }
